@@ -1,0 +1,35 @@
+{
+  "name": "data-lake-tables",
+  "version": "1.0.0",
+  "description": "Data Lake Tables — modern, scalable analytical tables for Power BI.",
+  "private": true,
+  "scripts": {
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
+    "typecheck": "tsc --noEmit -p .",
+    "test:ci": "jest --runInBand --ci",
+    "ci": "npm run typecheck && npm run test:ci && npm run lint && npm run package"
+  },
+  "author": "Data Lake Visual Family",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "d3": "^7.8.5",
+    "exceljs": "^4.4.0",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.8",
+    "powerbi-visuals-api": "~5.3.0",
+    "powerbi-visuals-utils-formattingmodel": "^6.2.2"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.4.1",
+    "less": "^4.2.0",
+    "powerbi-visuals-tools": "^7.2.1",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
+  }
+}

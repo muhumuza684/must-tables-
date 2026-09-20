@@ -1,0 +1,3352 @@
+.skiba-tables-visual {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.skiba-tables-container {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.skiba-table-root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: var(--skiba-font-family, "Segoe UI", sans-serif);
+    font-size: var(--skiba-font-size, 13px);
+    color: var(--skiba-cell-font, #333333);
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+// -----------------------------------------------------------------
+// Toolbar  --  single gear icon, opens a small dropdown (progressive disclosure)
+// -----------------------------------------------------------------
+
+.skiba-toolbar {
+    position: absolute;
+    top: 8px;
+    inset-inline-end: 8px;
+    z-index: 20;
+}
+
+.skiba-hamburger {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: #f5f5f5;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 2px;
+    }
+}
+
+.skiba-toolbar__menu {
+    position: absolute;
+    top: 36px;
+    inset-inline-end: 0;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+}
+
+.skiba-toolbar__section {
+    padding: 4px 12px;
+}
+
+.skiba-toolbar__section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.skiba-toolbar__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0;
+    cursor: pointer;
+    font-size: 12px;
+
+    input {
+        margin: 0;
+    }
+}
+
+.skiba-toolbar__divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 6px 0;
+}
+
+.skiba-toolbar__button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+
+    &:hover {
+        background: rgba(0, 120, 212, 0.08);
+    }
+}
+
+// Inline confirmation shown in place of "Save current view as default" when
+// overwriting an existing saved default view (Item 7)  --  deliberately not a
+// browser confirm() dialog, since it affects everyone who opens the report.
+.skiba-toolbar__confirm {
+    padding: 6px 12px;
+}
+
+.skiba-toolbar__confirm-msg {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.skiba-toolbar__confirm-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+
+    button {
+        font-size: 12px;
+        padding: 4px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        background: #fff;
+        cursor: pointer;
+
+        &:last-child {
+            background: #0078d4;
+            color: #fff;
+            border-color: #0078d4;
+        }
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}
+
+// -----------------------------------------------------------------
+// Search
+// -----------------------------------------------------------------
+
+.skiba-search {
+    padding: 6px 40px 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skiba-search__input {
+    flex: 0 1 240px;
+    padding: 5px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 1px;
+    }
+}
+
+.skiba-search__status {
+    font-size: 11px;
+    color: #666;
+}
+
+.skiba-search__advanced-filter-error {
+    color: #a4262c;
+    font-weight: 600;
+    display: inline-block;
+    margin-inset-inline-end: 8px;
+}
+
+// -----------------------------------------------------------------
+// Table
+// -----------------------------------------------------------------
+
+.skiba-table {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    position: relative;
+}
+
+.skiba-table__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--skiba-header-bg, #f0f2f5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.skiba-table__scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: auto;
+    min-height: 0;
+
+    // Thin custom scrollbar
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+
+.skiba-table__body {
+    display: flex;
+    flex-direction: column;
+}
+
+.skiba-table__row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--skiba-cell-bg, #fff);
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0, 120, 212, 0.08);
+    }
+
+    &--alt {
+        background: var(--skiba-alt-row, #fafafa);
+    }
+
+    &--selected {
+        background: rgba(0, 120, 212, 0.16);
+        box-shadow: inset 3px 0 0 #0078d4;
+    }
+
+    // Full keyboard navigation (item 14)  --  rows and group rows are tabbable
+    // (tabIndex=0) so Enter/Space can select or expand/collapse without a mouse.
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: -2px;
+    }
+
+    &--header {
+        cursor: default;
+        font-weight: var(--skiba-header-weight, 600);
+        color: var(--skiba-header-font, #333333);
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    &--totals {
+        font-weight: 600;
+        background: var(--skiba-totals-bg, #f0f2f5);
+        border-top: 2px solid rgba(0, 0, 0, 0.12);
+        position: sticky;
+        bottom: 0;
+    }
+}
+
+.skiba-table__cell {
+    position: relative;
+    flex-shrink: 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-inset-inline-end: 1px solid rgba(0, 0, 0, 0.04);
+
+    &--header {
+        justify-content: space-between;
+        gap: 4px;
+
+        &:focus-visible {
+            outline: 2px solid #0078d4;
+            outline-offset: -2px;
+        }
+    }
+}
+
+.skiba-table__header-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.skiba-table__sort-arrow {
+    font-size: 9px;
+    flex-shrink: 0;
+}
+
+.skiba-table__cell-text {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Item 5: true drill-down -- per-record detail sub-grid, expanded from a leaf row's toggle.
+.skiba-table__row-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-inset-inline-end: 6px;
+    font-size: 9px;
+    line-height: 1;
+    color: #767676;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:hover {
+        color: #0078d4;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 1px;
+    }
+}
+
+.skiba-table__row--detail {
+    cursor: default;
+    align-items: stretch;
+    background: var(--skiba-alt-row, #fafafa);
+    box-sizing: border-box;
+
+    &:hover {
+        background: var(--skiba-alt-row, #fafafa);
+    }
+}
+
+.skiba-detail-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4px 10px;
+    box-sizing: border-box;
+}
+
+.skiba-detail-grid__field {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    font-size: 11px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.skiba-detail-grid__label {
+    flex: 0 0 40%;
+    max-width: 260px;
+    font-weight: 600;
+    color: var(--skiba-header-font, #555555);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-inset-inline-end: 8px;
+}
+
+.skiba-detail-grid__value {
+    flex: 1 1 60%;
+    color: var(--skiba-cell-font, #222222);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.skiba-table__empty-filter {
+    padding: 24px;
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+
+// Resizer handle
+.skiba-resizer {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    cursor: col-resize;
+    width: 5px;
+    height: 100%;
+
+    &:hover,
+    &--active {
+        background: rgba(0, 120, 212, 0.4);
+    }
+}
+
+// Conditional URL-action link icon (Item 9)  --  reuses the same minimal
+// Unicode-glyph icon-button look as the resizer/hamburger/filter icons.
+.skiba-link-icon {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    margin-inset-inline-start: 6px;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1;
+    color: #0078d4;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0, 120, 212, 0.1);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 1px;
+    }
+}
+
+// In-cell data bars
+.skiba-table__data-bar {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    height: 100%;
+    background: var(--skiba-bar-color, #0078d4);
+    opacity: 0.3;
+    transition: width 0.15s;
+    z-index: 0;
+}
+
+// -----------------------------------------------------------------
+// Empty state  --  calm placeholder, never a blank box
+// -----------------------------------------------------------------
+
+.skiba-empty-state {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #999;
+    font-family: "Segoe UI", sans-serif;
+    padding: 16px;
+}
+
+.skiba-empty-state__brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.skiba-empty-state__tagline {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.skiba-empty-state__helper {
+    font-size: 11px;
+    color: #bbb;
+}
+
+// Landing page (item 15)  --  reuses the empty-state branding, adds a short
+// plain-language description paragraph explaining what the visual does.
+// -----------------------------------------------------------------
+// High-contrast accessibility mode (item 13)
+//
+// Power BI's high-contrast setting is detected in TableRenderer and applied
+// via --skiba-header-bg / --skiba-cell-bg / etc (already used everywhere
+// below), plus these three extra variables for borders, selection, and
+// links, which the default rgba-based borders/highlights are too subtle to
+// rely on in high contrast.
+// -----------------------------------------------------------------
+
+.skiba-table-root.skiba-high-contrast {
+    .skiba-table__header {
+        border-bottom: 2px solid var(--skiba-hc-border, currentColor);
+    }
+
+    .skiba-table__cell {
+        border-inset-inline-end: 1px solid var(--skiba-hc-border, currentColor);
+    }
+
+    .skiba-table__row {
+        border-bottom: 1px solid var(--skiba-hc-border, currentColor);
+
+        &:hover {
+            outline: 1px solid var(--skiba-hc-border, currentColor);
+            background: none;
+        }
+
+        &--selected {
+            background: none;
+            box-shadow: none;
+            outline: 2px solid var(--skiba-hc-selected, currentColor);
+            outline-offset: -2px;
+        }
+
+        &--totals {
+            border-top: 2px solid var(--skiba-hc-border, currentColor);
+        }
+    }
+
+    .skiba-table__cell--header:focus-visible,
+    .skiba-table__row:focus-visible {
+        outline: 2px solid var(--skiba-hc-selected, currentColor);
+        outline-offset: -2px;
+    }
+
+    .skiba-table__data-bar {
+        background: var(--skiba-bar-color);
+        opacity: 1;
+        border: 1px solid var(--skiba-hc-border, currentColor);
+    }
+
+    .skiba-hamburger,
+    .skiba-toolbar__menu,
+    .skiba-filter-popover {
+        border: 1px solid var(--skiba-hc-border, currentColor);
+    }
+
+    .skiba-resizer:hover,
+    .skiba-resizer--active {
+        background: var(--skiba-hc-selected, currentColor);
+    }
+}
+
+// -----------------------------------------------------------------
+// Watermark
+// -----------------------------------------------------------------
+
+.skiba-watermark {
+    position: absolute;
+    bottom: 6px;
+    inset-inline-end: 10px;
+    opacity: 0.15;
+    font-size: 10px;
+    pointer-events: none;
+}
+
+// -----------------------------------------------------------------
+// Item 2: drag-to-pivot  --  drop target + "Grouped by" chip
+// -----------------------------------------------------------------
+
+.skiba-quick-group-drop {
+    position: absolute;
+    top: 8px;
+    inset-inline-end: 44px;
+    z-index: 19;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 30px;
+    padding: 0 10px;
+    background: rgba(0, 120, 212, 0.1);
+    border: 1.5px dashed #0078d4;
+    border-radius: 4px;
+    color: #0078d4;
+    font-size: 11px;
+    font-weight: 600;
+    pointer-events: auto;
+}
+
+.skiba-quick-group-chip-root {
+    padding: 0 8px;
+    display: none;
+}
+
+.skiba-quick-group-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background: rgba(0, 120, 212, 0.12);
+    border: 1px solid rgba(0, 120, 212, 0.3);
+    border-radius: 12px;
+    font-size: 11px;
+    color: #0078d4;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0, 120, 212, 0.2);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 1px;
+    }
+}
+
+// -----------------------------------------------------------------
+// Items 1 & 4: Calculations / Combined columns toolbar sections
+// -----------------------------------------------------------------
+
+.skiba-toolbar__column-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px 0;
+}
+
+.skiba-toolbar__checkbox--sparkline {
+    font-size: 11px;
+    color: #666;
+    flex-shrink: 0;
+}
+
+.skiba-calc-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 12px;
+}
+
+.skiba-calc-item__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.skiba-calc-item__delete {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 4px;
+
+    &:hover {
+        color: #d32f2f;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+    }
+}
+
+.skiba-calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px 0 2px;
+}
+
+.skiba-calc-form__input,
+.skiba-calc-form__formula {
+    width: 100%;
+    padding: 5px 7px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    resize: vertical;
+
+    &:focus-visible {
+        outline: 2px solid #0078d4;
+        outline-offset: 1px;
+    }
+}
+
+.skiba-calc-form__error {
+    font-size: 11px;
+    color: #d32f2f;
+    min-height: 14px;
+}
+
+.skiba-toolbar__button--primary {
+    background: #0078d4;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+
+    &:hover {
+        background: #106ebe;
+    }
+}
+
+// -----------------------------------------------------------------
+// Item 3: sparklines
+// -----------------------------------------------------------------
+
+.skiba-table__cell--with-sparkline {
+    gap: 6px;
+}
+
+.skiba-sparkline {
+    flex-shrink: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.skiba-sparkline__line {
+    fill: none;
+    stroke: var(--skiba-bar-color, #0078d4);
+    stroke-width: 1.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.skiba-sparkline__dot {
+    fill: var(--skiba-bar-color, #0078d4);
+}
+
+// -----------------------------------------------------------------
+// Module D (Item 34): mobile / narrow-canvas support.
+//
+// Driven by the `.data-lake-tables-visual--narrow` class toggled from JS in
+// visual.ts's resizeViewport(), NOT a @media query  --  see the comment there for
+// why: the container's pixel size comes from Power BI's options.viewport via
+// inline styles, which isn't guaranteed to track the browser/webview window
+// that @media actually measures.
+// -----------------------------------------------------------------
+
+.data-lake-tables-visual--narrow {
+    .skiba-hamburger {
+        // WCAG 2.5.5 / platform HIG minimum touch target (44x44 CSS px), up from the
+        // 30x30 desktop/mouse-precision size.
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .skiba-toolbar {
+        top: 6px;
+        inset-inline-end: 6px;
+    }
+
+    .skiba-toolbar__menu {
+        // Replace the fixed 200px min-width (which can overflow a ~320-340px canvas)
+        // with a cap computed from the real viewport width in visual.ts.
+        min-width: 0;
+        width: max-content;
+        max-width: var(--skiba-narrow-menu-max-width, 280px);
+    }
+
+    // The 5px resize-handle hit target is fine for a mouse but too thin to reliably
+    // grab with a finger. Widen the invisible hit area without moving or thickening
+    // the visible line itself.
+    .skiba-resizer {
+        width: 16px;
+        inset-inline-end: -6px;
+    }
+
+    .skiba-fetch-more-indicator,
+    .skiba-force-fetch-progress {
+        max-width: calc(100% - 16px);
+        font-size: 11px;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Data Lake Tables landing page  --  single, final ruleset (brand navy/yellow identity).
+   Standard product-splash layout: mark, product name, headline, one-line description,
+   solid CTA. No decorative filler shapes. */
+.skiba-empty-state.skiba-landing-page {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    padding: 36px 34px;
+    color: var(--dlt-ink);
+    background: linear-gradient(180deg, #ffffff 0%, var(--dlt-surface) 100%);
+    border: 1px solid rgba(18,78,155,.16);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(18,78,155,.10);
+    text-align: left;
+    align-items: flex-start;
+    justify-content: center;
+}
+.skiba-landing-page__mark {
+    width: 34px;
+    height: 6px;
+    margin-bottom: 16px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--dlt-navy), var(--dlt-yellow));
+}
+.skiba-landing-page .skiba-empty-state__brand {
+    display: block;
+    margin: 0 0 6px;
+    color: var(--dlt-navy);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+.skiba-landing-page .skiba-empty-state__tagline {
+    margin: 0 0 12px;
+    color: var(--dlt-ink);
+    font-size: clamp(20px, 3.2vw, 30px);
+    font-weight: 750;
+    letter-spacing: -.02em;
+    line-height: 1.15;
+}
+.skiba-landing-page__description { max-width: 460px; margin: 0 0 20px; color: #4a5f76; font-size: 13px; line-height: 1.55; }
+.skiba-landing-page .skiba-empty-state__helper {
+    display: inline-flex;
+    margin: 2px 0 0;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--dlt-navy);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+.skiba-toolbar__menu { min-width: 260px; padding: 10px; border: 1px solid rgba(52,71,0,.16); border-radius: 14px; background: #fbfff4; box-shadow: 0 14px 34px rgba(37,52,0,.18); }
+.skiba-toolbar__section { margin-bottom: 10px; padding: 9px; border-radius: 10px; background: rgba(228,247,176,.42); }
+.skiba-toolbar__section-title { margin-bottom: 7px; color: #53651a; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.skiba-tier4-section { margin: 8px 0; padding: 10px; border: 1px solid rgba(52,71,0,.14); border-radius: 12px; background: linear-gradient(135deg,#f6ffdf,#e9f7bd); }
+.skiba-tier4-section button, .skiba-toolbar__menu button { border: 1px solid rgba(52,71,0,.18); border-radius: 8px; background: #fff; color: #344700; font-size: 11px; font-weight: 650; }
+.skiba-tier4-section button:hover, .skiba-toolbar__menu button:hover { background: #dfff91; }
+
+/* Functional formatting editor: spacious, keyboard-friendly, and data-dense. */
+.skiba-format-editor { min-width: 360px; max-width: 100%; width: 100%; max-height: 720px; overflow-y: auto; padding: 16px; border-radius: 16px; background: linear-gradient(145deg,#fbfff5,#eaffb8); box-shadow: 0 18px 42px rgba(37,52,0,.22); }
+.skiba-format-editor__heading { display: flex; flex-direction: column; gap: 3px; margin-bottom: 12px; color: #304000; }
+.skiba-format-editor__heading span { color: #6b783f; font-size: 13px; line-height: 1.4; }
+.skiba-format-editor__palette-row, .skiba-format-editor__actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; }
+.skiba-format-editor__palette-row > span, .skiba-format-editor__label { display: block; width: 100%; margin: 10px 0 5px; color: #53651a; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.skiba-format-editor__palette-button, .skiba-format-editor__actions button, .skiba-format-editor__primary { padding: 9px 12px; border: 1px solid rgba(52,71,0,.18); border-radius: 9px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; }
+.skiba-format-editor__palette-button[aria-pressed="true"], .skiba-format-editor__primary { background: #344700; color: #efffc9; }
+.skiba-format-editor__builder { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr 42px auto; gap: 6px; align-items: center; padding: 10px; border: 1px solid rgba(52,71,0,.15); border-radius: 12px; background: rgba(255,255,255,.65); }
+.skiba-format-editor__builder .skiba-format-editor__label { grid-column: 1/-1; margin-top: 0; }
+.skiba-format-editor__select, .skiba-format-editor__input { min-width: 0; height: 38px; padding: 7px 9px; border: 1px solid rgba(52,71,0,.2); border-radius: 7px; background: #fff; color: #26320a; font-size: 14px; }
+.skiba-format-editor__color { width: 34px; height: 30px; padding: 2px; border: 1px solid rgba(52,71,0,.2); border-radius: 7px; background: #fff; }
+.skiba-format-editor__rules { display: flex; flex-direction: column; gap: 5px; max-height: 180px; overflow-y: auto; }
+.skiba-format-editor__rule-card { display: grid; grid-template-columns: 16px 1fr 28px; gap: 7px; align-items: center; padding: 9px 10px; border: 1px solid rgba(52,71,0,.12); border-radius: 8px; background: rgba(255,255,255,.72); color: #44521b; font-size: 13px; }
+.skiba-format-editor__swatch { width: 14px; height: 14px; border: 1px solid rgba(0,0,0,.15); border-radius: 4px; }
+.skiba-format-editor__icon-button { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #7b291e; cursor: pointer; font-size: 18px; }
+.skiba-format-editor__empty { padding: 10px; border-radius: 8px; background: rgba(255,255,255,.46); color: #778454; font-size: 13px; }
+.skiba-format-editor__overrides { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; max-height: 190px; overflow-y: auto; }
+.skiba-format-editor__override { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.62); color: #52602d; font-size: 13px; font-weight: 700; }
+/* Fixed: this used to render `background: transparent; border: 0`, which made an unset (white)
+   color override look like a blank checkbox instead of a color swatch. A visible border and
+   rounded corners make it read as a color picker at every value, not just non-default ones. */
+.skiba-format-editor__override input { width: 27px; height: 24px; padding: 1px; border: 1px solid rgba(52,71,0,.35); border-radius: 5px; background: #fff; cursor: pointer; }
+.skiba-high-contrast .skiba-format-editor { background: Canvas; color: CanvasText; box-shadow: none; }
+/* Data Lake Tables standardized settings surface. */
+.datalake-tables-settings-menu { max-height: min(760px, calc(100% - 16px)); overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #8aaa31 #efffc9; padding-inset-inline-end: 6px; }
+.datalake-tables-settings-button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(52,71,0,.22); border-radius: 10px; background: linear-gradient(135deg,#344700,#6f9122); color: #efffc9; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 18px; line-height: 1; box-shadow: 0 5px 14px rgba(52,71,0,.2); }
+.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #263500; outline: 3px solid rgba(191,245,91,.65); outline-offset: 2px; }
+.datalake-layout-section { border: 1px solid rgba(52,71,0,.14); border-radius: 14px; background: linear-gradient(145deg,#fbfff4,#eaffb8); }
+.datalake-settings-help { margin: -2px 0 10px; color: #697744; font-size: 11px; line-height: 1.35; }
+.datalake-settings-subtitle { margin: 12px 0 5px; color: #124e9b; font-size: 11px; font-weight: 800; }
+.datalake-layout-presets__create { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin-bottom: 6px; }
+.datalake-layout-presets__create input { min-width: 0; padding: 6px 8px; border: 1px solid #9bbbd2; border-radius: 7px; font: inherit; }
+.datalake-layout-presets { display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px; }
+.datalake-layout-preset { display: grid; grid-template-columns: 1fr auto; gap: 5px; align-items: center; }
+.datalake-layout-preset .datalake-settings-secondary { width: auto; }
+
+.datalake-layout-control { display: grid; grid-template-columns: 1fr minmax(100px,1.5fr) 30px; align-items: center; gap: 8px; margin: 8px 0; color: #46551b; font-size: 11px; }
+.datalake-layout-control input[type="range"] { width: 100%; accent-color: #6f9122; }
+.datalake-layout-control output { color: #344700; font-weight: 800; text-align: right; }
+.datalake-layout-check { display: flex; align-items: center; gap: 8px; margin: 10px 0; color: #46551b; font-size: 11px; }
+.datalake-settings-secondary { width: 100%; padding: 7px 9px; border: 1px solid rgba(52,71,0,.2); border-radius: 9px; background: rgba(255,255,255,.72); color: #344700; cursor: pointer; font-size: 11px; font-weight: 700; }
+.datalake-settings-secondary:hover { background: #dfff91; }
+.skiba-format-editor { max-height: 580px; overflow-y: auto; }
+/* Data Lake Tables identity: brand navy and yellow (matches the "Brand palette" preset). */
+:root { --dlt-navy: #124e9b; --dlt-blue: #3089bb; --dlt-sky: #9cd5d6; --dlt-yellow: #faf623; --dlt-ink: #102a43; --dlt-surface: #f5f9fc; }
+.datalake-tables-settings-button { border-color: var(--dlt-navy); background: linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color: var(--dlt-yellow); box-shadow: 0 5px 16px rgba(18,78,155,.28); }
+.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: var(--dlt-navy); outline-color: rgba(250,246,35,.8); }
+.datalake-tables-settings-menu { scrollbar-color: var(--dlt-blue) #e8f4fa; }
+.datalake-layout-section, .skiba-format-editor { background: linear-gradient(145deg,#ffffff,#eef8fc); border-color: rgba(18,78,155,.18); }
+.skiba-format-editor__palette-button[aria-pressed="true"], .skiba-format-editor__primary { background: var(--dlt-navy); color: var(--dlt-yellow); border-color: var(--dlt-navy); }
+.skiba-format-editor__palette-button:hover, .skiba-format-editor__actions button:hover, .datalake-settings-secondary:hover { background: #e6f5fb; border-color: var(--dlt-blue); }
+.skiba-format-editor__rule-card, .skiba-format-editor__override { background: rgba(255,255,255,.92); border-color: rgba(18,78,155,.14); }
+.skiba-format-editor__swatch { border-color: var(--dlt-navy); }
+
+/* Data Lake Tables consolidated UI fix */
+.datalake-tables-settings-button { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 2px solid #faf623; border-radius: 10px; background: #124e9b; color: #faf623; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 21px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(18,78,155,.28); }
+.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #3089bb; outline: 3px solid rgba(250,246,35,.6); outline-offset: 2px; }
+.datalake-tables-settings-menu { box-sizing: border-box; width: min(390px, calc(100vw - 28px)); min-width: 300px; height: min(680px, 78vh); min-height: 300px; max-height: calc(100% - 14px); overflow-x: hidden; overflow-y: auto; padding: 12px; background: #f5f9fc; border: 1px solid rgba(18,78,155,.2); border-radius: 14px; scrollbar-width: thin; scrollbar-color: #3089bb #d9edf6; }
+.datalake-tables-settings-menu .skiba-toolbar__section { display: block; width: 100%; box-sizing: border-box; margin: 0 0 12px; padding: 12px; border: 1px solid rgba(18,78,155,.15); border-radius: 12px; background: #ffffff; }
+.datalake-tables-settings-menu .skiba-toolbar__section-title { color: #124e9b; font-size: 11px; font-weight: 800; letter-spacing: .08em; line-height: 1.25; text-transform: uppercase; }
+.datalake-tables-settings-menu .datalake-settings-help { color: #35536d; font-size: 11px; line-height: 1.4; }
+.datalake-tables-settings-menu .skiba-format-editor { display: block; width: 100%; max-height: none; min-height: 360px; overflow: visible; }
+.datalake-tables-settings-menu .skiba-format-editor__palette, .datalake-tables-settings-menu .skiba-format-editor__rule-builder, .datalake-tables-settings-menu .skiba-format-editor__active-rules, .datalake-tables-settings-menu .skiba-format-editor__overrides { display: block; width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; border: 1px solid rgba(18,78,155,.13); border-radius: 10px; background: #f7fbfd; }
+.datalake-tables-settings-menu .skiba-format-editor button, .datalake-tables-settings-menu .datalake-settings-secondary { min-height: 38px; border: 1px solid #9bbbd2; border-radius: 7px; background: #ffffff; color: #124e9b; cursor: pointer; font-size: 14px; font-weight: 700; }
+.datalake-tables-settings-menu .skiba-format-editor button:hover, .datalake-tables-settings-menu .datalake-settings-secondary:hover { background: #e7f5fb; border-color: #3089bb; }
+.datalake-tables-settings-menu .skiba-format-editor__palette-button[aria-pressed="true"], .datalake-tables-settings-menu .skiba-format-editor__primary { background: #124e9b; border-color: #124e9b; color: #faf623; }
+.datalake-tables-settings-menu input, .datalake-tables-settings-menu select { box-sizing: border-box; min-height: 30px; max-width: 100%; border: 1px solid #9bbbd2; border-radius: 7px; background: #ffffff; color: #102a43; }
+.datalake-tables-settings-menu .datalake-layout-control { grid-template-columns: minmax(80px,1fr) minmax(90px,1.5fr) 32px; }
+/* Data Lake Tables persistent settings surface */
+.skiba-toolbar { z-index: 40; }
+.datalake-tables-settings-menu {
+    box-sizing: border-box;
+    width: min(560px, calc(100vw - 28px));
+    min-width: 420px;
+    min-height: 420px;
+    height: min(760px, calc(100vh - 28px));
+    max-height: calc(100vh - 28px);
+    padding: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 2px solid var(--dlt-navy, #124e9b);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #ffffff 0%, #f5f9fc 62%, #e8f4fa 100%);
+    box-shadow: 0 22px 54px rgba(18,78,155,.30);
+}
+.datalake-tables-settings-menu .skiba-toolbar__section,
+.datalake-tables-settings-menu .datalake-layout-section,
+.datalake-tables-settings-menu .skiba-format-editor {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+}
+.datalake-tables-settings-menu .skiba-toolbar__section {
+    margin-bottom: 14px;
+    padding: 14px;
+    border: 1px solid rgba(18,78,155,.15);
+    border-radius: 12px;
+    background: rgba(255,255,255,.94);
+}
+.datalake-tables-settings-menu .skiba-toolbar__section-title,
+.datalake-tables-settings-menu .skiba-format-editor__label {
+    color: var(--dlt-navy, #124e9b);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+.datalake-tables-settings-menu .skiba-format-editor {
+    min-width: 0;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    padding: 14px;
+    border: 1px solid rgba(18,78,155,.18);
+    border-radius: 14px;
+    background: linear-gradient(145deg, #ffffff, #eef8fc);
+    box-shadow: none;
+}
+.datalake-tables-settings-menu .skiba-format-editor__heading { margin-bottom: 16px; }
+.datalake-tables-settings-menu .skiba-format-editor__heading strong { color: var(--dlt-navy, #124e9b); font-size: 15px; }
+.datalake-tables-settings-menu .skiba-format-editor__heading span { color: #35536d; font-size: 12px; }
+.datalake-tables-settings-menu .skiba-format-editor__palette-row,
+.datalake-tables-settings-menu .skiba-format-editor__actions { gap: 8px; margin: 12px 0; }
+.datalake-tables-settings-menu .skiba-format-editor__palette-button,
+.datalake-tables-settings-menu .skiba-format-editor__actions button,
+.datalake-tables-settings-menu .skiba-format-editor__primary,
+.datalake-tables-settings-menu .datalake-settings-secondary { min-height: 34px; padding: 8px 11px; }
+.datalake-tables-settings-menu .skiba-format-editor__builder {
+    grid-template-columns: minmax(125px, 1.4fr) minmax(95px, 1fr) minmax(120px, 1.4fr) 42px auto;
+    gap: 8px;
+    padding: 14px;
+}
+.datalake-tables-settings-menu .skiba-format-editor__select,
+.datalake-tables-settings-menu .skiba-format-editor__input { height: 36px; font-size: 12px; }
+.datalake-tables-settings-menu .skiba-format-editor__color { width: 40px; height: 36px; }
+.datalake-tables-settings-menu .skiba-format-editor__rules { max-height: 240px; }
+.datalake-tables-settings-menu .skiba-format-editor__overrides { max-height: 260px; }
+.datalake-tables-settings-menu .datalake-layout-control { grid-template-columns: minmax(100px,1fr) minmax(150px,2fr) 38px; gap: 10px; margin: 12px 0; }
+@media (max-width: 700px) {
+    .datalake-tables-settings-menu { min-width: 0; width: min(560px, calc(100vw - 20px)); }
+    .datalake-tables-settings-menu .skiba-format-editor__builder { grid-template-columns: 1fr 1fr; }
+    .datalake-tables-settings-menu .skiba-format-editor__builder .skiba-format-editor__label { grid-column: 1 / -1; }
+}
+/* Data Lake Tables controls and palette completion */
+.datalake-tables-settings-menu .skiba-format-editor__palette-row { align-items: stretch; }
+.datalake-tables-settings-menu .skiba-format-editor__palette-button { flex: 1 1 130px; min-width: 118px; min-height: 38px; white-space: normal; line-height: 1.2; }
+.datalake-tables-settings-menu .datalake-layout-control input[type="range"] { height: 20px; cursor: ew-resize; }
+.datalake-tables-settings-menu .datalake-layout-control output { min-width: 32px; padding: 3px 5px; border-radius: 5px; background: #e8f4fa; color: #124e9b; }
+.datalake-tables-settings-menu .skiba-toolbar__button { display: block; width: 100%; min-height: 34px; margin: 5px 0; padding: 8px 10px; text-align: left; cursor: pointer; }
+.datalake-tables-settings-menu .skiba-toolbar__button:hover, .datalake-tables-settings-menu .skiba-toolbar__button:focus-visible { border-color: #3089bb; background: #e6f5fb; outline: 2px solid rgba(31,95,174,.22); outline-offset: 1px; }
+/* Data Lake Tables: data palette gradient previews, custom palette input, and the
+   one-click visual theme gallery (header/cell/accent bundles, independent of the
+   data palette above). Every user gets the same flat gallery -- no author/viewer
+   precedence -- so these styles don't distinguish between the two. */
+.skiba-format-editor__palette-buttons { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; }
+.skiba-format-editor__palette-preview { display: inline-block; width: 26px; height: 10px; margin-inset-inline-end: 6px; vertical-align: middle; border-radius: 5px; border: 1px solid rgba(0,0,0,.15); }
+.skiba-format-editor__custom-palette { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; width: 100%; margin-top: 8px; }
+.skiba-format-editor__custom-palette .skiba-format-editor__input { flex: 1 1 220px; }
+.skiba-format-editor__custom-palette-preview { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; }
+.skiba-format-editor__button { padding: 9px 12px; border: 1px solid rgba(52,71,0,.18); border-radius: 9px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; }
+.skiba-format-editor__button:hover { background: #e6f5fb; }
+.skiba-format-editor__error { width: 100%; color: #a1281c; font-size: 10px; }
+.skiba-format-editor__theme-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; width: 100%; margin: 6px 0; }
+.skiba-format-editor__theme-card-wrap { position: relative; }
+.skiba-format-editor__theme-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; width: 100%; padding: 10px; border: 1px solid rgba(52,71,0,.2); border-radius: 10px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; text-align: left; }
+.skiba-format-editor__theme-card[aria-pressed="true"] { border-color: var(--dlt-navy, #124e9b); box-shadow: 0 0 0 2px rgba(18,78,155,.35); }
+.skiba-format-editor__theme-card-preview { display: block; width: 100%; height: 26px; border-radius: 6px; }
+.skiba-format-editor__theme-card-wrap .skiba-format-editor__icon-button { position: absolute; top: 4px; inset-inline-end: 4px; background: rgba(255,255,255,.85); border-radius: 50%; }
+.skiba-format-editor__save-theme-row { width: 100%; margin-top: 6px; }
+/* Data Lake responsive and accessible baseline. Mobile exclusion-zone rules remain protected. */
+:root {
+  --datalake-navy: #124e9b;
+  --datalake-navy-deep: #0b2033;
+  --datalake-yellow: #f4c542;
+  --datalake-surface: #ffffff;
+  --datalake-border: #c8d3dc;
+  --datalake-focus: #0b6e99;
+  --datalake-text: #12212f;
+  --datalake-muted: #526577;
+}
+.skiba-tables-visual, .data-lake-visual, .datalake-visual {
+  color: var(--datalake-text); background: var(--datalake-surface);
+  box-sizing: border-box; min-width: 0; min-height: 0; overflow: auto; scrollbar-width: thin;
+}
+.skiba-tables-visual *, .data-lake-visual *, .datalake-visual * { box-sizing: border-box; }
+.skiba-tables-visual button:focus-visible, .skiba-tables-visual input:focus-visible,
+.skiba-tables-visual select:focus-visible, .skiba-tables-visual [tabindex]:focus-visible,
+.data-lake-visual button:focus-visible, .data-lake-visual input:focus-visible,
+.data-lake-visual select:focus-visible, .data-lake-visual [tabindex]:focus-visible {
+  outline: 3px solid var(--datalake-focus); outline-offset: 2px;
+}
+@media (max-width: 480px) {
+  .skiba-tables-visual, .data-lake-visual, .datalake-visual { font-size: 11px; }
+  .datalake-toolbar { gap: 4px; flex-wrap: wrap; }
+  .datalake-secondary { display: none; }
+}
+@media (min-width: 481px) and (max-width: 960px) {
+  .skiba-tables-visual, .data-lake-visual, .datalake-visual { font-size: 12px; }
+}
+@media (min-width: 961px) {
+  .skiba-tables-visual, .data-lake-visual, .datalake-visual { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skiba-tables-visual *, .data-lake-visual *, .datalake-visual * { transition: none !important; animation: none !important; }
+}
+
+/* Pivot mode: toggle, config panel, and result table.
+   Uses the live --datalake-* design tokens (see :root above) and the working
+   .data-lake-tables-visual--narrow class for responsive behavior, matching
+   the rest of the visual's mobile/narrow-canvas mechanism. */
+.skiba-pivot-toggle-root {
+    display: inline-flex;
+    align-items: center;
+}
+.skiba-pivot-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: var(--datalake-surface);
+    border: 1px solid var(--datalake-border);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--datalake-text);
+    cursor: pointer;
+}
+.skiba-pivot-toggle--active {
+    background: var(--datalake-focus);
+    border-color: var(--datalake-focus);
+    color: #ffffff;
+}
+.skiba-pivot-config-root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 8px 10px;
+    background: var(--datalake-surface);
+    border-bottom: 1px solid var(--datalake-border);
+}
+.skiba-pivot-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 120px;
+    flex: 1 1 140px;
+}
+.skiba-pivot-field label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--datalake-muted);
+}
+.skiba-pivot-field select {
+    padding: 4px 6px;
+    border: 1px solid var(--datalake-border);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--datalake-text);
+    background: var(--datalake-surface);
+}
+.skiba-pivot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    color: var(--datalake-text);
+}
+.skiba-pivot-table th,
+.skiba-pivot-table td {
+    padding: 6px 10px;
+    border: 1px solid var(--datalake-border);
+    text-align: right;
+    white-space: nowrap;
+}
+.skiba-pivot-table th:first-child,
+.skiba-pivot-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+.skiba-pivot-table thead th {
+    background: var(--datalake-surface);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.skiba-pivot-empty {
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--datalake-muted);
+    font-size: 13px;
+}
+
+/* Narrow-canvas adjustments for pivot mode -- reuses the same class-toggle
+   mechanism as the rest of the visual (see visual.ts resizeViewport()),
+   not @media, since Power BI's inline-style viewport doesn't reliably
+   track what @media measures. */
+.data-lake-tables-visual--narrow {
+    .skiba-pivot-config-root {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .skiba-pivot-field {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+    .skiba-pivot-table {
+        font-size: 11px;
+    }
+    .skiba-pivot-table th,
+    .skiba-pivot-table td {
+        padding: 4px 6px;
+    }
+}
+
+
+
+/* Modern Full-Bleed Landing Page & Attribution */
+.skiba-empty-state.skiba-landing-page {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+}
+.skiba-landing-page__description { 
+    max-width: 680px !important; 
+    margin: 0 0 24px !important; 
+    color: #4a5f76 !important; 
+    font-size: 14px !important; 
+    line-height: 1.6 !important; 
+}
+.skiba-landing-page__footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 12px;
+    color: #718096;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.skiba-landing-page__attribution {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* ================================================================
+   DATA LAKE TABLES  --  FINAL MODERN PRODUCT SURFACE
+   These rules deliberately sit last: legacy selectors remain for
+   compatibility, while the live visual uses this coherent system.
+   ================================================================ */
+:root {
+  --dlt-navy: #124e9b;
+  --dlt-navy-deep: #0b2033;
+  --dlt-blue: #3089bb;
+  --dlt-sky: #eaf5fb;
+  --dlt-yellow: #f4c542;
+  --dlt-ink: #13293d;
+  --dlt-muted: #5c7083;
+  --dlt-border: #d7e1e8;
+  --dlt-surface: #ffffff;
+  --dlt-surface-soft: #f6f9fb;
+  --dlt-selected: #e8f2ff;
+  --dlt-radius: 12px;
+}
+
+.skiba-table-root {
+  background: var(--dlt-surface);
+  color: var(--dlt-ink);
+  font-size: var(--skiba-font-size, 13px);
+  min-width: 0;
+  min-height: 0;
+}
+
+.skiba-table__row { min-height: var(--skiba-row-height, 34px); }
+.skiba-table__cell { padding: 0 12px; font-size: 13px; border-inline-end: 1px solid #edf1f4; }
+.skiba-table__cell-text { font-size: 13px; line-height: 1.35; }
+.skiba-table__row--header .skiba-table__cell { min-height: 38px; font-size: 13px; font-weight: 700; background: #f0f5f8; color: #17324a; }
+.skiba-table__row--totals .skiba-table__cell { font-size: 13px; font-weight: 700; }
+.skiba-table__row:hover { background: #f7fbff; }
+.skiba-table__row--selected { background: var(--dlt-selected); box-shadow: inset 3px 0 0 var(--dlt-navy); }
+
+.skiba-toolbar {
+  position: absolute;
+  top: 10px;
+  inset-inline-end: 10px;
+  z-index: 100;
+}
+.datalake-drawer-toggle {
+  width: 40px; height: 40px; border: 1px solid rgba(18,78,155,.18);
+  border-radius: 12px; background: rgba(255,255,255,.96); color: var(--dlt-navy);
+  box-shadow: 0 8px 22px rgba(11,32,51,.14); cursor: pointer; font-size: 19px;
+}
+.datalake-drawer-toggle:hover { background: var(--dlt-sky); }
+
+.datalake-settings-drawer__header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:18px 18px 14px; border-bottom:1px solid var(--dlt-border); }
+.datalake-settings-drawer__title { color:var(--dlt-navy-deep); font-size:16px; font-weight:800; }
+.datalake-settings-drawer__subtitle { margin-top:4px; color:var(--dlt-muted); font-size:14px; font-weight:600; line-height:1.4; max-width:none; }
+.datalake-settings-drawer__close { width:32px; height:32px; border:0; border-radius:10px; background:#f4f7f9; color:var(--dlt-muted); font-size:22px; cursor:pointer; }
+.datalake-settings-drawer__close:hover { background:#e9f0f5; color:var(--dlt-ink); }
+.datalake-settings-drawer__body { flex:1 1 auto; min-height:0; overflow:auto; padding:14px; }
+.datalake-settings-drawer__footer { padding:10px 14px; border-top:1px solid var(--dlt-border); color:var(--dlt-muted); font-size:14px; }
+.datalake-settings-drawer__resizer { position:absolute; inset-inline-start:-3px; top:12px; bottom:12px; width:6px; cursor:col-resize; border-radius:6px; }
+.datalake-settings-drawer__resizer:hover, .datalake-settings-drawer.is-resizing .datalake-settings-drawer__resizer { background:rgba(48,137,187,.45); }
+.datalake-settings-drawer .skiba-toolbar__section,
+.datalake-settings-drawer .datalake-layout-section,
+.datalake-settings-drawer .skiba-format-editor { margin-bottom:12px; padding:14px; border:1px solid var(--dlt-border); border-radius:14px; background:var(--dlt-surface-soft); }
+.datalake-settings-drawer .skiba-toolbar__section-title { color:var(--dlt-navy); font-size:11px; letter-spacing:.07em; }
+.datalake-settings-drawer .skiba-toolbar__button { min-height:36px; padding:9px 11px; border:1px solid var(--dlt-border); border-radius:9px; background:#fff; color:var(--dlt-ink); font-size:12px; }
+.datalake-settings-drawer .skiba-toolbar__button:hover { background:var(--dlt-sky); border-color:#b7d5e5; }
+.datalake-settings-drawer .skiba-toolbar__checkbox { min-height:30px; padding:4px 0; font-size:12px; }
+
+.skiba-search { padding:58px 52px 8px 10px; gap:10px; }
+.skiba-search__input { flex:1 1 320px; max-width:420px; min-height:36px; padding:7px 10px; border-radius:10px; border-color:var(--dlt-border); font-size:13px; }
+.skiba-search__status { font-size:12px; }
+.skiba-row-count { padding:0 10px 7px; color:var(--dlt-muted); font-size:11px; }
+
+.skiba-pivot-toggle-root { position:absolute; top:12px; inset-inline-start:12px; z-index:50; }
+.skiba-pivot-toggle { min-height:38px; padding:8px 12px; border-radius:10px; border:1px solid var(--dlt-border); background:#fff; color:var(--dlt-navy); font-size:12px; font-weight:700; box-shadow:0 5px 16px rgba(11,32,51,.08); }
+.skiba-pivot-toggle--active { background:var(--dlt-navy); border-color:var(--dlt-navy); color:#fff; }
+.skiba-pivot-config-root { padding:10px 12px; background:#f7fafc; border-bottom:1px solid var(--dlt-border); }
+.skiba-pivot-config-card { width:100%; padding:12px; border:1px solid var(--dlt-border); border-radius:14px; background:#fff; box-shadow:0 4px 14px rgba(11,32,51,.05); }
+.skiba-pivot-config-card__title { color:var(--dlt-navy-deep); font-size:14px; font-weight:800; }
+.skiba-pivot-config-card__subtitle, .skiba-pivot-config-card__hint { margin-top:4px; color:var(--dlt-muted); font-size:11px; line-height:1.4; }
+.skiba-pivot-config-card__fields { display:grid; grid-template-columns:repeat(4,minmax(120px,1fr)); gap:9px; margin-top:12px; }
+.skiba-pivot-field { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.skiba-pivot-field > span { color:var(--dlt-muted); font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.skiba-pivot-field select { min-height:34px; border:1px solid var(--dlt-border); border-radius:9px; padding:7px 9px; background:#fff; color:var(--dlt-ink); font-size:12px; }
+.skiba-pivot-table { font-size:13px; }
+.skiba-pivot-table th { background:#eff4f7; color:#17324a; font-weight:800; }
+.skiba-pivot-table td, .skiba-pivot-table th { padding:8px 11px; }
+
+.skiba-empty-state { width:100%; min-height:100%; background:linear-gradient(135deg,#f7fafc 0%,#edf5fa 100%); color:var(--dlt-ink); }
+.skiba-landing-page { padding:42px clamp(24px,7vw,76px) 28px; align-items:stretch; text-align:left; justify-content:space-between; }
+.skiba-landing-page__top { display:flex; align-items:center; gap:12px; }
+.skiba-landing-page__mark { width:48px; height:48px; border-radius:15px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color:var(--dlt-yellow); font-size:12px; font-weight:900; letter-spacing:.08em; box-shadow:0 10px 24px rgba(18,78,155,.22); }
+.skiba-landing-page__eyebrow { color:var(--dlt-navy); font-size:10px; font-weight:800; letter-spacing:.12em; }
+.skiba-landing-page__content { max-width:820px; margin:auto 0; padding:32px 0; }
+.skiba-landing-page__brand { color:var(--dlt-navy); font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.skiba-landing-page__tagline { margin:8px 0 0; color:var(--dlt-navy-deep); font-size:clamp(24px,4vw,38px); line-height:1.05; max-width:760px; }
+.skiba-landing-page__description { max-width:720px !important; margin:18px 0 !important; color:var(--dlt-muted) !important; font-size:15px !important; line-height:1.65 !important; }
+.skiba-landing-page__helper { display:inline-flex; align-items:center; min-height:38px; padding:9px 14px; border-radius:10px; background:var(--dlt-navy); color:#fff; font-size:12px; font-weight:700; }
+.skiba-landing-page__footer { margin-top:28px; padding-top:14px; border-top:1px solid var(--dlt-border); display:flex; justify-content:space-between; gap:16px; color:var(--dlt-muted); font-size:11px; }
+.skiba-landing-page__attribution { color:var(--dlt-ink); font-weight:800; }
+
+.datalake-announcement-root { padding:8px 12px 0; }
+.datalake-announcement { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid #d7e6ef; border-radius:12px; background:linear-gradient(135deg,#f7fbfe,#eef7fb); box-shadow:0 5px 15px rgba(11,32,51,.05); }
+.datalake-announcement__copy { min-width:0; display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px; }
+.datalake-announcement__eyebrow { color:var(--dlt-navy); font-size:9px; font-weight:900; letter-spacing:.1em; }
+.datalake-announcement__copy strong { color:var(--dlt-ink); font-size:12px; }
+.datalake-announcement__copy span:last-child { color:var(--dlt-muted); font-size:11px; }
+.datalake-announcement__actions { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.datalake-announcement__badge { padding:3px 6px; border-radius:6px; background:#fff3bf; color:#725a00; font-size:9px; font-weight:900; }
+.datalake-announcement__close { width:28px; height:28px; border:0; border-radius:8px; background:transparent; color:var(--dlt-muted); font-size:19px; cursor:pointer; }
+.datalake-announcement__close:hover { background:#fff; color:var(--dlt-ink); }
+
+.skiba-table__sort-arrow { font-size:10px; }
+.skiba-detail-grid__field { height:26px; font-size:12px; }
+.skiba-detail-grid__label { padding-inline-end:10px; }
+
+@media (max-width: 760px) {
+  .skiba-search { padding-top:56px; flex-wrap:wrap; }
+  .skiba-pivot-config-card__fields { grid-template-columns:1fr 1fr; }
+
+  .skiba-landing-page { padding:28px 24px 20px; }
+  .skiba-landing-page__tagline { font-size:28px; }
+  .datalake-announcement__copy { gap:5px 8px; }
+  .datalake-announcement__copy span:last-child { flex-basis:100%; }
+}
+@media (max-width: 480px) {
+  .skiba-pivot-config-card__fields { grid-template-columns:1fr; }
+  .skiba-search { padding-inline:8px; }
+  .skiba-landing-page__footer { flex-direction:column; align-items:flex-start; }
+  .datalake-announcement { align-items:flex-start; }
+}
+
+/* ================================================================
+   TIER 2  --  TABLE PRESENTATION STANDARD
+   ================================================================ */
+.data-lake-tables-visual {
+  --dlt-font-body: var(--skiba-font-size, 13px); --dlt-font-small:11px; --dlt-font-label:12px;
+  --dlt-row-h: var(--skiba-row-height,34px); --dlt-header-h:38px; --dlt-cell-x:12px; --dlt-focus:#0b2033;
+  width:100%; height:100%; min-width:0; min-height:0; box-sizing:border-box; overflow:hidden;
+}
+.data-lake-tables-visual *, .data-lake-tables-visual *::before, .data-lake-tables-visual *::after { box-sizing:border-box; }
+.skiba-table-root { width:100%; height:100%; min-width:0; min-height:0; overflow:hidden; font-size:var(--dlt-font-body); }
+.skiba-table__header { min-height:var(--dlt-header-h); }
+.skiba-table__row { min-height:var(--dlt-row-h); }
+.skiba-table__cell { min-height:var(--dlt-row-h); padding-inline:var(--dlt-cell-x); font-size:var(--dlt-font-body); line-height:1.35; }
+.skiba-table__cell--header { min-height:var(--dlt-header-h); padding-block:9px; font-size:var(--dlt-font-label); font-weight:700; text-align:start; white-space:nowrap; }
+.skiba-table__cell-text { font-size:inherit; line-height:1.35; }
+.skiba-table__row--totals .skiba-table__cell { min-height:var(--dlt-header-h); font-weight:750; }
+.skiba-table__row:hover { background:color-mix(in srgb,var(--dlt-selected) 55%,white); }
+.skiba-table__row:focus-visible, .skiba-table__cell:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid var(--dlt-focus); outline-offset:-2px; }
+.skiba-search { width:100%; padding:58px 12px 6px; align-items:center; }
+.skiba-search__input { min-height:38px; padding:8px 12px; font-size:13px; }
+.skiba-search__status, .skiba-row-count { font-size:var(--dlt-font-small); }
+.skiba-filter-chips { padding-inline:12px; }
+.skiba-pivot-config-root { padding:8px 12px; }
+.skiba-pivot-table td, .skiba-pivot-table th { min-height:var(--dlt-row-h); padding:8px 12px; font-size:13px; }
+.skiba-visually-hidden { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important; }
+@media (max-width:760px) { .skiba-search{padding-top:54px}.skiba-table__cell{padding-inline:9px}.skiba-pivot-config-card__fields{grid-template-columns:1fr 1fr} }
+@media (max-width:480px) { .skiba-search{padding-inline:8px}.skiba-search__input{flex-basis:100%}.skiba-pivot-config-card__fields{grid-template-columns:1fr}.skiba-table__cell{padding-inline:7px} }
+@media (prefers-reduced-motion:reduce) { .data-lake-tables-visual *{scroll-behavior:auto !important;transition:none !important;animation:none !important} }
+
+/* ================================================================
+   TIER 3  --  PRODUCT SURFACE
+   ================================================================ */
+.datalake-settings-drawer__nav { display:flex; gap:6px; padding:10px 12px; border-bottom:1px solid var(--dlt-border); overflow:auto; background:#fbfdfe; }
+.datalake-settings-drawer__nav-item { flex:0 0 auto; min-height:40px; padding:9px 14px; border:1px solid transparent; border-radius:9px; background:transparent; color:var(--dlt-muted); font-size:14px; font-weight:800; cursor:pointer; }
+.datalake-settings-drawer__nav-item:hover { background:var(--dlt-sky); color:var(--dlt-navy); }
+.datalake-settings-drawer__nav-item.is-active { background:var(--dlt-navy); color:#fff; }
+.datalake-settings-drawer__anchor { height:1px; scroll-margin-top:10px; }
+.skiba-landing-page__main { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr); gap:28px; align-items:center; flex:1; min-height:0; }
+.skiba-landing-page__showcase { display:flex; flex-direction:column; gap:8px; min-width:0; max-width:620px; justify-self:end; }
+.skiba-landing-page__poster-frame { position:relative; width:100%; aspect-ratio:16/10; overflow:hidden; border:1px solid var(--dlt-border); border-radius:18px; background:#fff; box-shadow:0 18px 50px rgba(11,32,51,.13); }
+.skiba-landing-page__poster { display:block; width:100%; height:100%; object-fit:cover; }
+.skiba-landing-page__poster-note { position:absolute; left:12px; right:12px; bottom:12px; padding:8px 10px; border-radius:10px; background:rgba(11,32,51,.82); color:#fff; font-size:10px; }
+.skiba-landing-page__poster-controls { display:flex; align-items:center; justify-content:center; gap:10px; }
+.skiba-landing-page__poster-control { min-width:34px; min-height:30px; padding:4px 10px; border:1px solid var(--dlt-border); border-radius:8px; background:#fff; color:var(--dlt-navy); font-size:18px; cursor:pointer; }
+.skiba-landing-page__poster-index { min-width:48px; text-align:center; color:var(--dlt-muted); font-size:10px; font-weight:800; }
+.datalake-announcement__poster-dot { width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border-radius:8px; background:linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color:var(--dlt-yellow); font-size:8px; font-weight:900; }
+@media (max-width:760px) { .skiba-landing-page__main{grid-template-columns:1fr;gap:18px}.skiba-landing-page__showcase{max-width:none;justify-self:stretch} }
+@media (max-width:480px) { .skiba-landing-page__poster-frame{aspect-ratio:4/3} }
+
+/* ================================================================
+   TIER 4  --  ADVANCED ANALYSIS SURFACE
+   ================================================================ */
+.skiba-pivot-empty { display:flex; align-items:center; justify-content:center; min-height:150px; padding:24px; text-align:center; color:var(--dlt-muted); background:var(--dlt-surface-soft); border:1px dashed var(--dlt-border); border-radius:12px; margin:12px; font-size:13px; }
+.skiba-pivot-table { width:100%; border-collapse:collapse; table-layout:auto; }
+.skiba-pivot-table th { position:sticky; top:0; z-index:2; }
+
+/* ================================================================
+   TIER 5  --  RELEASE HARDENING
+   ================================================================ */
+.data-lake-tables-visual.is-busy { cursor:progress; }
+.skiba-spinner { width:14px; height:14px; border:2px solid rgba(48,137,187,.25); border-top-color:var(--dlt-blue); border-radius:50%; display:inline-block; animation:dlt-spin .75s linear infinite; }
+@keyframes dlt-spin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce) { .skiba-spinner { animation:none; } }
+
+/* ================================================================
+   POST-IMPORT REFINEMENT  --  HOST FILL, FILTER CONTROL, PRODUCT AD
+   ================================================================ */
+.data-lake-tables-visual,
+.data-lake-tables-visual > .data-lake-tables-container,
+.data-lake-tables-container > .skiba-table-root {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+}
+
+.data-lake-tables-visual {
+  overflow: hidden;
+  display: block;
+}
+
+/* Real filter control: visible target, not a browser-default tiny button. */
+.skiba-filter-icon {
+  position: relative;
+  z-index: 6;
+  flex: 0 0 28px;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
+  margin-inline-start: 4px;
+  padding: 0;
+  border: 1px solid #c9dbe6;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #17324a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.skiba-filter-icon:hover,
+.skiba-filter-icon:focus-visible {
+  background: #eaf4fa;
+  border-color: #6da5c3;
+  color: #0b5082;
+}
+.skiba-filter-icon--active {
+  background: #0b5c8a;
+  border-color: #0b5c8a;
+  color: #ffffff;
+}
+.skiba-filter-popover {
+  position: absolute;
+  z-index: 1000;
+  width: 236px;
+  max-width: calc(100% - 16px);
+  padding: 12px;
+  border: 1px solid #cbdde7;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(11,32,51,.20);
+  color: #10293d;
+}
+.skiba-filter-popover input,
+.skiba-filter-popover select {
+  width: 100%;
+  min-height: 34px;
+  margin: 0 0 8px;
+  padding: 7px 9px;
+  border: 1px solid #cbdde7;
+  border-radius: 8px;
+  background: #fff;
+  color: #10293d;
+  font: inherit;
+}
+.skiba-filter-popover input:focus,
+.skiba-filter-popover select:focus {
+  outline: 2px solid rgba(11,92,138,.24);
+  outline-offset: 1px;
+}
+.skiba-filter-popover__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  padding-top: 3px;
+}
+.skiba-filter-popover__actions button {
+  min-height: 32px;
+  padding: 6px 11px;
+  border: 1px solid #cbdde7;
+  border-radius: 8px;
+  background: #fff;
+  color: #17324a;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+.skiba-filter-popover__actions button:last-child {
+  background: #0b5c8a;
+  border-color: #0b5c8a;
+  color: #fff;
+}
+.skiba-filter-popover__actions button:hover { background: #eaf4fa; }
+.skiba-filter-popover__actions button:last-child:hover { background: #084b71; }
+
+/* The visual cannot change Power BI's outer tile size. It can, however, make the
+   allocated viewport the only layout reference and switch to a compact landing mode. */
+.data-lake-tables-visual--compact .skiba-landing-page__main {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.data-lake-tables-visual--compact .skiba-landing-page__showcase,
+.data-lake-tables-visual--compact .skiba-landing-page__footer {
+  display: none;
+}
+.data-lake-tables-visual--compact .skiba-landing-page {
+  padding: 18px 16px;
+}
+.data-lake-tables-visual--compact .skiba-landing-page__tagline {
+  font-size: 19px;
+  max-width: none;
+}
+.data-lake-tables-visual--compact .skiba-landing-page__description {
+  margin: 8px 0 !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+}
+.data-lake-tables-visual--compact .skiba-landing-page__helper {
+  min-height: 30px;
+  padding: 7px 10px;
+  font-size: 10px;
+}
+
+/* SuperTables-inspired interaction model, but our own product styling:
+   compact poster card anchored to the lower-right, above the table, with a real X. */
+.datalake-announcement-root {
+  position: absolute;
+  inset-inline-end: 12px;
+  inset-block-end: 12px;
+  width: min(300px, calc(100% - 24px));
+  padding: 0;
+  z-index: 220;
+  pointer-events: none;
+}
+.datalake-announcement {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(153,179,195,.78);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 20px 52px rgba(11,32,51,.20);
+  pointer-events: auto;
+}
+.datalake-announcement__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #eaf1f5;
+}
+.datalake-announcement__poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.datalake-announcement__wash {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 34px 14px 12px;
+  background: linear-gradient(to top, rgba(8,28,43,.92), rgba(8,28,43,0));
+}
+.datalake-announcement__copy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+.datalake-announcement__eyebrow {
+  color: #c5e6f5;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.datalake-announcement__copy strong {
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.datalake-announcement__copy span:last-child {
+  color: rgba(255,255,255,.84);
+  font-size: 10px;
+  line-height: 1.3;
+}
+.datalake-announcement__close {
+  position: absolute;
+  inset-inline-end: 8px;
+  inset-block-start: 8px;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.60);
+  border-radius: 50%;
+  background: rgba(11,32,51,.72);
+  color: #ffffff;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.datalake-announcement__close:hover,
+.datalake-announcement__close:focus-visible {
+  background: rgba(11,32,51,.92);
+  outline: 2px solid rgba(255,255,255,.55);
+  outline-offset: 1px;
+}
+@media (max-width: 520px) {
+  .datalake-announcement-root {
+    inset-inline-end: 8px;
+    inset-block-end: 8px;
+    width: min(270px, calc(100% - 16px));
+  }
+}
+@media (max-height: 360px) {
+  .datalake-announcement-root { display: none; }
+}
+
+
+
+.datalake-settings-drawer__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+.datalake-settings-drawer__nav {
+  align-self: stretch;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 12px 8px;
+  border-bottom: 0;
+  border-inline-end: 1px solid var(--dlt-border);
+  overflow: auto;
+  background: #f7fafc;
+}
+.datalake-settings-drawer__nav-item {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 9px;
+  text-align: left;
+  border-radius: 9px;
+}
+.datalake-settings-drawer__nav-item.is-active {
+  box-shadow: inset 3px 0 0 #78b7d6;
+}
+@media (max-width: 520px) {
+  .datalake-settings-drawer__nav { flex-direction: row; border-inline-end: 0; border-bottom: 1px solid var(--dlt-border); }
+  .datalake-settings-drawer__nav-item { width: auto; }
+}
+
+/* ================================================================
+   TIER 2  --  ENTERPRISE TABLE PRESENTATION + REAL VIEWPORT FILL
+   ================================================================ */
+.data-lake-tables-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  container-type: size;
+  background: var(--dlt-surface, #fff);
+}
+.data-lake-tables-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+.skiba-table-root {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  font-size: clamp(13px, calc(var(--dlt-viewport-width, 900px) / 78), 16px);
+}
+.skiba-table__cell, .skiba-table__cell-text { font-size: inherit; }
+.skiba-table__cell { padding-inline: clamp(10px, 1.1vw, 16px); }
+.skiba-table__row { min-height: max(var(--dlt-row-h, 34px), 34px); }
+.skiba-table__row--header .skiba-table__cell { min-height: max(var(--dlt-header-h, 40px), 40px); }
+.skiba-search { min-height: 40px; }
+.skiba-search__input { min-height: 40px; font-size: 13px; }
+.skiba-search__empty-state { margin-inline-start: 10px; color: var(--dlt-muted); }
+.skiba-search__reset { margin-inline-start: 6px; min-height: 30px; padding: 4px 10px; border: 1px solid var(--dlt-border); border-radius: 8px; background: #fff; color: var(--dlt-navy); cursor: pointer; }
+.skiba-table__scroll { width: 100%; height: calc(100% - var(--dlt-header-h, 40px)); min-height: 0; }
+
+/* Landing uses a two-column composition at wide sizes, then stacks without
+   sacrificing the full allocated viewport. */
+.skiba-landing-page {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(18px, 2.5vh, 30px);
+  padding: clamp(22px, 4vw, 64px);
+}
+.skiba-landing-page__main { align-self: stretch; min-height: 0; }
+.skiba-landing-page__content { align-self: center; }
+.skiba-landing-page__showcase { align-self: center; width: min(100%, 620px); }
+.skiba-landing-page__poster-frame { min-height: 220px; }
+
+@container (max-width: 760px) {
+  .skiba-table-root { font-size: 13px; }
+  .skiba-table__cell { padding-inline: 9px; }
+  .skiba-landing-page { padding: 22px; }
+}
+@container (max-width: 480px) {
+  .skiba-table__cell { padding-inline: 7px; }
+  .skiba-search { padding-top: 54px; }
+  .skiba-search__input { min-height: 42px; }
+}
+
+/* ================================================================
+   TIER 3  --  LEARNABLE SETTINGS + PROFESSIONAL PRODUCT PROMOTION
+   ================================================================ */
+.datalake-settings-section-heading {
+  display: grid; gap: 3px; margin: 8px 2px 10px; padding: 4px 2px;
+}
+.datalake-settings-section-heading strong { color: var(--dlt-navy); font-size: 14px; font-weight: 850; }
+.datalake-settings-section-heading span { color: var(--dlt-muted); font-size: 11px; line-height: 1.4; }
+.datalake-settings-drawer__nav { position: sticky; top: 0; z-index: 5; }
+.datalake-settings-drawer__nav-item { min-height: 38px; }
+
+/* Professional SuperTables-style placement: a framed, lower-right overlay that
+   does not consume table layout space and has an always-visible dismiss control. */
+.datalake-announcement-root {
+  inset-inline-end: clamp(8px, 1.2vw, 18px);
+  inset-block-end: clamp(8px, 1.2vw, 18px);
+  width: min(320px, 30%);
+}
+.datalake-announcement { border-radius: 18px; border-color: rgba(18,78,155,.18); box-shadow: 0 22px 56px rgba(11,32,51,.24); }
+.datalake-announcement__frame { aspect-ratio: 16/10; }
+.datalake-announcement__close { width: 32px; height: 32px; min-width: 32px; min-height: 32px; font-weight: 900; }
+@media (max-width: 760px) { .datalake-announcement-root { width: min(285px, 52%); } }
+@media (max-width: 480px) { .datalake-announcement-root { width: min(250px, 72%); } }
+
+/* ================================================================
+   TIER 4  --  ADVANCED ANALYSIS / RELEASE HARDENING SURFACE
+   ================================================================ */
+.skiba-pivot-config-card__fields { grid-template-columns: repeat(4, minmax(140px, 1fr)); }
+.skiba-pivot-field select, .skiba-filter-popover input, .skiba-filter-popover select { min-height: 36px; }
+.skiba-pivot-empty { min-height: 190px; font-weight: 650; }
+@media (max-width: 900px) { .skiba-pivot-config-card__fields { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .skiba-pivot-config-card__fields { grid-template-columns: 1fr; } }
+
+
+/* ================================================================
+   1.0.0.9  --  VIEWPORT-DRIVEN ENTERPRISE REFINEMENT
+   ================================================================ */
+.data-lake-tables-visual,
+.data-lake-tables-container,
+.skiba-table-root {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.skiba-table-root {
+  font-size: clamp(14px, calc(var(--dlt-viewport-width, 900px) / 68), 18px);
+}
+.skiba-table__cell,
+.skiba-table__cell-text { font-size: inherit; }
+.skiba-table__row { min-height: var(--skiba-row-height, 36px); }
+.skiba-table__row--header .skiba-table__cell { min-height: max(var(--dlt-header-h, 42px), 42px); }
+
+
+.datalake-settings-drawer__body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.datalake-settings-panel {
+  display: block;
+  padding: 14px 16px 18px;
+  border-bottom: 1px solid var(--dlt-border);
+  scroll-margin-top: 6px;
+}
+.datalake-settings-panel:last-child { border-bottom: 0; }
+.datalake-settings-panel__heading {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+.datalake-settings-panel__heading strong {
+  color: var(--dlt-navy-deep);
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 850;
+}
+.datalake-settings-panel__heading span {
+  color: var(--dlt-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.datalake-settings-panel__content { min-width: 0; }
+.datalake-settings-panel .skiba-toolbar__section { margin: 0 0 12px; }
+
+/* Professional lower-right promotion. It never participates in table flow. */
+.datalake-announcement-root {
+  position: absolute;
+  inset-inline-end: clamp(10px, 1.6%, 20px);
+  inset-block-end: clamp(10px, 1.6%, 20px);
+  width: min(320px, 31%);
+  max-width: 320px;
+  padding: 0;
+  z-index: 250;
+}
+.datalake-announcement {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0e1e38;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  box-shadow: 0 20px 52px rgba(10,22,38,.28);
+}
+.datalake-announcement__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.datalake-announcement__poster { object-fit: cover; }
+.datalake-announcement__wash {
+  padding: 50px 15px 14px;
+  background: linear-gradient(to top, rgba(6,18,34,.96), rgba(6,18,34,0));
+}
+.datalake-announcement__copy { gap: 4px; }
+.datalake-announcement__eyebrow { font-size: 9px; }
+.datalake-announcement__copy strong { font-size: 14px; line-height: 1.25; }
+.datalake-announcement__copy span:last-child { font-size: 11px; line-height: 1.4; }
+.datalake-announcement__close {
+  width: 34px; height: 34px; min-width: 34px; min-height: 34px;
+  border-radius: 50%;
+  background: rgba(6,18,34,.82);
+  border-color: rgba(255,255,255,.7);
+}
+.datalake-announcement:focus-visible { outline: 2px solid #6cc4f6; outline-offset: 2px; }
+
+.datalake-announcement-details {
+  position: relative;
+  width: 100%;
+  max-height: min(78vh, 680px);
+  overflow: auto;
+  padding: 20px;
+  color: #fff;
+  background: #0e1e38;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(10,22,38,.32);
+}
+.datalake-announcement-details__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 40px;
+}
+.datalake-announcement__close, .datalake-announcement-details__close {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  position: absolute;
+  inset-inline-end: 9px;
+  inset-block-start: 9px;
+  border: 1px solid rgba(255,255,255,.34);
+  border-radius: 50%;
+  background: rgba(4,16,28,.72);
+  color: #ffffff;
+  font-size: 19px;
+  line-height: 1;
+  z-index: 5;
+  cursor: pointer;
+}
+.datalake-announcement-details__close:hover,
+.datalake-announcement-details__close:focus-visible {
+  background: #173b5b;
+  outline: 2px solid rgba(127,215,255,.55);
+  outline-offset: 1px;
+}
+.datalake-announcement-details__head strong { font-size: 18px; }
+.datalake-announcement-details__lead { margin: 10px 0 16px; color: #c4ccda; font-size: 12px; line-height: 1.5; }
+.datalake-announcement-details__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.datalake-announcement-details__item {
+  display: grid; gap: 4px; padding: 11px; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(255,255,255,.045);
+}
+.datalake-announcement-details__item strong { font-size: 12px; }
+.datalake-announcement-details__item span { color: #c4ccda; font-size: 10px; line-height: 1.45; }
+.datalake-announcement-details__attribution { margin-top: 16px; color: #ffffff; font-size: 11px; font-weight: 700; }
+.datalake-announcement-details__back {
+  margin-top: 14px; min-height: 34px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.22); border-radius: 8px; background: rgba(255,255,255,.08); color: #fff; font-weight: 700; cursor: pointer;
+}
+.datalake-announcement-details__back:hover,
+.datalake-announcement-details__back:focus-visible { background: rgba(255,255,255,.14); outline: none; }
+
+@media (max-width: 760px) {
+
+  .datalake-settings-panel__heading strong { font-size: 16px; }
+  .datalake-announcement-root { width: min(285px, 50%); }
+  .datalake-announcement-details__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .skiba-table-root { font-size: 14px; }
+  .datalake-announcement-root { width: min(250px, 68%); }
+  .datalake-settings-panel { padding: 12px; }
+}
+
+/* 1.0.0.9  --  landing typography may scale with the live viewport; table data typography does not. */
+.skiba-landing-page__tagline { font-size: clamp(28px, calc(var(--dlt-viewport-width, 1100px) / 30), 54px) !important; line-height: 1.02; }
+.skiba-landing-page__description { font-size: clamp(14px, calc(var(--dlt-viewport-width, 1100px) / 78), 17px) !important; line-height: 1.55 !important; }
+.skiba-landing-page__helper { min-height: 42px; padding: 10px 16px; font-size: 13px; }
+.skiba-search__input { font-size: 14px; }
+.datalake-settings-drawer__body { scrollbar-gutter: stable; }
+
+.datalake-layout-control { display:grid; grid-template-columns:minmax(84px,1fr) minmax(120px,1.5fr) 64px; align-items:center; gap:10px; margin:10px 0; }
+.datalake-layout-control__number { width:64px; min-height:34px; padding:6px 8px; border:1px solid var(--dlt-border); border-radius:8px; background:#fff; color:var(--dlt-ink); font-size:12px; text-align:center; }
+.datalake-layout-control__number:focus-visible { outline:2px solid var(--dlt-focus); outline-offset:1px; }
+@media (max-width:480px) { .datalake-layout-control { grid-template-columns:1fr 1fr; } .datalake-layout-control > span { grid-column:1 / -1; } }
+
+.skiba-table__empty-card { min-height:180px; margin:14px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center; color:var(--dlt-ink); border:1px dashed var(--dlt-border); border-radius:14px; background:var(--dlt-surface-soft); }
+.skiba-table__empty-card strong { font-size:clamp(16px, calc(var(--dlt-viewport-width, 900px) / 54), 22px); }
+.skiba-table__empty-card span { max-width:520px; color:var(--dlt-muted); font-size:13px; line-height:1.5; }
+.skiba-table__empty-card .skiba-search__reset { margin-top:8px; min-height:36px; padding-inline:14px; }
+
+.datalake-announcement__details-hint { margin-top:3px; color:#7fd7ff !important; font-size:10px !important; font-weight:800; }
+
+
+/* ================================================================
+   1.0.0.10  --  FINAL ACCEPTANCE OVERRIDES
+   ================================================================ */
+.data-lake-tables-visual,
+.data-lake-tables-visual > .data-lake-tables-container,
+.data-lake-tables-container > .skiba-table-root { width:100% !important; height:100% !important; min-width:0; min-height:0; }
+.data-lake-tables-visual { position:relative; overflow:hidden; }
+.skiba-table-root { font-size:var(--skiba-font-size,14px) !important; overflow:hidden; }
+.skiba-table__cell, .skiba-table__cell-text { font-size:var(--skiba-font-size,14px) !important; }
+.skiba-table__row { height:var(--skiba-row-height,36px); min-height:var(--skiba-row-height,36px); }
+.skiba-table__row--header .skiba-table__cell { height:42px; min-height:42px; }
+
+/* Settings are 75% of the visual width on desktop; the host viewport is the only sizing reference.
+   TIER 6: consolidated single source of truth for this rule -- Blocks A-E removed. */
+.datalake-settings-drawer { position:absolute !important; display:flex; flex-direction:column !important; top:0 !important; inset-inline-end:0 !important; bottom:0 !important; height:100% !important; max-height:none !important; margin:0 !important; width:75%; min-width:360px; max-width:920px !important; border-radius:18px 0 0 18px; border-inline-end:0; overflow:hidden !important; background:rgba(255,255,255,.985); border:1px solid var(--dlt-border); box-shadow:0 26px 70px rgba(11,32,51,.22); backdrop-filter:blur(10px); z-index:320; }
+.datalake-settings-drawer__header { padding:22px 22px 16px; }
+.datalake-settings-drawer__title { font-size:19px; }
+.datalake-settings-drawer__subtitle { max-width:600px; font-size:12px; }
+.datalake-settings-drawer__body { min-height:0; overflow:auto; }
+.datalake-settings-drawer__nav { flex-direction:row !important; align-items:stretch; gap:6px; padding:12px 14px; border-bottom:1px solid var(--dlt-border); border-inline-end:0; overflow-x:auto; overflow-y:hidden; background:#f7fafc; }
+.datalake-settings-drawer__nav-item { flex:1 1 0; min-width:132px; min-height:40px; text-align:center; white-space:nowrap; }
+.datalake-settings-panel { padding:18px 20px 22px; }
+.datalake-settings-panel__heading strong { font-size:19px; }
+.datalake-settings-panel__heading span { max-width:720px; font-size:12px; }
+
+/* The exact numeric input is the source of truth for layout state. */
+.datalake-layout-control { grid-template-columns:minmax(120px,1fr) minmax(180px,2fr) 82px; gap:12px; margin:12px 0; }
+.datalake-layout-control__number { width:82px; min-height:40px; padding:7px 9px; font-size:13px; font-weight:700; }
+
+/* Native product promotion: compact lower-right card, original content and styling. */
+.datalake-announcement-root { inset-inline-end:14px; inset-block-end:14px; width:min(340px,34%); max-width:340px; z-index:260; }
+.datalake-announcement { position:relative; display:grid; gap:10px; width:100%; padding:14px; background:linear-gradient(145deg,#0b2033 0%,#102f4d 100%); border:1px solid rgba(127,215,255,.28); border-radius:16px; color:#fff; box-shadow:0 20px 52px rgba(10,22,38,.32); cursor:pointer; }
+.datalake-announcement__head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-right:32px; }
+.datalake-announcement__brand { display:flex; align-items:center; gap:8px; color:#dfeaf3; font-size:9px; font-weight:900; letter-spacing:.08em; }
+.datalake-announcement__mark { width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px; background:linear-gradient(135deg,#2f6fea,#21c7a8); color:#fff; font-size:8px; font-weight:900; }
+.datalake-announcement__badge { padding:4px 7px; border:1px solid rgba(255,255,255,.14); border-radius:999px; color:#bdeaff; background:rgba(255,255,255,.06); font-size:7px; font-weight:900; letter-spacing:.08em; }
+.datalake-announcement__copy { display:grid; gap:4px; }
+.datalake-announcement__copy strong { color:#fff; font-size:17px; line-height:1.15; }
+.datalake-announcement__copy span { color:#c6d6e3; font-size:13px; line-height:1.45; max-width:32ch; }
+.datalake-announcement__features { display:flex; flex-wrap:wrap; gap:5px; }
+.datalake-announcement__features span { padding:5px 9px; border-radius:7px; background:rgba(255,255,255,.07); color:#dfeaf3; font-size:11px; font-weight:800; }
+.datalake-announcement__cta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:2px; padding-top:9px; border-top:1px solid rgba(255,255,255,.10); color:#7fd7ff; font-size:12.5px; font-weight:900; }
+.datalake-announcement__cta span { font-size:15px; line-height:1; }
+.datalake-announcement__close { width:30px; height:30px; min-width:30px; min-height:30px; position:absolute; inset-inline-end:9px; inset-block-start:9px; border:1px solid rgba(255,255,255,.34); border-radius:50%; background:rgba(4,16,28,.72); color:#fff; font-size:19px; line-height:1; z-index:5; }
+.datalake-announcement__close:hover, .datalake-announcement__close:focus-visible { background:#173b5b; outline:2px solid rgba(127,215,255,.55); outline-offset:1px; }
+.datalake-announcement-details__eyebrow { display:block; margin-bottom:4px; color:#7fd7ff; font-size:8px; font-weight:900; letter-spacing:.10em; }
+.datalake-announcement-details__start { display:grid; gap:4px; margin-top:12px; padding:12px; border:1px solid rgba(255,255,255,.09); border-radius:10px; background:rgba(255,255,255,.045); }
+.datalake-announcement-details__start strong { font-size:12px; }
+.datalake-announcement-details__start span { color:#c4ccda; font-size:10px; line-height:1.45; }
+
+/* Dense but useful landing page composition. */
+.skiba-landing-page { grid-template-rows:auto 1fr auto auto; }
+.skiba-landing-page__content { padding:28px 0; }
+.skiba-landing-page__tagline { max-width:20ch; }
+.skiba-landing-page__feature-rail { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.skiba-landing-page__feature { display:grid; gap:3px; min-height:64px; padding:12px 14px; border:1px solid var(--dlt-border); border-radius:12px; background:rgba(255,255,255,.78); box-shadow:0 6px 18px rgba(11,32,51,.05); }
+.skiba-landing-page__feature strong { color:var(--dlt-navy); font-size:11px; font-weight:900; }
+.skiba-landing-page__feature span { color:var(--dlt-muted); font-size:10px; line-height:1.35; }
+.skiba-landing-page__footer { margin-top:12px; }
+
+@media (max-width:900px) {
+  .datalake-settings-drawer { width:78%; max-width:none !important; }
+  .skiba-landing-page__main { grid-template-columns:1fr; }
+  .skiba-landing-page__showcase { justify-self:stretch; max-width:none; }
+}
+@media (max-width:700px) {
+  .datalake-settings-drawer { width:calc(100% - 10px); min-width:0; border-radius:14px 0 0 14px; }
+  .datalake-settings-drawer__nav { flex-wrap:wrap; overflow-y:auto; }
+  .datalake-settings-drawer__nav-item { min-width:calc(50% - 3px); }
+  .datalake-layout-control { grid-template-columns:1fr 1fr; }
+  .datalake-layout-control input[type="range"] { grid-column:1 / 2; }
+  .datalake-layout-control__number { justify-self:end; }
+  .datalake-announcement-root { width:min(300px,50%); }
+  .skiba-landing-page__feature-rail { grid-template-columns:1fr; }
+}
+@media (max-width:480px) {
+  .datalake-announcement-root { width:min(280px,72%); }
+  .datalake-announcement__copy strong { font-size:15px; }
+  .datalake-announcement-details__grid { grid-template-columns:1fr; }
+}
+
+
+/* =====================================================================
+   TIER 1/2 FIX -- root cause of the drawer congestion + hidden section.
+   .skiba-table-root (this.container) never actually had position:relative
+   set anywhere in this file. Its previously-intended positioning helper,
+   .data-lake-tables-visual, targets a class that is never applied by any
+   TypeScript in this project (dead CSS) -- so absolutely-positioned
+   descendants like the settings drawer were resolving against whatever
+   positioned ancestor Power BI's own host chrome happened to provide,
+   not against the visual's real box. This is the actual fix; the
+   drawer's own !important inline styles (see tableRenderer.ts) only work
+   correctly once this is in place.
+   ===================================================================== */
+.skiba-table-root { position: relative; }
+
+/* Tier 2 -- translucent settings-drawer backdrop (positioning is set via
+   !important inline styles in tableRenderer.ts; this covers appearance only). */
+.datalake-settings-backdrop {
+  background: rgba(10, 22, 38, 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+
+
+/* Tier D (partial) -- gradient tagline text to match the visual-landing-state.html mockup. */
+.skiba-landing-page__tagline {
+  background: linear-gradient(90deg, var(--dlt-blue, #2F6FEA), var(--dlt-teal, #21C7A8)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+
+/* =====================================================================
+   FINAL OVERRIDES -- appended last so they win regardless of the many
+   earlier scattered .skiba-search / .skiba-pivot-toggle-root declarations
+   fighting each other across the file (same disease as the old drawer
+   !important bug). One authoritative definition each, !important so
+   nothing upstream can override it again by accident.
+   ===================================================================== */
+.skiba-search { padding: 58px 52px 8px 10px !important; }
+.skiba-pivot-toggle-root { position: absolute !important; top: 12px !important; inset-inline-start: 12px !important; z-index: 60 !important; }
+.skiba-pivot-toggle { position: relative !important; z-index: 61 !important; }
+
+/* Attribution poster button -- looks like the existing bold footer text, but is now a real
+   button, with a visible hover/focus affordance so it reads as clickable. */
+.datalake-settings-drawer__attribution-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color .15s ease;
+}
+.datalake-settings-drawer__attribution-button:hover,
+.datalake-settings-drawer__attribution-button:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Poster contact items -- reuses .datalake-announcement-details__item's card look but as a
+   real link, so it needs its own color/underline reset. */
+a.datalake-poster__contact {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+a.datalake-poster__contact:hover,
+a.datalake-poster__contact:focus-visible {
+  border-color: rgba(127,215,255,.55);
+  outline: none;
+}
+
+
+/* Custom bounded dropdown (replaces the native <select> that was escaping the visual). */
+.skiba-bounded-select { position: relative; display: inline-block; width: 100%; }
+.skiba-bounded-select__trigger { width: 100%; text-align: left; cursor: pointer; }
+.skiba-bounded-select__list {
+  position: absolute; top: 100%; left: 0; right: 0; margin: 4px 0 0; padding: 4px;
+  list-style: none; background: #fff; border: 1px solid rgba(52,71,0,.25); border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18); z-index: 340; max-height: 220px; overflow-y: auto;
+}
+.skiba-bounded-select__option { padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.skiba-bounded-select__option:hover, .skiba-bounded-select__option:focus-visible { background: rgba(52,71,0,.1); }
+
+
+/* =====================================================================
+   TIER 3 completion -- landing page wave graphic, matching the approved
+   mockup. Pure CSS (clip-path on a pseudo-element), no new image assets
+   or DOM elements -- targets the existing .skiba-landing-page structure.
+   ===================================================================== */
+.skiba-landing-page {
+  position: relative;
+  overflow: hidden;
+}
+.skiba-landing-page::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 38%;
+  min-height: 90px;
+  background: linear-gradient(120deg, #132A4D, #0A1626);
+  clip-path: polygon(0% 35%, 15% 20%, 35% 45%, 55% 15%, 75% 30%, 100% 10%, 100% 100%, 0% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+.skiba-landing-page__brand,
+.skiba-landing-page__tagline,
+.skiba-landing-page__description,
+.skiba-landing-page__cta,
+.skiba-landing-page__features,
+.skiba-landing-page__footer {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =====================================================================
+   Landing page rebuild -- matches data-lake-tables-visual-landing-state.html
+   (byline, gradient title, two intro cards, wave, footer links + attribution).
+   Appended fresh; does not modify any existing rule.
+   ===================================================================== */
+.skiba-landing-page {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 34px 24px 100px;
+  min-height: 100%;
+  text-align: center;
+}
+.skiba-landing-page__byline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+.skiba-landing-page__mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #132A4D, #0A1626);
+  color: #21C7A8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 9px;
+}
+.skiba-landing-page__byline-text {
+  font-weight: 600;
+  font-size: 13px;
+  color: #5B6472;
+}
+.skiba-landing-page__title {
+  font-weight: 700;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #2F6FEA, #21C7A8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 6px 0 26px;
+  z-index: 1;
+}
+.skiba-landing-page__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  z-index: 1;
+  max-width: 560px;
+}
+.skiba-landing-page__card {
+  width: 230px;
+  max-width: 100%;
+  background: #fff;
+  border: 1px solid var(--dlt-border, #E4E8EE);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(10, 22, 38, 0.06);
+  text-align: left;
+}
+.skiba-landing-page__card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A1626;
+  margin-bottom: 6px;
+}
+.skiba-landing-page__card p {
+  font-size: 12.5px;
+  color: #5B6472;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.skiba-landing-page__card-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #0A1626;
+  color: #21C7A8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.skiba-landing-page__card-btn {
+  display: inline-block;
+  border: 1.5px solid #2F6FEA;
+  color: #2F6FEA;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 7px;
+}
+.skiba-landing-page__card-btn--solid {
+  background: linear-gradient(135deg, #2F6FEA, #21C7A8);
+  color: #fff;
+  border: none;
+}
+.skiba-landing-page__footer-links {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 2;
+}
+.skiba-landing-page__attribution {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  z-index: 2;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.skiba-landing-page__attribution:hover,
+.skiba-landing-page__attribution:focus-visible {
+  color: #fff;
+}
+.skiba-landing-page::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  min-height: 100px;
+  background: linear-gradient(120deg, #132A4D, #0A1626);
+  clip-path: polygon(0% 45%, 20% 15%, 42% 55%, 65% 10%, 82% 35%, 100% 20%, 100% 100%, 0% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .skiba-landing-page__cards { flex-direction: column; align-items: center; }
+  .skiba-landing-page__title { font-size: 22px; }
+}
+
+
+/* =====================================================================
+   Inner advert readability fix -- widened card + guaranteed minimum sizes
+   for values whose original rule we've never had confirmed in a dump.
+   Appended as a stronger override rather than editing unseen text.
+   ===================================================================== */
+.datalake-announcement-root { width: min(320px, 92%) !important; }
+.datalake-announcement__copy strong { font-size: 15px !important; }
+.datalake-announcement-details__attribution { font-size: 12px !important; }
+.datalake-announcement-details__lead { font-size: 13px !important; line-height: 1.55 !important; }
+.datalake-announcement-details__item span { font-size: 12px !important; line-height: 1.5 !important; }
+
+
+/* =====================================================================
+   Landing page rebuild -- matches data-lake-tables-visual-landing-state.html
+   (byline, gradient title, two intro cards, wave, footer links + attribution).
+   Appended fresh; does not modify any existing rule.
+   ===================================================================== */
+.skiba-landing-page {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 34px 24px 100px;
+  min-height: 100%;
+  text-align: center;
+}
+.skiba-landing-page__byline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+.skiba-landing-page__mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #132A4D, #0A1626);
+  color: #21C7A8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 9px;
+}
+.skiba-landing-page__byline-text {
+  font-weight: 600;
+  font-size: 13px;
+  color: #5B6472;
+}
+.skiba-landing-page__title {
+  font-weight: 700;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #2F6FEA, #21C7A8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 6px 0 26px;
+  z-index: 1;
+}
+.skiba-landing-page__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  z-index: 1;
+  max-width: 560px;
+}
+.skiba-landing-page__card {
+  width: 230px;
+  max-width: 100%;
+  background: #fff;
+  border: 1px solid var(--dlt-border, #E4E8EE);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(10, 22, 38, 0.06);
+  text-align: left;
+}
+.skiba-landing-page__card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A1626;
+  margin-bottom: 6px;
+}
+.skiba-landing-page__card p {
+  font-size: 12.5px;
+  color: #5B6472;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.skiba-landing-page__card-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #0A1626;
+  color: #21C7A8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.skiba-landing-page__card-btn {
+  display: inline-block;
+  border: 1.5px solid #2F6FEA;
+  color: #2F6FEA;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 7px;
+}
+.skiba-landing-page__card-btn--solid {
+  background: linear-gradient(135deg, #2F6FEA, #21C7A8);
+  color: #fff;
+  border: none;
+}
+.skiba-landing-page__footer-links {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 2;
+}
+.skiba-landing-page__attribution {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  z-index: 2;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.skiba-landing-page__attribution:hover,
+.skiba-landing-page__attribution:focus-visible {
+  color: #fff;
+}
+.skiba-landing-page::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  min-height: 100px;
+  background: linear-gradient(120deg, #132A4D, #0A1626);
+  clip-path: polygon(0% 45%, 20% 15%, 42% 55%, 65% 10%, 82% 35%, 100% 20%, 100% 100%, 0% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .skiba-landing-page__cards { flex-direction: column; align-items: center; }
+  .skiba-landing-page__title { font-size: 22px; }
+}
+
+// Tier 6 analytics formatting: only virtualized visible cells receive these lightweight overlays.
+.skiba-table__data-bar--negative {
+    background: var(--skiba-negative-bar-color, #c50f1f);
+}
+
+.skiba-table__condition-icon {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    margin-inline-end: 6px;
+    font-size: 10px;
+    line-height: 1;
+}
+
+// The Tier 6 rule builder carries column, operator, value(s), format, scope, color and action.
+.datalake-tables-settings-menu .skiba-format-editor__builder {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skiba-pivot-table__total,
+.skiba-pivot-table__totals td {
+    font-weight: 600;
+    background: var(--skiba-totals-bg, #f0f2f5);
+}
+
+// -----------------------------------------------------------------------------
+// Tier 4 / 7 / 8 presentation layer. Kept at the end so older accumulated
+// declarations remain intact while the live renderer receives one coherent set
+// of final tokens from the formatting model.
+// -----------------------------------------------------------------------------
+.skiba-table-root {
+  color: var(--skiba-font-color, #333333);
+  font-family: var(--skiba-font-family, "Segoe UI", sans-serif);
+  font-size: var(--skiba-font-size, 14px);
+}
+.skiba-table__row--header .skiba-table__cell {
+  font-family: var(--skiba-header-family, var(--skiba-font-family, "Segoe UI", sans-serif));
+  font-size: var(--skiba-header-size, 13px);
+  font-weight: var(--skiba-header-weight, 600);
+  color: var(--skiba-header-font, #333333);
+  background: var(--skiba-header-bg, #f0f2f5);
+  border-bottom: 1px solid var(--dlt-header-border, #e5e7eb);
+}
+.skiba-table__cell {
+  font-size: var(--skiba-cell-size, var(--skiba-font-size, 14px));
+  font-weight: var(--skiba-cell-weight, 400);
+  color: var(--skiba-cell-font, var(--skiba-font-color, #333333));
+  border-inline-end-color: var(--dlt-grid-vertical, transparent);
+  border-bottom-color: var(--dlt-grid-horizontal, #eef1f4);
+}
+.skiba-table__row { background: var(--skiba-cell-bg, #fff); }
+.skiba-table__row:hover { background: var(--dlt-hover-bg, #f5f9fc); }
+.skiba-table__row--selected { background: var(--dlt-selected-bg, #e8f2ff); }
+.skiba-table-root.dlt-grid-none .skiba-table__cell { border-inline-end-color: transparent; border-bottom-color: transparent; }
+.skiba-table-root.dlt-grid-horizontal .skiba-table__cell { border-inline-end-color: transparent; }
+.skiba-table-root.dlt-grid-vertical .skiba-table__cell { border-bottom-color: transparent; }
+.skiba-table-root.dlt-grid-both .skiba-table__cell { border-inline-end-color: #edf1f4; border-bottom-color: #edf1f4; }
+.skiba-table-root .skiba-table__cell--header { border-inline-end-color: var(--dlt-grid-vertical, transparent); }
+.skiba-table__row--totals { background: var(--skiba-totals-bg, #f0f2f5); }
+.skiba-table__cell-text { overflow: hidden; text-overflow: ellipsis; }
+
+.datalake-column-controls { display: grid; gap: 6px; }
+.datalake-column-control {
+  display: grid;
+  grid-template-columns: minmax(90px, 1.4fr) minmax(92px, 1fr) minmax(76px, .9fr) 58px 58px 24px 24px;
+  gap: 5px;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--dlt-border, #e5e7eb);
+}
+.datalake-column-control__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+.datalake-column-control input[type="number"] { width: 100%; min-width: 0; border: 1px solid var(--dlt-border, #d9e2e8); border-radius: 6px; padding: 4px 5px; }
+@media (max-width: 720px) {
+  .datalake-column-control { grid-template-columns: minmax(84px, 1fr) minmax(88px, 1fr) minmax(76px, .8fr) 50px 50px 22px 22px; }
+}
+.skiba-empty-state--data { min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 28px; color: var(--dlt-ink, #1f2933); background: var(--dlt-surface, #fff); }
+.skiba-empty-state--data strong { font-size: 17px; font-weight: 600; }
+.skiba-empty-state--data span { max-width: 480px; text-align: center; color: var(--dlt-muted, #667085); font-size: 13px; line-height: 1.5; }
+
+
+/* --- Safeguarded 12-tier consolidation: single token-driven responsive floor --- */
+.data-lake-tables-visual {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--dlt-text-primary, #1F2937);
+  font-family: var(--dlt-font-family, "Segoe UI", sans-serif);
+  background: var(--dlt-background, #F6F8FA);
+}
+.data-lake-tables-container {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.data-lake-tables-visual .datalake-settings-drawer {
+  max-width: min(92vw, var(--dlt-drawer-max-width, 920px));
+}
+@media (max-width: 560px) {
+  .data-lake-tables-visual .datalake-settings-drawer { width: calc(100% - 10px) !important; }
+}
+@media (max-height: 300px) {
+  .data-lake-tables-visual .datalake-settings-drawer__header { padding-block: 8px; }
+}
+
+/* =====================================================================
+   FINAL SAFEGUARDED PRODUCT-SURFACE PASS
+   - light/neutral inner advert and details surface for readability
+   - dedicated details close-button class
+   - responsive card sizing using the visual container, not browser width
+   ===================================================================== */
+.datalake-announcement-root {
+  width: min(390px, calc(100% - 24px)) !important;
+  max-width: 390px !important;
+  pointer-events: none;
+}
+.datalake-announcement {
+  border: 1px solid #D9E0E7 !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  color: #17212B !important;
+  box-shadow: 0 16px 36px rgba(23,33,43,.14) !important;
+}
+.datalake-announcement__brand { color: #475569 !important; }
+.datalake-announcement__mark {
+  background: #17212B !important;
+  color: #46C8B3 !important;
+}
+.datalake-announcement__badge {
+  border: 1px solid #D9E0E7 !important;
+  color: #315F8F !important;
+  background: #F4F8FB !important;
+}
+.datalake-announcement__copy strong { color: #17212B !important; }
+.datalake-announcement__copy span { color: #5D6B78 !important; }
+.datalake-announcement__features span {
+  background: #F5F7F9 !important;
+  color: #465362 !important;
+  border: 1px solid #E5E9EE;
+}
+.datalake-announcement__cta {
+  color: #245E92 !important;
+  border-top-color: #E6EAEE !important;
+}
+.datalake-announcement__close,
+.datalake-announcement-details__close {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  border: 1px solid #D7DEE5 !important;
+  background: #FFFFFF !important;
+  color: #5D6B78 !important;
+  border-radius: 9px !important;
+}
+.datalake-announcement__close:hover,
+.datalake-announcement__close:focus-visible,
+.datalake-announcement-details__close:hover,
+.datalake-announcement-details__close:focus-visible {
+  background: #F3F6F8 !important;
+  color: #17212B !important;
+  outline: 2px solid rgba(36,94,146,.20) !important;
+  outline-offset: 1px !important;
+}
+.datalake-announcement-details {
+  width: min(720px, calc(100% - 28px)) !important;
+  max-width: 720px !important;
+  max-height: calc(100% - 28px) !important;
+  overflow: auto !important;
+  padding: 22px !important;
+  color: #17212B !important;
+  background: #FFFFFF !important;
+  border: 1px solid #D9E0E7 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 60px rgba(23,33,43,.20) !important;
+}
+.datalake-announcement-details__head strong { color: #17212B !important; }
+.datalake-announcement-details__lead {
+  color: #5D6B78 !important;
+  max-width: 62ch;
+}
+.datalake-announcement-details__item {
+  border: 1px solid #E1E6EB !important;
+  background: #F7F9FB !important;
+}
+.datalake-announcement-details__item strong { color: #17212B !important; }
+.datalake-announcement-details__item span {
+  color: #5D6B78 !important;
+}
+.datalake-announcement-details__start {
+  border: 1px solid #E1E6EB !important;
+  background: #F7F9FB !important;
+}
+.datalake-announcement-details__start strong { color: #17212B !important; }
+.datalake-announcement-details__start span { color: #5D6B78 !important; }
+.datalake-announcement-details__attribution {
+  color: #315F8F !important;
+}
+.datalake-announcement-details__back {
+  border: 1px solid #CBD5DE !important;
+  background: #17212B !important;
+  color: #FFFFFF !important;
+}
+.datalake-announcement-details__back:hover,
+.datalake-announcement-details__back:focus-visible {
+  background: #263746 !important;
+  outline: 2px solid rgba(36,94,146,.20) !important;
+}
+
+/* Make the on-canvas settings drawer read like the same product family. */
+.datalake-settings-drawer {
+  background: #FFFFFF !important;
+  border-color: #D9E0E7 !important;
+  box-shadow: 0 24px 60px rgba(23,33,43,.18) !important;
+  backdrop-filter: none !important;
+}
+.datalake-settings-drawer__nav { background: #F7F9FB !important; }
+.datalake-settings-drawer__nav-item.is-active {
+  background: #17212B !important;
+  color: #FFFFFF !important;
+}
+.datalake-settings-drawer .skiba-toolbar__section,
+.datalake-settings-drawer .datalake-layout-section,
+.datalake-settings-drawer .skiba-format-editor {
+  background: #FFFFFF !important;
+  border-color: #E1E6EB !important;
+}
+.datalake-settings-drawer .skiba-toolbar__section-title,
+.datalake-settings-drawer__title {
+  color: #17212B !important;
+}
+
+@media (max-width: 700px) {
+  .datalake-announcement-root {
+    width: min(360px, calc(100% - 16px)) !important;
+    max-width: 360px !important;
+    inset-inline-end: 8px !important;
+    inset-block-end: 8px !important;
+  }
+  .datalake-announcement-details {
+    width: calc(100% - 16px) !important;
+    max-height: calc(100% - 16px) !important;
+    padding: 16px !important;
+  }
+}
+
+/* ================================================================
+   TIER 2 — BRANDED EDITORIAL LANDING GEOMETRY
+   ================================================================ */
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"]{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;box-sizing:border-box!important;padding:clamp(10px,1.7vw,20px) clamp(12px,2.2vw,26px) clamp(8px,1.2vw,12px)!important;gap:clamp(8px,1.2vh,14px)!important;overflow:hidden!important;background:#f7f9fc!important;color:#0a1626!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;min-width:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand-group{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__mark{width:34px!important;height:34px!important;border-radius:10px!important;background:#0a1626!important;color:#fff!important;font-size:9px!important;font-weight:900!important;display:grid!important;place-items:center!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand-stack{display:grid!important;gap:2px!important;min-width:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand{color:#0a1626!important;font-size:clamp(9px,1vw,11px)!important;font-weight:950!important;letter-spacing:.10em!important;text-transform:uppercase!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution{color:#5d6a78!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:850!important;white-space:nowrap!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status{padding:6px 9px!important;border:1px solid #d7e0e8!important;border-radius:999px!important;background:#fff!important;color:#667487!important;font-size:8px!important;font-weight:900!important;letter-spacing:.07em!important;white-space:nowrap!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{min-width:0!important;min-height:0!important;width:100%!important;height:100%!important;display:grid!important;grid-template-columns:minmax(0,1.06fr) minmax(280px,.94fr)!important;gap:clamp(10px,1.5vw,18px)!important;align-items:stretch!important;padding:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-width:0!important;min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:clamp(18px,3vw,34px)!important;border-radius:20px!important;background:#0a1626!important;color:#fff!important;position:relative!important;overflow:hidden!important;isolation:isolate!important;box-shadow:0 14px 34px rgba(10,22,38,.14)!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero:after{content:""!important;position:absolute!important;width:280px!important;height:280px!important;right:-90px!important;bottom:-110px!important;border-radius:50%!important;background:radial-gradient(circle at 35% 35%,rgba(33,199,168,.32),rgba(47,111,234,.06) 66%,transparent 67%)!important;z-index:-1!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-kicker{color:#8fe7d9!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:950!important;letter-spacing:.16em!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title{margin:10px 0 12px!important;max-width:11ch!important;color:#fff!important;background:none!important;-webkit-text-fill-color:currentColor!important;font-size:clamp(32px,4.8vw,58px)!important;line-height:.98!important;font-weight:950!important;letter-spacing:-.052em!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description{margin:0!important;max-width:56ch!important;color:#d6dde7!important;font-size:clamp(10px,1.15vw,14px)!important;line-height:1.58!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-actions{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:18px!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action{appearance:none!important;border:1px solid rgba(255,255,255,.24)!important;border-radius:10px!important;min-height:38px!important;padding:9px 14px!important;color:#fff!important;background:transparent!important;font-size:clamp(10px,1vw,12px)!important;font-weight:900!important;cursor:pointer!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary{background:#fff!important;color:#0a1626!important;border-color:#fff!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--secondary:hover{background:rgba(255,255,255,.09)!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{min-width:0!important;min-height:0!important;display:grid!important;grid-template-rows:minmax(0,1fr) auto auto!important;gap:10px!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card{min-width:0!important;background:#fff!important;border:1px solid #dfe6ed!important;border-radius:16px!important;box-shadow:0 8px 22px rgba(10,22,38,.055)!important;padding:15px!important;color:#0a1626!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{display:flex!important;flex-direction:column!important;min-height:0!important;overflow:auto!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card h2{margin:0 0 9px!important;font-size:clamp(14px,1.2vw,17px)!important;line-height:1.1!important;color:#0a1626!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-steps{display:grid!important;gap:0!important;min-height:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step{display:grid!important;grid-template-columns:26px minmax(0,1fr)!important;gap:9px!important;align-items:start!important;padding:9px 0!important;border-top:1px solid #e8edf2!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step-number{width:25px!important;height:25px!important;border-radius:50%!important;background:#edf3ff!important;color:#2f6fea!important;display:grid!important;place-items:center!important;font-size:10px!important;font-weight:950!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step strong{display:block!important;color:#223246!important;font-size:11px!important;font-weight:950!important;margin-bottom:2px!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step span:not(.skiba-landing-page__editorial-step-number){color:#697888!important;font-size:9.5px!important;line-height:1.42!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card:not(.skiba-landing-page__editorial-card--workflow){display:flex!important;gap:10px!important;align-items:flex-start!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-icon{width:30px!important;height:30px!important;border-radius:9px!important;background:#edf3ff!important;color:#2f6fea!important;display:grid!important;place-items:center!important;font-size:13px!important;font-weight:900!important;flex:0 0 auto!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy{min-width:0!important;display:grid!important;gap:3px!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy strong{color:#203246!important;font-size:11.5px!important;font-weight:950!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy span{color:#6a7888!important;font-size:9.5px!important;line-height:1.4!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-width:0!important;padding:8px 2px 0!important;border-top:1px solid #dfe6ed!important;background:transparent!important;color:#6d7b8a!important;z-index:2!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-footer-copy{color:#6e7c8b!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:750!important;min-width:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:3px!important;min-width:0!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link{padding:6px 10px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:#465a70!important;font-size:clamp(9px,1vw,11px)!important;font-weight:950!important;cursor:pointer!important}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link:hover{background:#edf3ff!important;color:#2f6fea!important}
+@container (max-width:760px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{grid-template-columns:1fr!important;grid-template-rows:auto auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-height:210px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{grid-template-columns:1fr 1fr!important;grid-template-rows:minmax(0,1fr) auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{grid-row:1/3!important}}
+@container (max-width:520px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"]{padding:8px!important;gap:7px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status{display:none!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{gap:8px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-height:0!important;padding:16px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title{font-size:clamp(30px,10vw,40px)!important;max-width:12ch!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{grid-row:auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer{align-items:flex-start!important;flex-direction:column!important;gap:4px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links{justify-content:flex-start!important}}
+@container (max-height:360px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description{display:none!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy span{font-size:9px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{padding:16px!important}}
+
+/* =====================================================================
+   TIER 2 REPAIR — wire the selected landing skin into the actual visual.less
+   entry point and neutralize legacy landing declarations that are no longer
+   part of the Branded Editorial layout.
+   ===================================================================== */
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"]::after {
+  content: none !important;
+  display: none !important;
+}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: start !important;
+  background: transparent !important;
+  border: 0 !important;
+  z-index: auto !important;
+  white-space: nowrap !important;
+}
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links button,
+.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link {
+  font-family: inherit !important;
+}
+
+/* === DLT_FINAL_BALANCE_V1_START === */
+
+/*
+   Final Concept 03 — Branded Editorial balance pass.
+
+   Goals:
+   - Fill the entire Power BI visual allocation.
+   - Remove the inherited bottom-wave obstruction.
+   - Give the editorial hero and information rail proportional height.
+   - Keep footer visible and usable.
+   - Scale from wide report tiles down to compact visual sizes.
+*/
+
+[data-dlt-tier="2"].skiba-landing-page {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+  gap: clamp(10px, 1.7cqi, 20px) !important;
+
+  padding:
+    clamp(14px, 2.2cqi, 28px)
+    clamp(14px, 2.8cqi, 36px)
+    clamp(12px, 1.8cqi, 24px) !important;
+
+  align-items: stretch !important;
+  justify-items: stretch !important;
+
+  text-align: left !important;
+  overflow: auto !important;
+
+  background: #F7F9FB !important;
+}
+
+/* Kill the old decorative wave that consumed the bottom of the surface. */
+[data-dlt-tier="2"].skiba-landing-page::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   TOP IDENTITY
+------------------------------------------------------------ */
+[data-dlt-tier="2"] .skiba-landing-page__top {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__brand-group {
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__mark {
+  flex: 0 0 auto !important;
+  width: clamp(30px, 3.5cqi, 40px) !important;
+  height: clamp(30px, 3.5cqi, 40px) !important;
+  border-radius: 10px !important;
+  background: #17212B !important;
+  color: #46C8B3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: clamp(9px, 1.1cqi, 12px) !important;
+  font-weight: 900 !important;
+  letter-spacing: .04em !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__brand-stack {
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 2px !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__brand {
+  color: #17212B !important;
+  font-size: clamp(11px, 1.25cqi, 15px) !important;
+  font-weight: 900 !important;
+  letter-spacing: .10em !important;
+  line-height: 1.1 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__attribution {
+  position: static !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+
+  color: #667085 !important;
+  font-size: clamp(9px, 1.05cqi, 12px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__status {
+  flex: 0 0 auto !important;
+  padding: 6px 9px !important;
+
+  border: 1px solid #D9E0E7 !important;
+  border-radius: 999px !important;
+  background: #FFFFFF !important;
+  color: #5D6B78 !important;
+
+  font-size: clamp(8px, .95cqi, 10px) !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+  white-space: nowrap !important;
+}
+
+/* ------------------------------------------------------------
+   MAIN WORK AREA
+------------------------------------------------------------ */
+[data-dlt-tier="2"] .skiba-landing-page__main {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(260px, .85fr) !important;
+
+  gap: clamp(12px, 2cqi, 22px) !important;
+  align-items: stretch !important;
+}
+
+/* ------------------------------------------------------------
+   DARK EDITORIAL HERO
+------------------------------------------------------------ */
+[data-dlt-tier="2"] .skiba-landing-page__editorial-hero {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  padding:
+    clamp(22px, 4cqi, 52px)
+    clamp(22px, 4.3cqi, 58px) !important;
+
+  border: 1px solid rgba(10,22,38,.10) !important;
+  border-radius: clamp(14px, 1.8cqi, 22px) !important;
+
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(70,200,179,.16),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(47,111,234,.18),
+      transparent 42%
+    ),
+    #0A1626 !important;
+
+  color: #FFFFFF !important;
+  box-shadow: 0 18px 42px rgba(10,22,38,.16) !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-kicker {
+  margin: 0 0 clamp(8px, 1cqi, 14px) !important;
+
+  color: #7FD7C8 !important;
+  font-size: clamp(9px, 1cqi, 12px) !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+  letter-spacing: .13em !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-title {
+  max-width: 10ch !important;
+  margin: 0 0 clamp(12px, 1.6cqi, 20px) !important;
+
+  color: #FFFFFF !important;
+  font-size: clamp(30px, 4.8cqi, 56px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+  font-weight: 900 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-description {
+  max-width: 58ch !important;
+  margin: 0 !important;
+
+  color: #C8D4DE !important;
+  font-size: clamp(12px, 1.35cqi, 16px) !important;
+  line-height: 1.58 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-actions {
+  margin-top: clamp(18px, 2.6cqi, 30px) !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 9px !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-action {
+  min-height: clamp(34px, 3.2cqi, 44px) !important;
+  padding: 0 clamp(12px, 1.7cqi, 18px) !important;
+
+  border-radius: 9px !important;
+
+  font-size: clamp(11px, 1.1cqi, 13px) !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: transform .15s ease, background-color .15s ease !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-action:hover {
+  transform: translateY(-1px) !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary {
+  border: 1px solid #46C8B3 !important;
+  background: #46C8B3 !important;
+  color: #0A1626 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-action--secondary {
+  border: 1px solid rgba(255,255,255,.24) !important;
+  background: rgba(255,255,255,.06) !important;
+  color: #FFFFFF !important;
+}
+
+/* ------------------------------------------------------------
+   RIGHT INFORMATION RAIL
+------------------------------------------------------------ */
+[data-dlt-tier="2"] .skiba-landing-page__editorial-info {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+
+  display: grid !important;
+  grid-template-rows:
+    minmax(0, 1.35fr)
+    minmax(0, .825fr)
+    minmax(0, .825fr) !important;
+
+  gap: clamp(10px, 1.5cqi, 16px) !important;
+}
+
+/* All editorial cards use the available height rather than fixed tiny sizing. */
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card {
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+
+  border: 1px solid #DDE4EA !important;
+  border-radius: clamp(12px, 1.5cqi, 18px) !important;
+
+  background: #FFFFFF !important;
+  color: #17212B !important;
+
+  box-shadow: 0 10px 26px rgba(23,33,43,.06) !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: clamp(14px, 2cqi, 24px) !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow h2 {
+  flex: 0 0 auto !important;
+  margin: 0 0 clamp(10px, 1.4cqi, 16px) !important;
+
+  color: #17212B !important;
+  font-size: clamp(15px, 1.7cqi, 20px) !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-steps {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+
+  display: grid !important;
+  grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-step {
+  min-height: 0 !important;
+
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 9px !important;
+  align-items: center !important;
+
+  padding: 7px 0 !important;
+  border-top: 1px solid #EEF1F4 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-step:first-child {
+  border-top: 0 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-step-number {
+  width: clamp(22px, 2.5cqi, 28px) !important;
+  height: clamp(22px, 2.5cqi, 28px) !important;
+  border-radius: 50% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #EDF7F5 !important;
+  color: #187F70 !important;
+  font-size: clamp(9px, 1cqi, 11px) !important;
+  font-weight: 900 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-step strong {
+  display: block !important;
+  margin: 0 0 2px !important;
+
+  color: #17212B !important;
+  font-size: clamp(11px, 1.15cqi, 14px) !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-step span:last-child {
+  display: block !important;
+
+  color: #667085 !important;
+  font-size: clamp(9.5px, 1cqi, 12px) !important;
+  line-height: 1.4 !important;
+}
+
+/* Supporting cards */
+[data-dlt-tier="2"] .skiba-landing-page__editorial-info > .skiba-landing-page__editorial-card:not(.skiba-landing-page__editorial-card--workflow) {
+  display: flex !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.6cqi, 15px) !important;
+  padding: clamp(12px, 1.8cqi, 20px) !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card-icon {
+  flex: 0 0 auto !important;
+
+  width: clamp(32px, 3.6cqi, 44px) !important;
+  height: clamp(32px, 3.6cqi, 44px) !important;
+  border-radius: 11px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #17212B !important;
+  color: #46C8B3 !important;
+
+  font-size: clamp(14px, 1.7cqi, 20px) !important;
+  font-weight: 900 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy {
+  min-width: 0 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy strong {
+  display: block !important;
+  margin: 0 0 4px !important;
+
+  color: #17212B !important;
+  font-size: clamp(12px, 1.25cqi, 15px) !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy span {
+  display: block !important;
+
+  color: #667085 !important;
+  font-size: clamp(9.5px, 1.05cqi, 12px) !important;
+  line-height: 1.45 !important;
+}
+
+/* ------------------------------------------------------------
+   FOOTER
+------------------------------------------------------------ */
+[data-dlt-tier="2"] .skiba-landing-page__footer {
+  min-width: 0 !important;
+  width: 100% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+
+  padding-top: clamp(4px, .7cqi, 8px) !important;
+
+  border-top: 1px solid #DEE5EA !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__editorial-footer-copy {
+  min-width: 0 !important;
+
+  color: #667085 !important;
+  font-size: clamp(9px, 1cqi, 11px) !important;
+  line-height: 1.4 !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__links {
+  flex: 0 0 auto !important;
+
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__link {
+  min-height: 28px !important;
+  padding: 4px 9px !important;
+
+  border: 1px solid #D8E0E7 !important;
+  border-radius: 7px !important;
+  background: #FFFFFF !important;
+  color: #315F8F !important;
+
+  font-size: clamp(9px, .95cqi, 11px) !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+[data-dlt-tier="2"] .skiba-landing-page__link:hover,
+[data-dlt-tier="2"] .skiba-landing-page__link:focus-visible {
+  background: #F3F7FA !important;
+  border-color: #BFCBD5 !important;
+}
+
+/* ------------------------------------------------------------
+   COMPACT VISUALS
+------------------------------------------------------------ */
+@container (max-width: 820px) {
+  [data-dlt-tier="2"] .skiba-landing-page__main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-hero {
+    min-height: 260px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-info {
+    grid-template-rows: minmax(220px, auto) minmax(110px, auto) minmax(110px, auto) !important;
+    height: auto !important;
+  }
+}
+
+@container (max-width: 560px) {
+  [data-dlt-tier="2"].skiba-landing-page {
+    overflow: auto !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__top,
+  [data-dlt-tier="2"] .skiba-landing-page__footer {
+    align-items: flex-start !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__status {
+    display: none !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__footer {
+    flex-direction: column !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__links {
+    justify-content: flex-start !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-hero {
+    min-height: 240px !important;
+    padding: 22px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-title {
+    max-width: none !important;
+    font-size: clamp(28px, 8cqi, 40px) !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   SHORT VISUALS
+------------------------------------------------------------ */
+@container (max-height: 520px) {
+  [data-dlt-tier="2"].skiba-landing-page {
+    gap: 8px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-hero {
+    padding: 18px 24px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-title {
+    font-size: clamp(26px, 5cqi, 42px) !important;
+    margin-bottom: 10px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-description {
+    line-height: 1.4 !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-actions {
+    margin-top: 12px !important;
+  }
+
+  [data-dlt-tier="2"] .skiba-landing-page__editorial-info {
+    gap: 8px !important;
+  }
+}
+
+/* === DLT_FINAL_BALANCE_V1_END === */

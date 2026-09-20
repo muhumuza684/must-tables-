@@ -1,0 +1,69 @@
+{
+  "tier": 1,
+  "name": "Baseline Preservation and Architecture Freeze",
+  "created": "2026-09-20T06:32:38.7258438Z",
+  "projectRoot": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD",
+  "sourceChange": false,
+  "criticalFiles": [
+    {
+      "path": "package.json",
+      "sha256": "c23c3b984d1f346311d317a96768a7407bd590f9b3d5fbfba8b2cb5449845983"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b42fb84f1d932b383c7cf0c1a2af209261e7926608a538a65467b81ab2e37f51"
+    },
+    {
+      "path": "pbiviz.json",
+      "sha256": "fbabd644c0927305b47c29b91cceef627d1661fc380e3d5b8c8908f7090786c3"
+    },
+    {
+      "path": "capabilities.json",
+      "sha256": "1fbab64bba70bafaade5e3a7bf01680d1da39a340f9c23e5c9df040651452bf5"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "43620cb2a5e3621eadd42c582112d3bec77b85f2a339c0300966da31a2acd01f"
+    },
+    {
+      "path": "tsconfig.test.json",
+      "sha256": "e2ebdaa908f47716597186df0a236bced151ac0a606c76643b3759ecfea1ba34"
+    },
+    {
+      "path": "jest.config.js",
+      "sha256": "98d4671fad876421c2953f68507da49b4663cad83556ad51abede232cab23804"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "91fff945de98973dbad6d7de26c5e9138088021642f54d763ce84af34c831045"
+    },
+    {
+      "path": "REBUILD_PROVENANCE.txt",
+      "sha256": "be64ad9e63e6c1c2b421038b41783e55c1f1478a51c606c9a78b9494e42ebd80"
+    },
+    {
+      "path": "src\\visual.ts",
+      "sha256": "062829ac9e27eec2fa1c1fcbb702eb37d6bec13d26c3bbd9f4ee48af15826cbc"
+    },
+    {
+      "path": "src\\tableRenderer.ts",
+      "sha256": "46f5aa170259623fbe522443b107c3a3c900406b1797e7669c89681255c13f83"
+    },
+    {
+      "path": "style\\visual.less",
+      "sha256": "2277848e84a2fac54cdf8d858db572407cac5f180fe81e3d1f478a7ffe251188"
+    },
+    {
+      "path": "style\\presentationConsolidated.less",
+      "sha256": "6afcb494f12c48fb39c03365a96202ce686c670f9287ed2c9a363c61def871da"
+    },
+    {
+      "path": "src\\visualSettings.ts",
+      "sha256": "6cdc9042550f6dc0b9a9f7b0a2e8d0e06ccbb17b9abaaae45b977603fc5baa0b"
+    },
+    {
+      "path": "src\\mobileLayout.ts",
+      "sha256": "5d9ea4ae1731a291f795d74bc1e2d16e23b12aac802f0e57d5f58535dec119a2"
+    }
+  ]
+}
