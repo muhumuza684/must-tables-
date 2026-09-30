@@ -1,0 +1,557 @@
+﻿
+==================== ENVIRONMENT ====================
+Date: 09/30/2026 09:22:11
+PowerShell: 5.1.26100.9168
+Windows: Microsoft Windows NT 10.0.26200.0
+Node: v24.14.1
+npm: 11.11.0
+Jest: 29.7.0
+TypeScript: Version 5.9.3
+Project path: C:\Users\LENOVO\OneDrive\Desktop\skiba\Data-Lake-Tables-FINAL-REBUILD
+OneDrive env: C:\Users\LENOVO\OneDrive
+
+==================== ROOT FILES ====================
+
+Mode   LastWriteTime         Length            Attributes Name                           
+----   -------------         ------            ---------- ----                           
+d--h-- 9/29/2026 9:41:51 PM             Hidden, Directory .git                           
+d----- 9/27/2026 10:30:11 AM                    Directory .github                        
+d----- 9/27/2026 11:17:02 AM                    Directory .tmp                           
+d----- 9/28/2026 8:48:43 AM                     Directory assets                         
+d----- 9/30/2026 3:07:42 AM                     Directory dist                           
+d----- 9/28/2026 8:48:43 AM                     Directory src                            
+d----- 9/27/2026 10:30:12 AM                    Directory stringResources                
+d----- 9/28/2026 8:48:43 AM                     Directory style                          
+d----- 9/27/2026 10:30:12 AM                    Directory tests                          
+-a---l 9/20/2026 9:14:54 AM  174    Archive, ReparsePoint .gitignore                     
+-a---l 9/20/2026 6:32:38 AM  2317   Archive, ReparsePoint 8TIER_T1_BASELINE_MANIFEST.json
+-a---- 9/30/2026 9:22:11 AM  0                    Archive audit-report.txt               
+-a---l 9/22/2026 6:12:40 AM  37762  Archive, ReparsePoint capabilities.json              
+-a---l 9/12/2026 5:58:56 PM  383    Archive, ReparsePoint eslint.config.mjs              
+-a---l 9/19/2026 8:32:36 AM  1377   Archive, ReparsePoint jest.config.js                 
+-a---l 9/27/2026 9:48:36 AM  567966 Archive, ReparsePoint package-lock.json              
+-a---l 9/26/2026 8:59:32 PM  1150   Archive, ReparsePoint package.json                   
+-a---l 9/27/2026 9:58:28 AM  1182   Archive, ReparsePoint pbiviz.json                    
+-a---l 9/19/2026 8:32:36 AM  611    Archive, ReparsePoint tsconfig.json                  
+-a---l 9/19/2026 8:32:36 AM  232    Archive, ReparsePoint tsconfig.test.json             
+-a---- 9/30/2026 3:07:45 AM  302494               Archive webpack.statistics.prod.html   
+
+
+
+
+==================== package.json ====================
+{
+    "name": "data-lake-tables",
+    "version": "1.0.0",
+    "description": "Data Lake Tables â€” modern, scalable analytical tables for Power BI.",
+    "private": true,
+    "scripts": {
+        "start": "pbiviz start",
+        "package": "pbiviz package",
+        "lint": "eslint . --ext .ts",
+        "test": "jest",
+        "typecheck": "tsc --noEmit -p .",
+        "test:ci": "jest --runInBand --ci",
+        "ci": "npm run typecheck && npm run test:ci && npm run lint && npm run package"
+    },
+    "author": "Data Lake Visual Family",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "d3": "^7.8.5",
+        "exceljs": "^4.4.0",
+        "jspdf": "4.2.1",
+        "jspdf-autotable": "5.0.8",
+        "powerbi-visuals-api": "~5.3.0",
+        "powerbi-visuals-utils-formattingmodel": "^6.2.2"
+    },
+    "devDependencies": {
+        "@types/d3": "^7.4.3",
+        "@types/jest": "^29.5.12",
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0",
+        "less": "^4.2.0",
+        "powerbi-visuals-tools": "^7.2.1",
+        "ts-jest": "^29.1.2",
+        "typescript": "^5.4.5"
+    }
+}
+
+
+==================== JEST / BABEL CONFIG FILES ====================
+--- jest.config.js
+/** Jest config for Skiba Tables' automated regression suite (T3 / E2).
+ *  Runs against src/*.ts directly via ts-jest ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â no build step required.
+ *  jsdom is required because TableRenderer manipulates `document` directly
+ *  (it predates any virtual-DOM abstraction).
+ */
+module.exports = {
+    preset: "ts-jest",
+    testEnvironment: "jsdom",
+    roots: ["<rootDir>/src", "<rootDir>/tests"],
+    testMatch: ["**/tests/**/*.test.ts"],
+    setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
+    moduleFileExtensions: ["ts", "js"],
+    transform: {
+        "^.+\\.ts$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.test.json" }]
+    },
+    // d3's package.json points "main"/"module" at its ESM source (src/index.js, which
+    // re-exports a couple dozen d3-* ESM sub-packages) -- ts-jest/CommonJS can't load that
+    // directly. d3 also ships a pre-bundled UMD build (dist/d3.js) specifically for
+    // non-ESM consumers; redirect the "d3" specifier there instead of fighting
+    // transformIgnorePatterns across every d3-* transitive sub-package.
+    moduleNameMapper: {
+        "^d3$": "<rootDir>/node_modules/d3/dist/d3.js",
+        "^jspdf$": "<rootDir>/node_modules/jspdf/dist/jspdf.umd.js",
+        "^uuid$": "<rootDir>/node_modules/uuid/dist/index.js",
+        "\\.(less|css)$": "<rootDir>/tests/mocks/styleMock.js"
+    },
+    clearMocks: true
+};
+
+
+==================== tsconfig.json ====================
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": ["es2017", "dom"],
+        "strict": true,
+        "strictNullChecks": false,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "outDir": "./.tmp/build/",
+        "declaration": false,
+        "experimentalDecorators": true,
+        "allowJs": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true
+    },
+    "include": ["src/**/*.ts"],
+    "files": ["src/visual.ts"],
+    "exclude": ["node_modules", ".tmp"]
+}
+
+
+==================== pbiviz.json (first 40 lines) ====================
+{
+    "visual":  {
+                   "name":  "DataLakeTables",
+                   "displayName":  "Data Lake Tables",
+                   "guid":  "dataLakeTables_829db169be4645b3be514812e0d84f30",
+                   "visualClassName":  "DataLakeTables",
+                   "version":  "1.0.0.48",
+                   "description":  "A modern, scalable data-lake table visual for viewing, slicing, formatting, and exporting governed Power BI data.",
+                   "supportUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals/issues",
+                   "gitHubUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals"
+               },
+    "apiVersion":  "5.3.0",
+    "author":  {
+                   "name":  "Data Lake Visual Family",
+                   "email":  "muhumuzabright26@gmail.com"
+               },
+    "assets":  {
+                   "icon":  "assets/icon.png"
+               },
+    "externalJS":  [
+
+                   ],
+    "style":  "style/visual.less",
+    "capabilities":  "capabilities.json",
+    "stringResources":  [
+                            "stringResources/en-US/resources.resjson"
+                        ]
+}
+
+==================== TESTS FOLDER ATTRIBUTES ====================
+
+Name                                Length LastWriteTime                    Attributes
+----                                ------ -------------                    ----------
+mocks                                      9/27/2026 10:30:12 AM             Directory
+advancedModel.test.ts               2625   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+advancedModelResilience.test.ts     2989   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+calcDependencyOrder.test.ts         3452   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+calcEngineFunctions.test.ts         4743   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+colorGradient.test.ts               7855   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+conditionalFormatRescale.test.ts    6451   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+customEvents.test.ts                986    9/19/2026 8:32:36 AM  Archive, ReparsePoint
+dataLakeStandardization.test.ts     1423   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+exportDownload.test.ts              7787   9/22/2026 6:12:40 AM  Archive, ReparsePoint
+formatLocaleNumber.test.ts          1025   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+jest.setup.ts                       2191   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+layoutPresets.test.ts               1556   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+layoutState.test.ts                 1148   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+linkActionPrecedence.test.ts        7045   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+mobileLayout.test.ts                2560   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+parseSavedViewState.test.ts         2401   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+pivotState.test.ts                  4663   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+pivotView.test.ts                   1678   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+postImportRefinement.test.ts        5899   9/20/2026 8:09:20 AM  Archive, ReparsePoint
+productSurface.test.ts              482    9/27/2026 10:58:08 AM Archive, ReparsePoint
+releaseHardening.test.ts            718    9/19/2026 8:32:36 AM  Archive, ReparsePoint
+renderingDiagnostics.test.ts        1459   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+savedReportRegressionMatrix.test.ts 1329   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+setDataSegments.test.ts             8490   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+sourceEncodingIntegrity.test.ts     2496   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+tableRenderer.fetchMoreUX.test.ts   10494  9/19/2026 8:32:36 AM  Archive, ReparsePoint
+tier4Formatting.test.ts             4339   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+tier4Governance.test.ts             823    9/19/2026 8:32:36 AM  Archive, ReparsePoint
+tier4Scale.test.ts                  413    9/19/2026 8:32:36 AM  Archive, ReparsePoint
+tier4VisualTheme.test.ts            7461   9/19/2026 8:32:36 AM  Archive, ReparsePoint
+viewportLayout.test.ts              865    9/19/2026 8:32:36 AM  Archive, ReparsePoint
+
+
+
+
+==================== TESTS/mocks ====================
+
+Name                       Attributes
+----                       ----------
+fixtures.ts     Archive, ReparsePoint
+powerbiMocks.ts Archive, ReparsePoint
+
+
+
+
+==================== REPARSE TAG (what kind of reparse point) ====================
+--- advancedModel.test.ts
+Reparse Tag Value : 0x9000a01a
+Tag value: Microsoft
+Tag value: Directory
+
+Reparse Data Length: 0x88      
+Reparse Data:
+0000:  01 00 88 00 46 65 52 70  d5 d6 ef df 84 00 00 00  ....FeRp........
+0010:  02 00 0a 00 07 00 01 00  60 00 00 00 0a 00 04 00  ........`.......
+0020:  64 00 00 00 06 00 08 00  68 00 00 00 00 00 00 00  d.......h.......
+0030:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0040:  00 00 00 00 00 00 00 00  00 00 00 00 06 00 08 00  ................
+0050:  70 00 00 00 06 00 08 00  78 00 00 00 0a 00 04 00  p.......x.......
+0060:  80 00 00 00 01 00 00 00  8e 00 00 00 41 0a 00 00  ............A...
+0070:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0080:  00 00 00 00 00 00 00 00                           ........
+--- advancedModelResilience.test.ts
+Reparse Tag Value : 0x9000a01a
+Tag value: Microsoft
+Tag value: Directory
+
+Reparse Data Length: 0x88      
+Reparse Data:
+0000:  01 00 88 00 46 65 52 70  68 bb 25 3b 84 00 00 00  ....FeRph.%;....
+0010:  02 00 0a 00 07 00 01 00  60 00 00 00 0a 00 04 00  ........`.......
+0020:  64 00 00 00 06 00 08 00  68 00 00 00 00 00 00 00  d.......h.......
+0030:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0040:  00 00 00 00 00 00 00 00  00 00 00 00 06 00 08 00  ................
+0050:  70 00 00 00 06 00 08 00  78 00 00 00 0a 00 04 00  p.......x.......
+0060:  80 00 00 00 01 00 00 00  8e 00 00 00 ad 0b 00 00  ................
+0070:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0080:  00 00 00 00 00 00 00 00                           ........
+--- src\accessibility.ts
+Reparse Tag Value : 0x9000a01a
+Tag value: Microsoft
+Tag value: Directory
+
+Reparse Data Length: 0x88      
+Reparse Data:
+0000:  01 00 88 00 46 65 52 70  6c 14 dd ae 84 00 00 00  ....FeRpl.......
+0010:  02 00 0a 00 07 00 01 00  60 00 00 00 0a 00 04 00  ........`.......
+0020:  64 00 00 00 06 00 08 00  68 00 00 00 00 00 00 00  d.......h.......
+0030:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0040:  00 00 00 00 00 00 00 00  00 00 00 00 06 00 08 00  ................
+0050:  70 00 00 00 06 00 08 00  78 00 00 00 0a 00 04 00  p.......x.......
+0060:  80 00 00 00 01 00 00 00  8e 00 00 00 08 05 00 00  ................
+0070:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+0080:  00 00 00 00 00 00 00 00                           ........
+
+==================== REPARSE POINT COUNTS BY FOLDER (excluding node_modules) ====================
+Total files: 205
+With ReparsePoint: 200
+.                                                  total=  12  reparse=  10
+.\.git                                             total=   5  reparse=   5
+.\.git\hooks                                       total=  14  reparse=  14
+.\.git\info                                        total=   1  reparse=   1
+.\.git\logs                                        total=   1  reparse=   1
+.\.git\logs\refs\heads                             total=   1  reparse=   1
+.\.git\logs\refs\remotes\origin                    total=   1  reparse=   1
+.\.git\objects\00                                  total=   1  reparse=   1
+.\.git\objects\16                                  total=   1  reparse=   1
+.\.git\objects\17                                  total=   1  reparse=   1
+.\.git\objects\18                                  total=   1  reparse=   1
+.\.git\objects\19                                  total=   1  reparse=   1
+.\.git\objects\1c                                  total=   1  reparse=   1
+.\.git\objects\1d                                  total=   1  reparse=   1
+.\.git\objects\20                                  total=   1  reparse=   1
+.\.git\objects\29                                  total=   1  reparse=   1
+.\.git\objects\2f                                  total=   1  reparse=   1
+.\.git\objects\30                                  total=   1  reparse=   1
+.\.git\objects\34                                  total=   1  reparse=   1
+.\.git\objects\36                                  total=   3  reparse=   3
+.\.git\objects\37                                  total=   1  reparse=   1
+.\.git\objects\38                                  total=   1  reparse=   1
+.\.git\objects\3d                                  total=   1  reparse=   1
+.\.git\objects\40                                  total=   2  reparse=   2
+.\.git\objects\41                                  total=   1  reparse=   1
+.\.git\objects\4c                                  total=   1  reparse=   1
+.\.git\objects\4d                                  total=   1  reparse=   1
+.\.git\objects\4e                                  total=   1  reparse=   1
+.\.git\objects\53                                  total=   1  reparse=   1
+.\.git\objects\55                                  total=   1  reparse=   1
+.\.git\objects\57                                  total=   1  reparse=   1
+.\.git\objects\58                                  total=   2  reparse=   2
+.\.git\objects\5a                                  total=   1  reparse=   1
+.\.git\objects\5c                                  total=   2  reparse=   2
+.\.git\objects\5e                                  total=   3  reparse=   3
+.\.git\objects\5f                                  total=   1  reparse=   1
+.\.git\objects\61                                  total=   1  reparse=   1
+.\.git\objects\63                                  total=   1  reparse=   1
+.\.git\objects\68                                  total=   1  reparse=   1
+.\.git\objects\6e                                  total=   2  reparse=   2
+.\.git\objects\73                                  total=   1  reparse=   1
+.\.git\objects\74                                  total=   1  reparse=   1
+.\.git\objects\75                                  total=   1  reparse=   1
+.\.git\objects\77                                  total=   1  reparse=   1
+.\.git\objects\79                                  total=   1  reparse=   1
+.\.git\objects\7a                                  total=   1  reparse=   1
+.\.git\objects\7f                                  total=   1  reparse=   1
+.\.git\objects\83                                  total=   1  reparse=   1
+.\.git\objects\86                                  total=   1  reparse=   1
+.\.git\objects\89                                  total=   1  reparse=   1
+.\.git\objects\8a                                  total=   1  reparse=   1
+.\.git\objects\8e                                  total=   1  reparse=   1
+.\.git\objects\9c                                  total=   3  reparse=   3
+.\.git\objects\9d                                  total=   1  reparse=   1
+.\.git\objects\a0                                  total=   1  reparse=   1
+.\.git\objects\a5                                  total=   1  reparse=   1
+.\.git\objects\aa                                  total=   1  reparse=   1
+.\.git\objects\ac                                  total=   1  reparse=   1
+.\.git\objects\ad                                  total=   1  reparse=   1
+.\.git\objects\b0                                  total=   3  reparse=   3
+.\.git\objects\b6                                  total=   1  reparse=   1
+.\.git\objects\b8                                  total=   1  reparse=   1
+.\.git\objects\b9                                  total=   1  reparse=   1
+.\.git\objects\c0                                  total=   1  reparse=   1
+.\.git\objects\c4                                  total=   1  reparse=   1
+.\.git\objects\c5                                  total=   1  reparse=   1
+.\.git\objects\cd                                  total=   1  reparse=   1
+.\.git\objects\cf                                  total=   2  reparse=   2
+.\.git\objects\d1                                  total=   2  reparse=   2
+.\.git\objects\dd                                  total=   1  reparse=   1
+.\.git\objects\e0                                  total=   4  reparse=   4
+.\.git\objects\e3                                  total=   1  reparse=   1
+.\.git\objects\e4                                  total=   1  reparse=   1
+.\.git\objects\e9                                  total=   1  reparse=   1
+.\.git\objects\ec                                  total=   1  reparse=   1
+.\.git\objects\ef                                  total=   1  reparse=   1
+.\.git\objects\f5                                  total=   2  reparse=   2
+.\.git\objects\f8                                  total=   1  reparse=   1
+.\.git\objects\fc                                  total=   1  reparse=   1
+.\.git\objects\fd                                  total=   1  reparse=   1
+.\.git\refs\heads                                  total=   1  reparse=   1
+.\.git\refs\remotes\origin                         total=   1  reparse=   1
+.\.github\workflows                                total=   1  reparse=   1
+.\.tmp\drop                                        total=   8  reparse=   8
+.\.tmp\precompile                                  total=   1  reparse=   1
+.\assets                                           total=   1  reparse=   1
+.\assets\showcase                                  total=   3  reparse=   3
+.\dist                                             total=   2  reparse=   1
+.\src                                              total=  24  reparse=  23
+.\src\state                                        total=   1  reparse=   1
+.\stringResources\en-US                            total=   1  reparse=   1
+.\style                                            total=   2  reparse=   1
+.\tests                                            total=  31  reparse=  31
+.\tests\mocks                                      total=   2  reparse=   2
+
+==================== HOW NODE SEES THE FILES (dirent vs lstat) ====================
+--- tests
+tests/advancedModel.test.ts  dirent=SYMLINK  lstat=file
+tests/advancedModelResilience.test.ts  dirent=SYMLINK  lstat=file
+tests/calcDependencyOrder.test.ts  dirent=SYMLINK  lstat=file
+tests/calcEngineFunctions.test.ts  dirent=SYMLINK  lstat=file
+tests/colorGradient.test.ts  dirent=SYMLINK  lstat=file
+tests/conditionalFormatRescale.test.ts  dirent=SYMLINK  lstat=file
+tests/customEvents.test.ts  dirent=SYMLINK  lstat=file
+tests/dataLakeStandardization.test.ts  dirent=SYMLINK  lstat=file
+tests/exportDownload.test.ts  dirent=SYMLINK  lstat=file
+tests/formatLocaleNumber.test.ts  dirent=SYMLINK  lstat=file
+tests/jest.setup.ts  dirent=SYMLINK  lstat=file
+tests/layoutPresets.test.ts  dirent=SYMLINK  lstat=file
+tests/layoutState.test.ts  dirent=SYMLINK  lstat=file
+tests/linkActionPrecedence.test.ts  dirent=SYMLINK  lstat=file
+tests/mobileLayout.test.ts  dirent=SYMLINK  lstat=file
+tests/mocks  dirent=dir  lstat=dir
+tests/parseSavedViewState.test.ts  dirent=SYMLINK  lstat=file
+tests/pivotState.test.ts  dirent=SYMLINK  lstat=file
+tests/pivotView.test.ts  dirent=SYMLINK  lstat=file
+tests/postImportRefinement.test.ts  dirent=SYMLINK  lstat=file
+tests/productSurface.test.ts  dirent=SYMLINK  lstat=file
+tests/releaseHardening.test.ts  dirent=SYMLINK  lstat=file
+tests/renderingDiagnostics.test.ts  dirent=SYMLINK  lstat=file
+tests/savedReportRegressionMatrix.test.ts  dirent=SYMLINK  lstat=file
+tests/setDataSegments.test.ts  dirent=SYMLINK  lstat=file
+tests/sourceEncodingIntegrity.test.ts  dirent=SYMLINK  lstat=file
+tests/tableRenderer.fetchMoreUX.test.ts  dirent=SYMLINK  lstat=file
+tests/tier4Formatting.test.ts  dirent=SYMLINK  lstat=file
+tests/tier4Governance.test.ts  dirent=SYMLINK  lstat=file
+tests/tier4Scale.test.ts  dirent=SYMLINK  lstat=file
+tests/tier4VisualTheme.test.ts  dirent=SYMLINK  lstat=file
+tests/viewportLayout.test.ts  dirent=SYMLINK  lstat=file
+--- src
+src/accessibility.ts  dirent=SYMLINK  lstat=file
+src/advancedModel.ts  dirent=SYMLINK  lstat=file
+src/analyticsFormatting.ts  dirent=SYMLINK  lstat=file
+src/calcDependencyOrder.ts  dirent=SYMLINK  lstat=file
+src/calcEngine.ts  dirent=SYMLINK  lstat=file
+src/customEvents.ts  dirent=SYMLINK  lstat=file
+src/dataFormatting.ts  dirent=SYMLINK  lstat=file
+src/errorHandling.ts  dirent=SYMLINK  lstat=file
+src/layoutPresets.ts  dirent=SYMLINK  lstat=file
+src/layoutState.ts  dirent=SYMLINK  lstat=file
+src/mobileLayout.ts  dirent=SYMLINK  lstat=file
+src/persistedState.ts  dirent=SYMLINK  lstat=file
+src/releaseDiagnostics.ts  dirent=SYMLINK  lstat=file
+src/releaseHardening.ts  dirent=SYMLINK  lstat=file
+src/renderDiagnostics.ts  dirent=SYMLINK  lstat=file
+src/responsiveLayout.ts  dirent=SYMLINK  lstat=file
+src/savedViewState.ts  dirent=SYMLINK  lstat=file
+src/showcasePosters.ts  dirent=SYMLINK  lstat=file
+src/state  dirent=dir  lstat=dir
+src/styleSystem.ts  dirent=SYMLINK  lstat=file
+src/tableRenderer.ts  dirent=file  lstat=file
+src/tier4Formatting.ts  dirent=SYMLINK  lstat=file
+src/tier4Governance.ts  dirent=SYMLINK  lstat=file
+src/visual.ts  dirent=SYMLINK  lstat=file
+src/visualSettings.ts  dirent=SYMLINK  lstat=file
+--- style
+style/presentationConsolidated.less  dirent=SYMLINK  lstat=file
+style/visual.less  dirent=file  lstat=file
+
+==================== JEST --listTests ====================
+
+
+==================== JEST --showConfig (first 120 lines) ====================
+{
+  "configs": [
+    {
+      "automock": false,
+      "cache": true,
+      "cacheDirectory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\jest",
+      "clearMocks": true,
+      "collectCoverageFrom": [],
+      "coverageDirectory": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\coverage",
+      "coveragePathIgnorePatterns": [
+        "\\\\node_modules\\\\"
+      ],
+      "cwd": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD",
+      "detectLeaks": false,
+      "detectOpenHandles": false,
+      "errorOnDeprecated": false,
+      "extensionsToTreatAsEsm": [],
+      "fakeTimers": {
+        "enableGlobally": false
+      },
+      "forceCoverageMatch": [],
+      "globals": {},
+      "haste": {
+        "computeSha1": false,
+        "enableSymlinks": false,
+        "forceNodeFilesystemAPI": true,
+        "throwOnModuleCollision": false
+      },
+      "id": "cf327c39cf9d2a00160915b1fa95399d",
+      "injectGlobals": true,
+      "moduleDirectories": [
+        "node_modules"
+      ],
+      "moduleFileExtensions": [
+        "ts",
+        "js"
+      ],
+      "moduleNameMapper": [
+        [
+          "^d3$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\d3\\dist\\d3.js"
+        ],
+        [
+          "^jspdf$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\jspdf\\dist\\jspdf.umd.js"
+        ],
+        [
+          "^uuid$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\uuid\\dist\\index.js"
+        ],
+        [
+          "\\.(less|css)$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\tests\\mocks\\styleMock.js"
+        ]
+      ],
+      "modulePathIgnorePatterns": [],
+      "openHandlesTimeout": 1000,
+      "prettierPath": "prettier",
+      "resetMocks": false,
+      "resetModules": false,
+      "restoreMocks": false,
+      "rootDir": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD",
+      "roots": [
+        "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\src",
+        "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\tests"
+      ],
+      "runner": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\jest-runner\\build\\index.js",
+      "sandboxInjectedGlobals": [],
+      "setupFiles": [],
+      "setupFilesAfterEnv": [
+        "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\tests\\jest.setup.ts"
+      ],
+      "skipFilter": false,
+      "slowTestThreshold": 5,
+      "snapshotFormat": {
+        "escapeString": false,
+        "printBasicPrototype": false
+      },
+      "snapshotSerializers": [],
+      "testEnvironment": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\jest-environment-jsdom\\build\\index.js",
+      "testEnvironmentOptions": {},
+      "testLocationInResults": false,
+      "testMatch": [
+        "**/tests/**/*.test.ts"
+      ],
+      "testPathIgnorePatterns": [
+        "\\\\node_modules\\\\"
+      ],
+      "testRegex": [],
+      "testRunner": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\jest-circus\\runner.js",
+      "transform": [
+        [
+          "^.+\\.ts$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\ts-jest\\dist\\index.js",
+          {
+            "tsconfig": "<rootDir>/tsconfig.test.json"
+          }
+        ],
+        [
+          "^.+\\.tsx?$",
+          "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\node_modules\\ts-jest\\dist\\index.js",
+          {}
+        ]
+      ],
+      "transformIgnorePatterns": [
+        "\\\\node_modules\\\\",
+        "\\.pnp\\.[^\\\\]+$"
+      ],
+      "watchPathIgnorePatterns": []
+    }
+  ],
+  "globalConfig": {
+    "bail": 0,
+    "changedFilesWithAncestor": false,
+    "ci": false,
+    "collectCoverage": false,
+    "collectCoverageFrom": [],
+    "coverageDirectory": "C:\\Users\\LENOVO\\OneDrive\\Desktop\\skiba\\Data-Lake-Tables-FINAL-REBUILD\\coverage",
+    "coverageProvider": "babel",
+    "coverageReporters": [
+
+==================== JEST --listTests --no-watchman ====================
+
+
+==================== JEST one file by path ====================

@@ -1,9 +1,0 @@
-﻿Data Lake Tables â€” Clean 12-Tier Rebuild v2
-
-Candidate ZIP: D:\Downloads\DataLakeTables_12Tier_REBUILT_SAFE_2026-09-19.zip
-Candidate GUID: dataLakeTables_829db169be4645b3be514812e0d84f30
-Candidate version: 1.0.0.48
-Created: 2026-09-19T15:54:10.2391211+03:00
-
-This tree was created from apply_payload only.
-The previous Data-Lake-Tables-CLEAN project was not used as an overlay source.

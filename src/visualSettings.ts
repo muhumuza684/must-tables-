@@ -386,7 +386,7 @@ class ExportSettingsCard extends FormattingSettingsCard {
     includeHeaders = new formattingSettings.ToggleSwitch({ name: "includeHeaders", displayName: "Include headers", value: true });
     includeTotals = new formattingSettings.ToggleSwitch({ name: "includeTotals", displayName: "Include totals", value: false });
     csv = new formattingSettings.ToggleSwitch({ name: "csv", displayName: "CSV", value: true });
-    excel = new formattingSettings.ToggleSwitch({ name: "excel", displayName: "Excel", value: true });
+    excel = new formattingSettings.ToggleSwitch({ name: "excel", displayName: "Excel", value: false });
     json = new formattingSettings.ToggleSwitch({ name: "json", displayName: "JSON", value: false });
     pdf = new formattingSettings.ToggleSwitch({ name: "pdf", displayName: "PDF", value: true });
     name: string = "export";

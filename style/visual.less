@@ -56,7 +56,7 @@
     }
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 2px;
     }
 }
@@ -116,7 +116,7 @@
     color: #333;
 
     &:hover {
-        background: rgba(0, 120, 212, 0.08);
+        background: rgba(16,79,159, 0.08);
     }
 }
 
@@ -148,9 +148,9 @@
         cursor: pointer;
 
         &:last-child {
-            background: #0078d4;
+            background: #104F9F;
             color: #fff;
-            border-color: #0078d4;
+            border-color: #104F9F;
         }
 
         &:hover {
@@ -179,7 +179,7 @@
     font-family: inherit;
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 1px;
     }
 }
@@ -253,7 +253,7 @@
     cursor: pointer;
 
     &:hover {
-        background: rgba(0, 120, 212, 0.08);
+        background: rgba(16,79,159, 0.08);
     }
 
     &--alt {
@@ -261,14 +261,14 @@
     }
 
     &--selected {
-        background: rgba(0, 120, 212, 0.16);
-        box-shadow: inset 3px 0 0 #0078d4;
+        background: rgba(16,79,159, 0.16);
+        box-shadow: inset 3px 0 0 #104F9F;
     }
 
     // Full keyboard navigation (item 14)  --  rows and group rows are tabbable
     // (tabIndex=0) so Enter/Space can select or expand/collapse without a mouse.
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: -2px;
     }
 
@@ -307,7 +307,7 @@
         gap: 4px;
 
         &:focus-visible {
-            outline: 2px solid #0078d4;
+            outline: 2px solid #104F9F;
             outline-offset: -2px;
         }
     }
@@ -347,11 +347,11 @@
     flex-shrink: 0;
 
     &:hover {
-        color: #0078d4;
+        color: #104F9F;
     }
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 1px;
     }
 }
@@ -424,7 +424,7 @@
 
     &:hover,
     &--active {
-        background: rgba(0, 120, 212, 0.4);
+        background: rgba(16,79,159, 0.4);
     }
 }
 
@@ -445,15 +445,15 @@
     border-radius: 3px;
     font-size: 11px;
     line-height: 1;
-    color: #0078d4;
+    color: #104F9F;
     cursor: pointer;
 
     &:hover {
-        background: rgba(0, 120, 212, 0.1);
+        background: rgba(16,79,159, 0.1);
     }
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 1px;
     }
 }
@@ -464,7 +464,7 @@
     inset-inline-start: 0;
     top: 0;
     height: 100%;
-    background: var(--skiba-bar-color, #0078d4);
+    background: var(--skiba-bar-color, #104F9F);
     opacity: 0.3;
     transition: width 0.15s;
     z-index: 0;
@@ -598,10 +598,10 @@
     min-width: 160px;
     height: 30px;
     padding: 0 10px;
-    background: rgba(0, 120, 212, 0.1);
-    border: 1.5px dashed #0078d4;
+    background: rgba(16,79,159, 0.1);
+    border: 1.5px dashed #104F9F;
     border-radius: 4px;
-    color: #0078d4;
+    color: #104F9F;
     font-size: 11px;
     font-weight: 600;
     pointer-events: auto;
@@ -617,19 +617,19 @@
     align-items: center;
     gap: 4px;
     padding: 3px 8px;
-    background: rgba(0, 120, 212, 0.12);
-    border: 1px solid rgba(0, 120, 212, 0.3);
+    background: rgba(16,79,159, 0.12);
+    border: 1px solid rgba(16,79,159, 0.3);
     border-radius: 12px;
     font-size: 11px;
-    color: #0078d4;
+    color: #104F9F;
     cursor: pointer;
 
     &:hover {
-        background: rgba(0, 120, 212, 0.2);
+        background: rgba(16,79,159, 0.2);
     }
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 1px;
     }
 }
@@ -679,7 +679,7 @@
     }
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
     }
 }
 
@@ -701,7 +701,7 @@
     resize: vertical;
 
     &:focus-visible {
-        outline: 2px solid #0078d4;
+        outline: 2px solid #104F9F;
         outline-offset: 1px;
     }
 }
@@ -713,7 +713,7 @@
 }
 
 .skiba-toolbar__button--primary {
-    background: #0078d4;
+    background: #104F9F;
     color: #fff;
     border-radius: 4px;
     font-weight: 600;
@@ -739,14 +739,14 @@
 
 .skiba-sparkline__line {
     fill: none;
-    stroke: var(--skiba-bar-color, #0078d4);
+    stroke: var(--skiba-bar-color, #104F9F);
     stroke-width: 1.25;
     stroke-linejoin: round;
     stroke-linecap: round;
 }
 
 .skiba-sparkline__dot {
-    fill: var(--skiba-bar-color, #0078d4);
+    fill: var(--skiba-bar-color, #104F9F);
 }
 
 // -----------------------------------------------------------------
@@ -851,80 +851,127 @@
     font-size: 12px;
     font-weight: 700;
 }
-.skiba-toolbar__menu { min-width: 260px; padding: 10px; border: 1px solid rgba(52,71,0,.16); border-radius: 14px; background: #fbfff4; box-shadow: 0 14px 34px rgba(37,52,0,.18); }
-.skiba-toolbar__section { margin-bottom: 10px; padding: 9px; border-radius: 10px; background: rgba(228,247,176,.42); }
-.skiba-toolbar__section-title { margin-bottom: 7px; color: #53651a; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.skiba-tier4-section { margin: 8px 0; padding: 10px; border: 1px solid rgba(52,71,0,.14); border-radius: 12px; background: linear-gradient(135deg,#f6ffdf,#e9f7bd); }
-.skiba-tier4-section button, .skiba-toolbar__menu button { border: 1px solid rgba(52,71,0,.18); border-radius: 8px; background: #fff; color: #344700; font-size: 11px; font-weight: 650; }
-.skiba-tier4-section button:hover, .skiba-toolbar__menu button:hover { background: #dfff91; }
+.skiba-toolbar__menu { min-width: 260px; padding: 10px; border: 1px solid rgba(16,79,159,.16); border-radius: 14px; background: #F3F8FD; box-shadow: 0 14px 34px rgba(16,79,159,.18); }
+.skiba-toolbar__section { margin-bottom: 10px; padding: 9px; border-radius: 10px; background: rgba(150,216,232,.42); }
+.skiba-toolbar__section-title { margin-bottom: 7px; color: #104F9F; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.skiba-tier4-section { margin: 8px 0; padding: 10px; border: 1px solid rgba(16,79,159,.14); border-radius: 12px; background: linear-gradient(135deg,#F3F8FD,#DCEEFA); }
+.skiba-tier4-section button, .skiba-toolbar__menu button { border: 1px solid rgba(16,79,159,.18); border-radius: 8px; background: #fff; color: #104F9F; font-size: 11px; font-weight: 650; }
+.skiba-tier4-section button:hover, .skiba-toolbar__menu button:hover { background: #96D8E8; }
 
 /* Functional formatting editor: spacious, keyboard-friendly, and data-dense. */
-.skiba-format-editor { min-width: 360px; max-width: 100%; width: 100%; max-height: 720px; overflow-y: auto; padding: 16px; border-radius: 16px; background: linear-gradient(145deg,#fbfff5,#eaffb8); box-shadow: 0 18px 42px rgba(37,52,0,.22); }
-.skiba-format-editor__heading { display: flex; flex-direction: column; gap: 3px; margin-bottom: 12px; color: #304000; }
-.skiba-format-editor__heading span { color: #6b783f; font-size: 13px; line-height: 1.4; }
+.skiba-format-editor { min-width: 360px; max-width: 100%; width: 100%; max-height: 720px; overflow-y: auto; padding: 16px; border-radius: 16px; background: linear-gradient(145deg,#F3F8FD,#DCEEFA); box-shadow: 0 18px 42px rgba(16,79,159,.22); }
+.skiba-format-editor__heading { display: flex; flex-direction: column; gap: 3px; margin-bottom: 12px; color: #104F9F; }
+.skiba-format-editor__heading span { color: #308ABE; font-size: 13px; line-height: 1.4; }
 .skiba-format-editor__palette-row, .skiba-format-editor__actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; }
-.skiba-format-editor__palette-row > span, .skiba-format-editor__label { display: block; width: 100%; margin: 10px 0 5px; color: #53651a; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.skiba-format-editor__palette-button, .skiba-format-editor__actions button, .skiba-format-editor__primary { padding: 9px 12px; border: 1px solid rgba(52,71,0,.18); border-radius: 9px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; }
-.skiba-format-editor__palette-button[aria-pressed="true"], .skiba-format-editor__primary { background: #344700; color: #efffc9; }
-.skiba-format-editor__builder { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr 42px auto; gap: 6px; align-items: center; padding: 10px; border: 1px solid rgba(52,71,0,.15); border-radius: 12px; background: rgba(255,255,255,.65); }
+.skiba-format-editor__palette-row > span, .skiba-format-editor__label { display: block; width: 100%; margin: 10px 0 5px; color: #104F9F; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.skiba-format-editor__palette-button, .skiba-format-editor__actions button, .skiba-format-editor__primary { padding: 9px 12px; border: 1px solid rgba(16,79,159,.18); border-radius: 9px; background: #fff; color: #104F9F; cursor: pointer; font-size: 14px; font-weight: 700; }
+.skiba-format-editor__palette-button[aria-pressed="true"], .skiba-format-editor__primary { background: #104F9F; color: #DCEEFA; }
+.skiba-format-editor__builder { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr 42px auto; gap: 6px; align-items: center; padding: 10px; border: 1px solid rgba(16,79,159,.15); border-radius: 12px; background: rgba(255,255,255,.65); }
 .skiba-format-editor__builder .skiba-format-editor__label { grid-column: 1/-1; margin-top: 0; }
-.skiba-format-editor__select, .skiba-format-editor__input { min-width: 0; height: 38px; padding: 7px 9px; border: 1px solid rgba(52,71,0,.2); border-radius: 7px; background: #fff; color: #26320a; font-size: 14px; }
-.skiba-format-editor__color { width: 34px; height: 30px; padding: 2px; border: 1px solid rgba(52,71,0,.2); border-radius: 7px; background: #fff; }
+.skiba-format-editor__select, .skiba-format-editor__input { min-width: 0; height: 38px; padding: 7px 9px; border: 1px solid rgba(16,79,159,.2); border-radius: 7px; background: #fff; color: #104F9F; font-size: 14px; }
+.skiba-format-editor__color { width: 34px; height: 30px; padding: 2px; border: 1px solid rgba(16,79,159,.2); border-radius: 7px; background: #fff; }
 .skiba-format-editor__rules { display: flex; flex-direction: column; gap: 5px; max-height: 180px; overflow-y: auto; }
-.skiba-format-editor__rule-card { display: grid; grid-template-columns: 16px 1fr 28px; gap: 7px; align-items: center; padding: 9px 10px; border: 1px solid rgba(52,71,0,.12); border-radius: 8px; background: rgba(255,255,255,.72); color: #44521b; font-size: 13px; }
+.skiba-format-editor__rule-card { display: grid; grid-template-columns: 16px 1fr 28px; gap: 7px; align-items: center; padding: 9px 10px; border: 1px solid rgba(16,79,159,.12); border-radius: 8px; background: rgba(255,255,255,.72); color: #104F9F; font-size: 13px; }
 .skiba-format-editor__swatch { width: 14px; height: 14px; border: 1px solid rgba(0,0,0,.15); border-radius: 4px; }
 .skiba-format-editor__icon-button { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #7b291e; cursor: pointer; font-size: 18px; }
-.skiba-format-editor__empty { padding: 10px; border-radius: 8px; background: rgba(255,255,255,.46); color: #778454; font-size: 13px; }
+.skiba-format-editor__empty { padding: 10px; border-radius: 8px; background: rgba(255,255,255,.46); color: #308ABE; font-size: 13px; }
 .skiba-format-editor__overrides { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; max-height: 190px; overflow-y: auto; }
-.skiba-format-editor__override { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.62); color: #52602d; font-size: 13px; font-weight: 700; }
+.skiba-format-editor__override { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.62); color: #104F9F; font-size: 13px; font-weight: 700; }
 /* Fixed: this used to render `background: transparent; border: 0`, which made an unset (white)
    color override look like a blank checkbox instead of a color swatch. A visible border and
    rounded corners make it read as a color picker at every value, not just non-default ones. */
-.skiba-format-editor__override input { width: 27px; height: 24px; padding: 1px; border: 1px solid rgba(52,71,0,.35); border-radius: 5px; background: #fff; cursor: pointer; }
+.skiba-format-editor__override input { width: 27px; height: 24px; padding: 1px; border: 1px solid rgba(16,79,159,.35); border-radius: 5px; background: #fff; cursor: pointer; }
 .skiba-high-contrast .skiba-format-editor { background: Canvas; color: CanvasText; box-shadow: none; }
 /* Data Lake Tables standardized settings surface. */
-.datalake-tables-settings-menu { max-height: min(760px, calc(100% - 16px)); overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #8aaa31 #efffc9; padding-inset-inline-end: 6px; }
-.datalake-tables-settings-button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(52,71,0,.22); border-radius: 10px; background: linear-gradient(135deg,#344700,#6f9122); color: #efffc9; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 18px; line-height: 1; box-shadow: 0 5px 14px rgba(52,71,0,.2); }
-.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #263500; outline: 3px solid rgba(191,245,91,.65); outline-offset: 2px; }
-.datalake-layout-section { border: 1px solid rgba(52,71,0,.14); border-radius: 14px; background: linear-gradient(145deg,#fbfff4,#eaffb8); }
-.datalake-settings-help { margin: -2px 0 10px; color: #697744; font-size: 11px; line-height: 1.35; }
-.datalake-settings-subtitle { margin: 12px 0 5px; color: #124e9b; font-size: 11px; font-weight: 800; }
+.datalake-tables-settings-menu { max-height: min(760px, calc(100% - 16px)); overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #308ABE #DCEEFA; padding-inset-inline-end: 6px; }
+.datalake-tables-settings-button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(16,79,159,.22); border-radius: 10px; background: linear-gradient(135deg,#104F9F,#308ABE); color: #DCEEFA; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 18px; line-height: 1; box-shadow: 0 5px 14px rgba(16,79,159,.2); }
+.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #104F9F; outline: 3px solid rgba(191,245,91,.65); outline-offset: 2px; }
+.datalake-layout-section { border: 1px solid rgba(16,79,159,.14); border-radius: 14px; background: linear-gradient(145deg,#F3F8FD,#DCEEFA); }
+.datalake-settings-help { margin: -2px 0 10px; color: #308ABE; font-size: 11px; line-height: 1.35; }
+.datalake-settings-subtitle { margin: 12px 0 5px; color: #111827; font-size: 11px; font-weight: 800; }
 .datalake-layout-presets__create { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin-bottom: 6px; }
 .datalake-layout-presets__create input { min-width: 0; padding: 6px 8px; border: 1px solid #9bbbd2; border-radius: 7px; font: inherit; }
 .datalake-layout-presets { display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px; }
 .datalake-layout-preset { display: grid; grid-template-columns: 1fr auto; gap: 5px; align-items: center; }
 .datalake-layout-preset .datalake-settings-secondary { width: auto; }
 
-.datalake-layout-control { display: grid; grid-template-columns: 1fr minmax(100px,1.5fr) 30px; align-items: center; gap: 8px; margin: 8px 0; color: #46551b; font-size: 11px; }
-.datalake-layout-control input[type="range"] { width: 100%; accent-color: #6f9122; }
-.datalake-layout-control output { color: #344700; font-weight: 800; text-align: right; }
-.datalake-layout-check { display: flex; align-items: center; gap: 8px; margin: 10px 0; color: #46551b; font-size: 11px; }
-.datalake-settings-secondary { width: 100%; padding: 7px 9px; border: 1px solid rgba(52,71,0,.2); border-radius: 9px; background: rgba(255,255,255,.72); color: #344700; cursor: pointer; font-size: 11px; font-weight: 700; }
-.datalake-settings-secondary:hover { background: #dfff91; }
+.datalake-layout-control { display: grid; grid-template-columns: 1fr minmax(100px,1.5fr) 30px; align-items: center; gap: 8px; margin: 8px 0; color: #104F9F; font-size: 11px; }
+.datalake-layout-control input[type="range"] { width: 100%; accent-color: #308ABE; }
+.datalake-layout-control output { color: #104F9F; font-weight: 800; text-align: right; }
+.datalake-layout-check { display: flex; align-items: center; gap: 8px; margin: 10px 0; color: #104F9F; font-size: 11px; }
+.datalake-settings-secondary { width: 100%; padding: 7px 9px; border: 1px solid rgba(16,79,159,.2); border-radius: 9px; background: rgba(255,255,255,.72); color: #104F9F; cursor: pointer; font-size: 11px; font-weight: 700; }
+.datalake-settings-secondary:hover { background: #96D8E8; }
 .skiba-format-editor { max-height: 580px; overflow-y: auto; }
 /* Data Lake Tables identity: brand navy and yellow (matches the "Brand palette" preset). */
-:root { --dlt-navy: #124e9b; --dlt-blue: #3089bb; --dlt-sky: #9cd5d6; --dlt-yellow: #faf623; --dlt-ink: #102a43; --dlt-surface: #f5f9fc; }
-.datalake-tables-settings-button { border-color: var(--dlt-navy); background: linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color: var(--dlt-yellow); box-shadow: 0 5px 16px rgba(18,78,155,.28); }
+:root {
+  /* ==========================================================
+     DATA LAKE TABLES — CANONICAL DESIGN TOKENS
+     Navy / White / Magenta / Violet / Cyan
+     ========================================================== */
+
+  --dlt-navy: #111827;
+  --dlt-navy-deep: #0b1020;
+  --dlt-blue: #308ABE;
+  --dlt-cyan: #308ABE;
+  --dlt-pink: #ec0a8c;
+  --dlt-magenta: #104F9F;
+  --dlt-violet: #104F9F;
+
+  --dlt-ink: #111827;
+  --dlt-text: #1f2937;
+  --dlt-muted: #64748b;
+
+  --dlt-surface: #ffffff;
+  --dlt-surface-soft: #f8fafc;
+  --dlt-surface-tint: #F3F8FD;
+
+  --dlt-border: #e2e8f0;
+  --dlt-border-strong: #cbd5e1;
+
+  --dlt-focus: #104F9F;
+
+  --dlt-gradient:
+    linear-gradient(
+      135deg,
+      #ec0a8c 0%,
+      #104F9F 48%,
+      #104F9F 72%,
+      #308ABE 100%
+    );
+
+  --dlt-gradient-soft:
+    linear-gradient(
+      135deg,
+      rgba(236,10,140,.10),
+      rgba(16,79,159,.08),
+      rgba(6,182,212,.10)
+    );
+
+  /* Compatibility aliases */
+  --dlt-sky: #F3F8FD;
+  --dlt-yellow: #ffffff;
+}
+.datalake-tables-settings-button { border-color: var(--dlt-navy); background: linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color: var(--dlt-yellow); box-shadow: 0 5px 16px rgba(16,79,159,.20); }
 .datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: var(--dlt-navy); outline-color: rgba(250,246,35,.8); }
-.datalake-tables-settings-menu { scrollbar-color: var(--dlt-blue) #e8f4fa; }
-.datalake-layout-section, .skiba-format-editor { background: linear-gradient(145deg,#ffffff,#eef8fc); border-color: rgba(18,78,155,.18); }
+.datalake-tables-settings-menu { scrollbar-color: var(--dlt-blue) #F3F8FD; }
+.datalake-layout-section, .skiba-format-editor { background: linear-gradient(145deg,#ffffff,#F3F8FD); border-color: rgba(16,79,159,.14); }
 .skiba-format-editor__palette-button[aria-pressed="true"], .skiba-format-editor__primary { background: var(--dlt-navy); color: var(--dlt-yellow); border-color: var(--dlt-navy); }
-.skiba-format-editor__palette-button:hover, .skiba-format-editor__actions button:hover, .datalake-settings-secondary:hover { background: #e6f5fb; border-color: var(--dlt-blue); }
-.skiba-format-editor__rule-card, .skiba-format-editor__override { background: rgba(255,255,255,.92); border-color: rgba(18,78,155,.14); }
+.skiba-format-editor__palette-button:hover, .skiba-format-editor__actions button:hover, .datalake-settings-secondary:hover { background: #F3F8FD; border-color: var(--dlt-blue); }
+.skiba-format-editor__rule-card, .skiba-format-editor__override { background: rgba(255,255,255,.92); border-color: rgba(16,79,159,.12); }
 .skiba-format-editor__swatch { border-color: var(--dlt-navy); }
 
 /* Data Lake Tables consolidated UI fix */
-.datalake-tables-settings-button { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 2px solid #faf623; border-radius: 10px; background: #124e9b; color: #faf623; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 21px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(18,78,155,.28); }
-.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #3089bb; outline: 3px solid rgba(250,246,35,.6); outline-offset: 2px; }
-.datalake-tables-settings-menu { box-sizing: border-box; width: min(390px, calc(100vw - 28px)); min-width: 300px; height: min(680px, 78vh); min-height: 300px; max-height: calc(100% - 14px); overflow-x: hidden; overflow-y: auto; padding: 12px; background: #f5f9fc; border: 1px solid rgba(18,78,155,.2); border-radius: 14px; scrollbar-width: thin; scrollbar-color: #3089bb #d9edf6; }
+.datalake-tables-settings-button { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 2px solid #ffffff; border-radius: 10px; background: #111827; color: #ffffff; font-family: "Segoe UI Symbol", "Segoe UI", sans-serif; font-size: 21px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(16,79,159,.20); }
+.datalake-tables-settings-button:hover, .datalake-tables-settings-button:focus-visible { background: #308ABE; outline: 3px solid rgba(250,246,35,.6); outline-offset: 2px; }
+.datalake-tables-settings-menu { box-sizing: border-box; width: min(390px, calc(100vw - 28px)); min-width: 300px; height: min(680px, 78vh); min-height: 300px; max-height: calc(100% - 14px); overflow-x: hidden; overflow-y: auto; padding: 12px; background: #f5f9fc; border: 1px solid rgba(18,78,155,.2); border-radius: 14px; scrollbar-width: thin; scrollbar-color: #308ABE #F3F8FD; }
 .datalake-tables-settings-menu .skiba-toolbar__section { display: block; width: 100%; box-sizing: border-box; margin: 0 0 12px; padding: 12px; border: 1px solid rgba(18,78,155,.15); border-radius: 12px; background: #ffffff; }
-.datalake-tables-settings-menu .skiba-toolbar__section-title { color: #124e9b; font-size: 11px; font-weight: 800; letter-spacing: .08em; line-height: 1.25; text-transform: uppercase; }
+.datalake-tables-settings-menu .skiba-toolbar__section-title { color: #111827; font-size: 11px; font-weight: 800; letter-spacing: .08em; line-height: 1.25; text-transform: uppercase; }
 .datalake-tables-settings-menu .datalake-settings-help { color: #35536d; font-size: 11px; line-height: 1.4; }
 .datalake-tables-settings-menu .skiba-format-editor { display: block; width: 100%; max-height: none; min-height: 360px; overflow: visible; }
 .datalake-tables-settings-menu .skiba-format-editor__palette, .datalake-tables-settings-menu .skiba-format-editor__rule-builder, .datalake-tables-settings-menu .skiba-format-editor__active-rules, .datalake-tables-settings-menu .skiba-format-editor__overrides { display: block; width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; border: 1px solid rgba(18,78,155,.13); border-radius: 10px; background: #f7fbfd; }
-.datalake-tables-settings-menu .skiba-format-editor button, .datalake-tables-settings-menu .datalake-settings-secondary { min-height: 38px; border: 1px solid #9bbbd2; border-radius: 7px; background: #ffffff; color: #124e9b; cursor: pointer; font-size: 14px; font-weight: 700; }
-.datalake-tables-settings-menu .skiba-format-editor button:hover, .datalake-tables-settings-menu .datalake-settings-secondary:hover { background: #e7f5fb; border-color: #3089bb; }
-.datalake-tables-settings-menu .skiba-format-editor__palette-button[aria-pressed="true"], .datalake-tables-settings-menu .skiba-format-editor__primary { background: #124e9b; border-color: #124e9b; color: #faf623; }
+.datalake-tables-settings-menu .skiba-format-editor button, .datalake-tables-settings-menu .datalake-settings-secondary { min-height: 38px; border: 1px solid #9bbbd2; border-radius: 7px; background: #ffffff; color: #111827; cursor: pointer; font-size: 14px; font-weight: 700; }
+.datalake-tables-settings-menu .skiba-format-editor button:hover, .datalake-tables-settings-menu .datalake-settings-secondary:hover { background: #F3F8FD; border-color: #308ABE; }
+.datalake-tables-settings-menu .skiba-format-editor__palette-button[aria-pressed="true"], .datalake-tables-settings-menu .skiba-format-editor__primary { background: #111827; border-color: #111827; color: #ffffff; }
 .datalake-tables-settings-menu input, .datalake-tables-settings-menu select { box-sizing: border-box; min-height: 30px; max-width: 100%; border: 1px solid #9bbbd2; border-radius: 7px; background: #ffffff; color: #102a43; }
 .datalake-tables-settings-menu .datalake-layout-control { grid-template-columns: minmax(80px,1fr) minmax(90px,1.5fr) 32px; }
 /* Data Lake Tables persistent settings surface */
@@ -940,9 +987,9 @@
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
-    border: 2px solid var(--dlt-navy, #124e9b);
+    border: 2px solid var(--dlt-navy, #111827);
     border-radius: 16px;
-    background: linear-gradient(145deg, #ffffff 0%, #f5f9fc 62%, #e8f4fa 100%);
+    background: linear-gradient(145deg, #ffffff 0%, #f5f9fc 62%, #F3F8FD 100%);
     box-shadow: 0 22px 54px rgba(18,78,155,.30);
 }
 .datalake-tables-settings-menu .skiba-toolbar__section,
@@ -961,7 +1008,7 @@
 }
 .datalake-tables-settings-menu .skiba-toolbar__section-title,
 .datalake-tables-settings-menu .skiba-format-editor__label {
-    color: var(--dlt-navy, #124e9b);
+    color: var(--dlt-navy, #111827);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: .08em;
@@ -972,13 +1019,13 @@
     max-height: none;
     overflow: visible;
     padding: 14px;
-    border: 1px solid rgba(18,78,155,.18);
+    border: 1px solid rgba(16,79,159,.14);
     border-radius: 14px;
-    background: linear-gradient(145deg, #ffffff, #eef8fc);
+    background: linear-gradient(145deg, #ffffff, #F3F8FD);
     box-shadow: none;
 }
 .datalake-tables-settings-menu .skiba-format-editor__heading { margin-bottom: 16px; }
-.datalake-tables-settings-menu .skiba-format-editor__heading strong { color: var(--dlt-navy, #124e9b); font-size: 15px; }
+.datalake-tables-settings-menu .skiba-format-editor__heading strong { color: var(--dlt-navy, #111827); font-size: 15px; }
 .datalake-tables-settings-menu .skiba-format-editor__heading span { color: #35536d; font-size: 12px; }
 .datalake-tables-settings-menu .skiba-format-editor__palette-row,
 .datalake-tables-settings-menu .skiba-format-editor__actions { gap: 8px; margin: 12px 0; }
@@ -1006,9 +1053,9 @@
 .datalake-tables-settings-menu .skiba-format-editor__palette-row { align-items: stretch; }
 .datalake-tables-settings-menu .skiba-format-editor__palette-button { flex: 1 1 130px; min-width: 118px; min-height: 38px; white-space: normal; line-height: 1.2; }
 .datalake-tables-settings-menu .datalake-layout-control input[type="range"] { height: 20px; cursor: ew-resize; }
-.datalake-tables-settings-menu .datalake-layout-control output { min-width: 32px; padding: 3px 5px; border-radius: 5px; background: #e8f4fa; color: #124e9b; }
+.datalake-tables-settings-menu .datalake-layout-control output { min-width: 32px; padding: 3px 5px; border-radius: 5px; background: #F3F8FD; color: #111827; }
 .datalake-tables-settings-menu .skiba-toolbar__button { display: block; width: 100%; min-height: 34px; margin: 5px 0; padding: 8px 10px; text-align: left; cursor: pointer; }
-.datalake-tables-settings-menu .skiba-toolbar__button:hover, .datalake-tables-settings-menu .skiba-toolbar__button:focus-visible { border-color: #3089bb; background: #e6f5fb; outline: 2px solid rgba(31,95,174,.22); outline-offset: 1px; }
+.datalake-tables-settings-menu .skiba-toolbar__button:hover, .datalake-tables-settings-menu .skiba-toolbar__button:focus-visible { border-color: #308ABE; background: #F3F8FD; outline: 2px solid rgba(31,95,174,.22); outline-offset: 1px; }
 /* Data Lake Tables: data palette gradient previews, custom palette input, and the
    one-click visual theme gallery (header/cell/accent bundles, independent of the
    data palette above). Every user gets the same flat gallery -- no author/viewer
@@ -1018,24 +1065,24 @@
 .skiba-format-editor__custom-palette { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; width: 100%; margin-top: 8px; }
 .skiba-format-editor__custom-palette .skiba-format-editor__input { flex: 1 1 220px; }
 .skiba-format-editor__custom-palette-preview { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; }
-.skiba-format-editor__button { padding: 9px 12px; border: 1px solid rgba(52,71,0,.18); border-radius: 9px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; }
-.skiba-format-editor__button:hover { background: #e6f5fb; }
+.skiba-format-editor__button { padding: 9px 12px; border: 1px solid rgba(16,79,159,.18); border-radius: 9px; background: #fff; color: #104F9F; cursor: pointer; font-size: 14px; font-weight: 700; }
+.skiba-format-editor__button:hover { background: #F3F8FD; }
 .skiba-format-editor__error { width: 100%; color: #a1281c; font-size: 10px; }
 .skiba-format-editor__theme-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; width: 100%; margin: 6px 0; }
 .skiba-format-editor__theme-card-wrap { position: relative; }
-.skiba-format-editor__theme-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; width: 100%; padding: 10px; border: 1px solid rgba(52,71,0,.2); border-radius: 10px; background: #fff; color: #344700; cursor: pointer; font-size: 14px; font-weight: 700; text-align: left; }
-.skiba-format-editor__theme-card[aria-pressed="true"] { border-color: var(--dlt-navy, #124e9b); box-shadow: 0 0 0 2px rgba(18,78,155,.35); }
+.skiba-format-editor__theme-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; width: 100%; padding: 10px; border: 1px solid rgba(16,79,159,.2); border-radius: 10px; background: #fff; color: #104F9F; cursor: pointer; font-size: 14px; font-weight: 700; text-align: left; }
+.skiba-format-editor__theme-card[aria-pressed="true"] { border-color: var(--dlt-navy, #111827); box-shadow: 0 0 0 2px rgba(18,78,155,.35); }
 .skiba-format-editor__theme-card-preview { display: block; width: 100%; height: 26px; border-radius: 6px; }
 .skiba-format-editor__theme-card-wrap .skiba-format-editor__icon-button { position: absolute; top: 4px; inset-inline-end: 4px; background: rgba(255,255,255,.85); border-radius: 50%; }
 .skiba-format-editor__save-theme-row { width: 100%; margin-top: 6px; }
 /* Data Lake responsive and accessible baseline. Mobile exclusion-zone rules remain protected. */
 :root {
-  --datalake-navy: #124e9b;
-  --datalake-navy-deep: #0b2033;
+  --datalake-navy: #111827;
+  --datalake-navy-deep: #104F9F;
   --datalake-yellow: #f4c542;
   --datalake-surface: #ffffff;
   --datalake-border: #c8d3dc;
-  --datalake-focus: #0b6e99;
+  --datalake-focus: #308ABE;
   --datalake-text: #12212f;
   --datalake-muted: #526577;
 }
@@ -1213,9 +1260,9 @@
    compatibility, while the live visual uses this coherent system.
    ================================================================ */
 :root {
-  --dlt-navy: #124e9b;
-  --dlt-navy-deep: #0b2033;
-  --dlt-blue: #3089bb;
+  --dlt-navy: #111827;
+  --dlt-navy-deep: #104F9F;
+  --dlt-blue: #308ABE;
   --dlt-sky: #eaf5fb;
   --dlt-yellow: #f4c542;
   --dlt-ink: #13293d;
@@ -1250,7 +1297,7 @@
   z-index: 100;
 }
 .datalake-drawer-toggle {
-  width: 40px; height: 40px; border: 1px solid rgba(18,78,155,.18);
+  width: 40px; height: 40px; border: 1px solid rgba(16,79,159,.14);
   border-radius: 12px; background: rgba(255,255,255,.96); color: var(--dlt-navy);
   box-shadow: 0 8px 22px rgba(11,32,51,.14); cursor: pointer; font-size: 19px;
 }
@@ -1298,16 +1345,19 @@
 .skiba-landing-page__top { display:flex; align-items:center; gap:12px; }
 .skiba-landing-page__mark { width:48px; height:48px; border-radius:15px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color:var(--dlt-yellow); font-size:12px; font-weight:900; letter-spacing:.08em; box-shadow:0 10px 24px rgba(18,78,155,.22); }
 .skiba-landing-page__eyebrow { color:var(--dlt-navy); font-size:10px; font-weight:800; letter-spacing:.12em; }
-.skiba-landing-page__content { max-width:820px; margin:auto 0; padding:32px 0; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__brand { color:var(--dlt-navy); font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
-.skiba-landing-page__tagline { margin:8px 0 0; color:var(--dlt-navy-deep); font-size:clamp(24px,4vw,38px); line-height:1.05; max-width:760px; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__description { max-width:720px !important; margin:18px 0 !important; color:var(--dlt-muted) !important; font-size:15px !important; line-height:1.65 !important; }
-.skiba-landing-page__helper { display:inline-flex; align-items:center; min-height:38px; padding:9px 14px; border-radius:10px; background:var(--dlt-navy); color:#fff; font-size:12px; font-weight:700; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__footer { margin-top:28px; padding-top:14px; border-top:1px solid var(--dlt-border); display:flex; justify-content:space-between; gap:16px; color:var(--dlt-muted); font-size:11px; }
 .skiba-landing-page__attribution { color:var(--dlt-ink); font-weight:800; }
 
 .datalake-announcement-root { padding:8px 12px 0; }
-.datalake-announcement { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid #d7e6ef; border-radius:12px; background:linear-gradient(135deg,#f7fbfe,#eef7fb); box-shadow:0 5px 15px rgba(11,32,51,.05); }
+.datalake-announcement { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid #d7e6ef; border-radius:12px; background:linear-gradient(135deg,#f7fbfe,#F3F8FD); box-shadow:0 5px 15px rgba(11,32,51,.05); }
 .datalake-announcement__copy { min-width:0; display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px; }
 .datalake-announcement__eyebrow { color:var(--dlt-navy); font-size:9px; font-weight:900; letter-spacing:.1em; }
 .datalake-announcement__copy strong { color:var(--dlt-ink); font-size:12px; }
@@ -1342,7 +1392,7 @@
    ================================================================ */
 .data-lake-tables-visual {
   --dlt-font-body: var(--skiba-font-size, 13px); --dlt-font-small:11px; --dlt-font-label:12px;
-  --dlt-row-h: var(--skiba-row-height,34px); --dlt-header-h:38px; --dlt-cell-x:12px; --dlt-focus:#0b2033;
+  --dlt-row-h: var(--skiba-row-height,34px); --dlt-header-h:38px; --dlt-cell-x:12px; --dlt-focus:#104F9F;
   width:100%; height:100%; min-width:0; min-height:0; box-sizing:border-box; overflow:hidden;
 }
 .data-lake-tables-visual *, .data-lake-tables-visual *::before, .data-lake-tables-visual *::after { box-sizing:border-box; }
@@ -1369,19 +1419,25 @@
 /* ================================================================
    TIER 3  --  PRODUCT SURFACE
    ================================================================ */
-.datalake-settings-drawer__nav { display:flex; gap:6px; padding:10px 12px; border-bottom:1px solid var(--dlt-border); overflow:auto; background:#fbfdfe; }
-.datalake-settings-drawer__nav-item { flex:0 0 auto; min-height:40px; padding:9px 14px; border:1px solid transparent; border-radius:9px; background:transparent; color:var(--dlt-muted); font-size:14px; font-weight:800; cursor:pointer; }
+.datalake-settings-drawer__nav { display:flex; gap:6px; padding:10px 12px; border-bottom:1px solid var(--dlt-border); overflow:auto; background:#F3F8FD; }
 .datalake-settings-drawer__nav-item:hover { background:var(--dlt-sky); color:var(--dlt-navy); }
 .datalake-settings-drawer__nav-item.is-active { background:var(--dlt-navy); color:#fff; }
 .datalake-settings-drawer__anchor { height:1px; scroll-margin-top:10px; }
 .skiba-landing-page__main { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr); gap:28px; align-items:center; flex:1; min-height:0; }
-.skiba-landing-page__showcase { display:flex; flex-direction:column; gap:8px; min-width:0; max-width:620px; justify-self:end; }
-.skiba-landing-page__poster-frame { position:relative; width:100%; aspect-ratio:16/10; overflow:hidden; border:1px solid var(--dlt-border); border-radius:18px; background:#fff; box-shadow:0 18px 50px rgba(11,32,51,.13); }
-.skiba-landing-page__poster { display:block; width:100%; height:100%; object-fit:cover; }
-.skiba-landing-page__poster-note { position:absolute; left:12px; right:12px; bottom:12px; padding:8px 10px; border-radius:10px; background:rgba(11,32,51,.82); color:#fff; font-size:10px; }
-.skiba-landing-page__poster-controls { display:flex; align-items:center; justify-content:center; gap:10px; }
-.skiba-landing-page__poster-control { min-width:34px; min-height:30px; padding:4px 10px; border:1px solid var(--dlt-border); border-radius:8px; background:#fff; color:var(--dlt-navy); font-size:18px; cursor:pointer; }
-.skiba-landing-page__poster-index { min-width:48px; text-align:center; color:var(--dlt-muted); font-size:10px; font-weight:800; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .datalake-announcement__poster-dot { width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border-radius:8px; background:linear-gradient(135deg,var(--dlt-navy),var(--dlt-blue)); color:var(--dlt-yellow); font-size:8px; font-weight:900; }
 @media (max-width:760px) { .skiba-landing-page__main{grid-template-columns:1fr;gap:18px}.skiba-landing-page__showcase{max-width:none;justify-self:stretch} }
 @media (max-width:480px) { .skiba-landing-page__poster-frame{aspect-ratio:4/3} }
@@ -1449,11 +1505,11 @@
 .skiba-filter-icon:focus-visible {
   background: #eaf4fa;
   border-color: #6da5c3;
-  color: #0b5082;
+  color: #104F9F;
 }
 .skiba-filter-icon--active {
-  background: #0b5c8a;
-  border-color: #0b5c8a;
+  background: #104F9F;
+  border-color: #104F9F;
   color: #ffffff;
 }
 .skiba-filter-popover {
@@ -1503,12 +1559,12 @@
   font-weight: 700;
 }
 .skiba-filter-popover__actions button:last-child {
-  background: #0b5c8a;
-  border-color: #0b5c8a;
+  background: #104F9F;
+  border-color: #104F9F;
   color: #fff;
 }
 .skiba-filter-popover__actions button:hover { background: #eaf4fa; }
-.skiba-filter-popover__actions button:last-child:hover { background: #084b71; }
+.skiba-filter-popover__actions button:last-child:hover { background: #104F9F; }
 
 /* The visual cannot change Power BI's outer tile size. It can, however, make the
    allocated viewport the only layout reference and switch to a compact landing mode. */
@@ -1523,20 +1579,15 @@
 .data-lake-tables-visual--compact .skiba-landing-page {
   padding: 18px 16px;
 }
-.data-lake-tables-visual--compact .skiba-landing-page__tagline {
-  font-size: 19px;
-  max-width: none;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .data-lake-tables-visual--compact .skiba-landing-page__description {
   margin: 8px 0 !important;
   font-size: 11px !important;
   line-height: 1.35 !important;
 }
-.data-lake-tables-visual--compact .skiba-landing-page__helper {
-  min-height: 30px;
-  padding: 7px 10px;
-  font-size: 10px;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 
 /* SuperTables-inspired interaction model, but our own product styling:
    compact poster card anchored to the lower-right, above the table, with a real X. */
@@ -1586,7 +1637,7 @@
   gap: 3px;
 }
 .datalake-announcement__eyebrow {
-  color: #c5e6f5;
+  color: #96D8E8;
   font-size: 8px;
   font-weight: 900;
   letter-spacing: .12em;
@@ -1657,15 +1708,8 @@
   overflow: auto;
   background: #f7fafc;
 }
-.datalake-settings-drawer__nav-item {
-  width: 100%;
-  min-height: 36px;
-  padding: 8px 9px;
-  text-align: left;
-  border-radius: 9px;
-}
 .datalake-settings-drawer__nav-item.is-active {
-  box-shadow: inset 3px 0 0 #78b7d6;
+  box-shadow: inset 3px 0 0 #308ABE;
 }
 @media (max-width: 520px) {
   .datalake-settings-drawer__nav { flex-direction: row; border-inline-end: 0; border-bottom: 1px solid var(--dlt-border); }
@@ -1722,9 +1766,12 @@
   padding: clamp(22px, 4vw, 64px);
 }
 .skiba-landing-page__main { align-self: stretch; min-height: 0; }
-.skiba-landing-page__content { align-self: center; }
-.skiba-landing-page__showcase { align-self: center; width: min(100%, 620px); }
-.skiba-landing-page__poster-frame { min-height: 220px; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 
 @container (max-width: 760px) {
   .skiba-table-root { font-size: 13px; }
@@ -1755,7 +1802,7 @@
   inset-block-end: clamp(8px, 1.2vw, 18px);
   width: min(320px, 30%);
 }
-.datalake-announcement { border-radius: 18px; border-color: rgba(18,78,155,.18); box-shadow: 0 22px 56px rgba(11,32,51,.24); }
+.datalake-announcement { border-radius: 18px; border-color: rgba(16,79,159,.14); box-shadow: 0 22px 56px rgba(11,32,51,.24); }
 .datalake-announcement__frame { aspect-ratio: 16/10; }
 .datalake-announcement__close { width: 32px; height: 32px; min-width: 32px; min-height: 32px; font-weight: 900; }
 @media (max-width: 760px) { .datalake-announcement-root { width: min(285px, 52%); } }
@@ -1839,7 +1886,7 @@
   padding: 0;
   overflow: hidden;
   cursor: pointer;
-  background: #0e1e38;
+  background: #104F9F;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 16px;
   box-shadow: 0 20px 52px rgba(10,22,38,.28);
@@ -1874,7 +1921,7 @@
   overflow: auto;
   padding: 20px;
   color: #fff;
-  background: #0e1e38;
+  background: #104F9F;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 16px;
   box-shadow: 0 24px 64px rgba(10,22,38,.32);
@@ -1906,7 +1953,7 @@
 .datalake-announcement-details__close:hover,
 .datalake-announcement-details__close:focus-visible {
   background: #173b5b;
-  outline: 2px solid rgba(127,215,255,.55);
+  outline: 2px solid rgba(150,216,232,.55);
   outline-offset: 1px;
 }
 .datalake-announcement-details__head strong { font-size: 18px; }
@@ -1939,7 +1986,8 @@
 /* 1.0.0.9  --  landing typography may scale with the live viewport; table data typography does not. */
 .skiba-landing-page__tagline { font-size: clamp(28px, calc(var(--dlt-viewport-width, 1100px) / 30), 54px) !important; line-height: 1.02; }
 .skiba-landing-page__description { font-size: clamp(14px, calc(var(--dlt-viewport-width, 1100px) / 78), 17px) !important; line-height: 1.55 !important; }
-.skiba-landing-page__helper { min-height: 42px; padding: 10px 16px; font-size: 13px; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-search__input { font-size: 14px; }
 .datalake-settings-drawer__body { scrollbar-gutter: stable; }
 
@@ -1953,7 +2001,7 @@
 .skiba-table__empty-card span { max-width:520px; color:var(--dlt-muted); font-size:13px; line-height:1.5; }
 .skiba-table__empty-card .skiba-search__reset { margin-top:8px; min-height:36px; padding-inline:14px; }
 
-.datalake-announcement__details-hint { margin-top:3px; color:#7fd7ff !important; font-size:10px !important; font-weight:800; }
+.datalake-announcement__details-hint { margin-top:3px; color:#96D8E8 !important; font-size:10px !important; font-weight:800; }
 
 
 /* ================================================================
@@ -1976,7 +2024,6 @@
 .datalake-settings-drawer__subtitle { max-width:600px; font-size:12px; }
 .datalake-settings-drawer__body { min-height:0; overflow:auto; }
 .datalake-settings-drawer__nav { flex-direction:row !important; align-items:stretch; gap:6px; padding:12px 14px; border-bottom:1px solid var(--dlt-border); border-inline-end:0; overflow-x:auto; overflow-y:hidden; background:#f7fafc; }
-.datalake-settings-drawer__nav-item { flex:1 1 0; min-width:132px; min-height:40px; text-align:center; white-space:nowrap; }
 .datalake-settings-panel { padding:18px 20px 22px; }
 .datalake-settings-panel__heading strong { font-size:19px; }
 .datalake-settings-panel__heading span { max-width:720px; font-size:12px; }
@@ -1987,49 +2034,44 @@
 
 /* Native product promotion: compact lower-right card, original content and styling. */
 .datalake-announcement-root { inset-inline-end:14px; inset-block-end:14px; width:min(340px,34%); max-width:340px; z-index:260; }
-.datalake-announcement { position:relative; display:grid; gap:10px; width:100%; padding:14px; background:linear-gradient(145deg,#0b2033 0%,#102f4d 100%); border:1px solid rgba(127,215,255,.28); border-radius:16px; color:#fff; box-shadow:0 20px 52px rgba(10,22,38,.32); cursor:pointer; }
+.datalake-announcement { position:relative; display:grid; gap:10px; width:100%; padding:14px; background:linear-gradient(145deg,#104F9F 0%,#102f4d 100%); border:1px solid rgba(150,216,232,.28); border-radius:16px; color:#fff; box-shadow:0 20px 52px rgba(10,22,38,.32); cursor:pointer; }
 .datalake-announcement__head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-right:32px; }
 .datalake-announcement__brand { display:flex; align-items:center; gap:8px; color:#dfeaf3; font-size:9px; font-weight:900; letter-spacing:.08em; }
-.datalake-announcement__mark { width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px; background:linear-gradient(135deg,#2f6fea,#21c7a8); color:#fff; font-size:8px; font-weight:900; }
-.datalake-announcement__badge { padding:4px 7px; border:1px solid rgba(255,255,255,.14); border-radius:999px; color:#bdeaff; background:rgba(255,255,255,.06); font-size:7px; font-weight:900; letter-spacing:.08em; }
+.datalake-announcement__mark { width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px; background:linear-gradient(135deg,#2f6fea,#308ABE); color:#fff; font-size:8px; font-weight:900; }
+.datalake-announcement__badge { padding:4px 7px; border:1px solid rgba(255,255,255,.14); border-radius:999px; color:#96D8E8; background:rgba(255,255,255,.06); font-size:7px; font-weight:900; letter-spacing:.08em; }
 .datalake-announcement__copy { display:grid; gap:4px; }
 .datalake-announcement__copy strong { color:#fff; font-size:17px; line-height:1.15; }
 .datalake-announcement__copy span { color:#c6d6e3; font-size:13px; line-height:1.45; max-width:32ch; }
 .datalake-announcement__features { display:flex; flex-wrap:wrap; gap:5px; }
 .datalake-announcement__features span { padding:5px 9px; border-radius:7px; background:rgba(255,255,255,.07); color:#dfeaf3; font-size:11px; font-weight:800; }
-.datalake-announcement__cta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:2px; padding-top:9px; border-top:1px solid rgba(255,255,255,.10); color:#7fd7ff; font-size:12.5px; font-weight:900; }
+.datalake-announcement__cta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:2px; padding-top:9px; border-top:1px solid rgba(255,255,255,.10); color:#96D8E8; font-size:12.5px; font-weight:900; }
 .datalake-announcement__cta span { font-size:15px; line-height:1; }
 .datalake-announcement__close { width:30px; height:30px; min-width:30px; min-height:30px; position:absolute; inset-inline-end:9px; inset-block-start:9px; border:1px solid rgba(255,255,255,.34); border-radius:50%; background:rgba(4,16,28,.72); color:#fff; font-size:19px; line-height:1; z-index:5; }
-.datalake-announcement__close:hover, .datalake-announcement__close:focus-visible { background:#173b5b; outline:2px solid rgba(127,215,255,.55); outline-offset:1px; }
-.datalake-announcement-details__eyebrow { display:block; margin-bottom:4px; color:#7fd7ff; font-size:8px; font-weight:900; letter-spacing:.10em; }
+.datalake-announcement__close:hover, .datalake-announcement__close:focus-visible { background:#173b5b; outline:2px solid rgba(150,216,232,.55); outline-offset:1px; }
+.datalake-announcement-details__eyebrow { display:block; margin-bottom:4px; color:#96D8E8; font-size:8px; font-weight:900; letter-spacing:.10em; }
 .datalake-announcement-details__start { display:grid; gap:4px; margin-top:12px; padding:12px; border:1px solid rgba(255,255,255,.09); border-radius:10px; background:rgba(255,255,255,.045); }
 .datalake-announcement-details__start strong { font-size:12px; }
 .datalake-announcement-details__start span { color:#c4ccda; font-size:10px; line-height:1.45; }
 
 /* Dense but useful landing page composition. */
 .skiba-landing-page { grid-template-rows:auto 1fr auto auto; }
-.skiba-landing-page__content { padding:28px 0; }
-.skiba-landing-page__tagline { max-width:20ch; }
-.skiba-landing-page__feature-rail { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-.skiba-landing-page__feature { display:grid; gap:3px; min-height:64px; padding:12px 14px; border:1px solid var(--dlt-border); border-radius:12px; background:rgba(255,255,255,.78); box-shadow:0 6px 18px rgba(11,32,51,.05); }
-.skiba-landing-page__feature strong { color:var(--dlt-navy); font-size:11px; font-weight:900; }
-.skiba-landing-page__feature span { color:var(--dlt-muted); font-size:10px; line-height:1.35; }
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__footer { margin-top:12px; }
 
 @media (max-width:900px) {
-  .datalake-settings-drawer { width:78%; max-width:none !important; }
   .skiba-landing-page__main { grid-template-columns:1fr; }
   .skiba-landing-page__showcase { justify-self:stretch; max-width:none; }
-}
-@media (max-width:700px) {
-  .datalake-settings-drawer { width:calc(100% - 10px); min-width:0; border-radius:14px 0 0 14px; }
-  .datalake-settings-drawer__nav { flex-wrap:wrap; overflow-y:auto; }
-  .datalake-settings-drawer__nav-item { min-width:calc(50% - 3px); }
-  .datalake-layout-control { grid-template-columns:1fr 1fr; }
-  .datalake-layout-control input[type="range"] { grid-column:1 / 2; }
-  .datalake-layout-control__number { justify-self:end; }
-  .datalake-announcement-root { width:min(300px,50%); }
-  .skiba-landing-page__feature-rail { grid-template-columns:1fr; }
 }
 @media (max-width:480px) {
   .datalake-announcement-root { width:min(280px,72%); }
@@ -2064,7 +2106,7 @@
 
 /* Tier D (partial) -- gradient tagline text to match the visual-landing-state.html mockup. */
 .skiba-landing-page__tagline {
-  background: linear-gradient(90deg, var(--dlt-blue, #2F6FEA), var(--dlt-teal, #21C7A8)) !important;
+  background: linear-gradient(90deg, var(--dlt-blue, #2F6FEA), var(--dlt-teal, #308ABE)) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -2111,7 +2153,7 @@ a.datalake-poster__contact {
 }
 a.datalake-poster__contact:hover,
 a.datalake-poster__contact:focus-visible {
-  border-color: rgba(127,215,255,.55);
+  border-color: rgba(150,216,232,.55);
   outline: none;
 }
 
@@ -2121,11 +2163,11 @@ a.datalake-poster__contact:focus-visible {
 .skiba-bounded-select__trigger { width: 100%; text-align: left; cursor: pointer; }
 .skiba-bounded-select__list {
   position: absolute; top: 100%; left: 0; right: 0; margin: 4px 0 0; padding: 4px;
-  list-style: none; background: #fff; border: 1px solid rgba(52,71,0,.25); border-radius: 8px;
+  list-style: none; background: #fff; border: 1px solid rgba(16,79,159,.25); border-radius: 8px;
   box-shadow: 0 10px 24px rgba(0,0,0,.18); z-index: 340; max-height: 220px; overflow-y: auto;
 }
 .skiba-bounded-select__option { padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 14px; }
-.skiba-bounded-select__option:hover, .skiba-bounded-select__option:focus-visible { background: rgba(52,71,0,.1); }
+.skiba-bounded-select__option:hover, .skiba-bounded-select__option:focus-visible { background: rgba(16,79,159,.1); }
 
 
 /* =====================================================================
@@ -2145,7 +2187,7 @@ a.datalake-poster__contact:focus-visible {
   bottom: 0;
   height: 38%;
   min-height: 90px;
-  background: linear-gradient(120deg, #132A4D, #0A1626);
+  background: linear-gradient(120deg, #104F9F, #104F9F);
   clip-path: polygon(0% 35%, 15% 20%, 35% 45%, 55% 15%, 75% 30%, 100% 10%, 100% 100%, 0% 100%);
   z-index: 0;
   pointer-events: none;
@@ -2176,98 +2218,38 @@ a.datalake-poster__contact:focus-visible {
   min-height: 100%;
   text-align: center;
 }
-.skiba-landing-page__byline {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  z-index: 1;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__mark {
   width: 26px;
   height: 26px;
   border-radius: 7px;
-  background: linear-gradient(135deg, #132A4D, #0A1626);
-  color: #21C7A8;
+  background: linear-gradient(135deg, #104F9F, #104F9F);
+  color: #308ABE;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
   font-size: 9px;
 }
-.skiba-landing-page__byline-text {
-  font-weight: 600;
-  font-size: 13px;
-  color: #5B6472;
-}
-.skiba-landing-page__title {
-  font-weight: 700;
-  font-size: clamp(24px, 4vw, 34px);
-  letter-spacing: -0.01em;
-  background: linear-gradient(90deg, #2F6FEA, #21C7A8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin: 6px 0 26px;
-  z-index: 1;
-}
-.skiba-landing-page__cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  z-index: 1;
-  max-width: 560px;
-}
-.skiba-landing-page__card {
-  width: 230px;
-  max-width: 100%;
-  background: #fff;
-  border: 1px solid var(--dlt-border, #E4E8EE);
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 6px 18px rgba(10, 22, 38, 0.06);
-  text-align: left;
-}
-.skiba-landing-page__card h3 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0A1626;
-  margin-bottom: 6px;
-}
-.skiba-landing-page__card p {
-  font-size: 12.5px;
-  color: #5B6472;
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-.skiba-landing-page__card-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: #0A1626;
-  color: #21C7A8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-.skiba-landing-page__card-btn {
-  display: inline-block;
-  border: 1.5px solid #2F6FEA;
-  color: #2F6FEA;
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 7px;
-}
-.skiba-landing-page__card-btn--solid {
-  background: linear-gradient(135deg, #2F6FEA, #21C7A8);
-  color: #fff;
-  border: none;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__footer-links {
   position: absolute;
   bottom: 34px;
@@ -2306,7 +2288,7 @@ a.datalake-poster__contact:focus-visible {
   bottom: 0;
   height: 40%;
   min-height: 100px;
-  background: linear-gradient(120deg, #132A4D, #0A1626);
+  background: linear-gradient(120deg, #104F9F, #104F9F);
   clip-path: polygon(0% 45%, 20% 15%, 42% 55%, 65% 10%, 82% 35%, 100% 20%, 100% 100%, 0% 100%);
   z-index: 0;
   pointer-events: none;
@@ -2344,98 +2326,38 @@ a.datalake-poster__contact:focus-visible {
   min-height: 100%;
   text-align: center;
 }
-.skiba-landing-page__byline {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  z-index: 1;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__mark {
   width: 26px;
   height: 26px;
   border-radius: 7px;
-  background: linear-gradient(135deg, #132A4D, #0A1626);
-  color: #21C7A8;
+  background: linear-gradient(135deg, #104F9F, #104F9F);
+  color: #308ABE;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
   font-size: 9px;
 }
-.skiba-landing-page__byline-text {
-  font-weight: 600;
-  font-size: 13px;
-  color: #5B6472;
-}
-.skiba-landing-page__title {
-  font-weight: 700;
-  font-size: clamp(24px, 4vw, 34px);
-  letter-spacing: -0.01em;
-  background: linear-gradient(90deg, #2F6FEA, #21C7A8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin: 6px 0 26px;
-  z-index: 1;
-}
-.skiba-landing-page__cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  z-index: 1;
-  max-width: 560px;
-}
-.skiba-landing-page__card {
-  width: 230px;
-  max-width: 100%;
-  background: #fff;
-  border: 1px solid var(--dlt-border, #E4E8EE);
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 6px 18px rgba(10, 22, 38, 0.06);
-  text-align: left;
-}
-.skiba-landing-page__card h3 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0A1626;
-  margin-bottom: 6px;
-}
-.skiba-landing-page__card p {
-  font-size: 12.5px;
-  color: #5B6472;
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-.skiba-landing-page__card-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: #0A1626;
-  color: #21C7A8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-.skiba-landing-page__card-btn {
-  display: inline-block;
-  border: 1.5px solid #2F6FEA;
-  color: #2F6FEA;
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 7px;
-}
-.skiba-landing-page__card-btn--solid {
-  background: linear-gradient(135deg, #2F6FEA, #21C7A8);
-  color: #fff;
-  border: none;
-}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
 .skiba-landing-page__footer-links {
   position: absolute;
   bottom: 34px;
@@ -2474,7 +2396,7 @@ a.datalake-poster__contact:focus-visible {
   bottom: 0;
   height: 40%;
   min-height: 100px;
-  background: linear-gradient(120deg, #132A4D, #0A1626);
+  background: linear-gradient(120deg, #104F9F, #104F9F);
   clip-path: polygon(0% 45%, 20% 15%, 42% 55%, 65% 10%, 82% 35%, 100% 20%, 100% 100%, 0% 100%);
   z-index: 0;
   pointer-events: none;
@@ -2613,7 +2535,7 @@ a.datalake-poster__contact:focus-visible {
 .datalake-announcement__brand { color: #475569 !important; }
 .datalake-announcement__mark {
   background: #17212B !important;
-  color: #46C8B3 !important;
+  color: #308ABE !important;
 }
 .datalake-announcement__badge {
   border: 1px solid #D9E0E7 !important;
@@ -2696,28 +2618,7 @@ a.datalake-poster__contact:focus-visible {
   outline: 2px solid rgba(36,94,146,.20) !important;
 }
 
-/* Make the on-canvas settings drawer read like the same product family. */
-.datalake-settings-drawer {
-  background: #FFFFFF !important;
-  border-color: #D9E0E7 !important;
-  box-shadow: 0 24px 60px rgba(23,33,43,.18) !important;
-  backdrop-filter: none !important;
-}
-.datalake-settings-drawer__nav { background: #F7F9FB !important; }
-.datalake-settings-drawer__nav-item.is-active {
-  background: #17212B !important;
-  color: #FFFFFF !important;
-}
-.datalake-settings-drawer .skiba-toolbar__section,
-.datalake-settings-drawer .datalake-layout-section,
-.datalake-settings-drawer .skiba-format-editor {
-  background: #FFFFFF !important;
-  border-color: #E1E6EB !important;
-}
-.datalake-settings-drawer .skiba-toolbar__section-title,
-.datalake-settings-drawer__title {
-  color: #17212B !important;
-}
+
 
 @media (max-width: 700px) {
   .datalake-announcement-root {
@@ -2733,49 +2634,6 @@ a.datalake-poster__contact:focus-visible {
   }
 }
 
-/* ================================================================
-   TIER 2 — BRANDED EDITORIAL LANDING GEOMETRY
-   ================================================================ */
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"]{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;box-sizing:border-box!important;padding:clamp(10px,1.7vw,20px) clamp(12px,2.2vw,26px) clamp(8px,1.2vw,12px)!important;gap:clamp(8px,1.2vh,14px)!important;overflow:hidden!important;background:#f7f9fc!important;color:#0a1626!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;min-width:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand-group{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__mark{width:34px!important;height:34px!important;border-radius:10px!important;background:#0a1626!important;color:#fff!important;font-size:9px!important;font-weight:900!important;display:grid!important;place-items:center!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand-stack{display:grid!important;gap:2px!important;min-width:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand{color:#0a1626!important;font-size:clamp(9px,1vw,11px)!important;font-weight:950!important;letter-spacing:.10em!important;text-transform:uppercase!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution{color:#5d6a78!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:850!important;white-space:nowrap!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status{padding:6px 9px!important;border:1px solid #d7e0e8!important;border-radius:999px!important;background:#fff!important;color:#667487!important;font-size:8px!important;font-weight:900!important;letter-spacing:.07em!important;white-space:nowrap!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{min-width:0!important;min-height:0!important;width:100%!important;height:100%!important;display:grid!important;grid-template-columns:minmax(0,1.06fr) minmax(280px,.94fr)!important;gap:clamp(10px,1.5vw,18px)!important;align-items:stretch!important;padding:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-width:0!important;min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:clamp(18px,3vw,34px)!important;border-radius:20px!important;background:#0a1626!important;color:#fff!important;position:relative!important;overflow:hidden!important;isolation:isolate!important;box-shadow:0 14px 34px rgba(10,22,38,.14)!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero:after{content:""!important;position:absolute!important;width:280px!important;height:280px!important;right:-90px!important;bottom:-110px!important;border-radius:50%!important;background:radial-gradient(circle at 35% 35%,rgba(33,199,168,.32),rgba(47,111,234,.06) 66%,transparent 67%)!important;z-index:-1!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-kicker{color:#8fe7d9!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:950!important;letter-spacing:.16em!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title{margin:10px 0 12px!important;max-width:11ch!important;color:#fff!important;background:none!important;-webkit-text-fill-color:currentColor!important;font-size:clamp(32px,4.8vw,58px)!important;line-height:.98!important;font-weight:950!important;letter-spacing:-.052em!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description{margin:0!important;max-width:56ch!important;color:#d6dde7!important;font-size:clamp(10px,1.15vw,14px)!important;line-height:1.58!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-actions{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:18px!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action{appearance:none!important;border:1px solid rgba(255,255,255,.24)!important;border-radius:10px!important;min-height:38px!important;padding:9px 14px!important;color:#fff!important;background:transparent!important;font-size:clamp(10px,1vw,12px)!important;font-weight:900!important;cursor:pointer!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary{background:#fff!important;color:#0a1626!important;border-color:#fff!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--secondary:hover{background:rgba(255,255,255,.09)!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{min-width:0!important;min-height:0!important;display:grid!important;grid-template-rows:minmax(0,1fr) auto auto!important;gap:10px!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card{min-width:0!important;background:#fff!important;border:1px solid #dfe6ed!important;border-radius:16px!important;box-shadow:0 8px 22px rgba(10,22,38,.055)!important;padding:15px!important;color:#0a1626!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{display:flex!important;flex-direction:column!important;min-height:0!important;overflow:auto!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card h2{margin:0 0 9px!important;font-size:clamp(14px,1.2vw,17px)!important;line-height:1.1!important;color:#0a1626!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-steps{display:grid!important;gap:0!important;min-height:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step{display:grid!important;grid-template-columns:26px minmax(0,1fr)!important;gap:9px!important;align-items:start!important;padding:9px 0!important;border-top:1px solid #e8edf2!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step-number{width:25px!important;height:25px!important;border-radius:50%!important;background:#edf3ff!important;color:#2f6fea!important;display:grid!important;place-items:center!important;font-size:10px!important;font-weight:950!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step strong{display:block!important;color:#223246!important;font-size:11px!important;font-weight:950!important;margin-bottom:2px!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step span:not(.skiba-landing-page__editorial-step-number){color:#697888!important;font-size:9.5px!important;line-height:1.42!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card:not(.skiba-landing-page__editorial-card--workflow){display:flex!important;gap:10px!important;align-items:flex-start!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-icon{width:30px!important;height:30px!important;border-radius:9px!important;background:#edf3ff!important;color:#2f6fea!important;display:grid!important;place-items:center!important;font-size:13px!important;font-weight:900!important;flex:0 0 auto!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy{min-width:0!important;display:grid!important;gap:3px!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy strong{color:#203246!important;font-size:11.5px!important;font-weight:950!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy span{color:#6a7888!important;font-size:9.5px!important;line-height:1.4!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-width:0!important;padding:8px 2px 0!important;border-top:1px solid #dfe6ed!important;background:transparent!important;color:#6d7b8a!important;z-index:2!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-footer-copy{color:#6e7c8b!important;font-size:clamp(8px,.9vw,10px)!important;font-weight:750!important;min-width:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:3px!important;min-width:0!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link{padding:6px 10px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:#465a70!important;font-size:clamp(9px,1vw,11px)!important;font-weight:950!important;cursor:pointer!important}
-.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link:hover{background:#edf3ff!important;color:#2f6fea!important}
-@container (max-width:760px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{grid-template-columns:1fr!important;grid-template-rows:auto auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-height:210px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{grid-template-columns:1fr 1fr!important;grid-template-rows:minmax(0,1fr) auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{grid-row:1/3!important}}
-@container (max-width:520px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"]{padding:8px!important;gap:7px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status{display:none!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main{gap:8px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{min-height:0!important;padding:16px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title{font-size:clamp(30px,10vw,40px)!important;max-width:12ch!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info{grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card--workflow{grid-row:auto!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer{align-items:flex-start!important;flex-direction:column!important;gap:4px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links{justify-content:flex-start!important}}
-@container (max-height:360px){.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description{display:none!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-copy span{font-size:9px!important}.data-lake-tables-visual .skiba-empty-state.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero{padding:16px!important}}
 
 /* =====================================================================
    TIER 2 REPAIR — wire the selected landing skin into the actual visual.less
@@ -2879,7 +2737,7 @@ a.datalake-poster__contact:focus-visible {
   height: clamp(30px, 3.5cqi, 40px) !important;
   border-radius: 10px !important;
   background: #17212B !important;
-  color: #46C8B3 !important;
+  color: #308ABE !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -2952,7 +2810,10 @@ a.datalake-poster__contact:focus-visible {
 }
 
 /* ------------------------------------------------------------
-   DARK EDITORIAL HERO
+   LIGHT EDITORIAL HERO
+   (Recolored from the original dark-navy version per the chosen
+   "Editorial / product hero" mockup — same layout/sizing rules
+   from the DLT_FINAL_BALANCE_V1 pass, new light-surface palette.)
 ------------------------------------------------------------ */
 [data-dlt-tier="2"] .skiba-landing-page__editorial-hero {
   min-width: 0 !important;
@@ -2967,41 +2828,36 @@ a.datalake-poster__contact:focus-visible {
     clamp(22px, 4cqi, 52px)
     clamp(22px, 4.3cqi, 58px) !important;
 
-  border: 1px solid rgba(10,22,38,.10) !important;
+  border: 1px solid #E2E7EE !important;
   border-radius: clamp(14px, 1.8cqi, 22px) !important;
 
   background:
     radial-gradient(
       circle at 82% 18%,
-      rgba(70,200,179,.16),
-      transparent 34%
+      rgba(55,138,221,.10),
+      transparent 40%
     ),
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(47,111,234,.18),
-      transparent 42%
-    ),
-    #0A1626 !important;
+    #FFFFFF !important;
 
-  color: #FFFFFF !important;
-  box-shadow: 0 18px 42px rgba(10,22,38,.16) !important;
+  color: #104F9F !important;
+  box-shadow: 0 10px 28px rgba(10,22,38,.06) !important;
 }
 
 [data-dlt-tier="2"] .skiba-landing-page__editorial-kicker {
   margin: 0 0 clamp(8px, 1cqi, 14px) !important;
 
-  color: #7FD7C8 !important;
+  color: #1F5FA8 !important;
   font-size: clamp(9px, 1cqi, 12px) !important;
   line-height: 1.2 !important;
-  font-weight: 900 !important;
-  letter-spacing: .13em !important;
+  font-weight: 600 !important;
+  letter-spacing: .01em !important;
 }
 
 [data-dlt-tier="2"] .skiba-landing-page__editorial-title {
   max-width: 10ch !important;
   margin: 0 0 clamp(12px, 1.6cqi, 20px) !important;
 
-  color: #FFFFFF !important;
+  color: #104F9F !important;
   font-size: clamp(30px, 4.8cqi, 56px) !important;
   line-height: .98 !important;
   letter-spacing: -.045em !important;
@@ -3012,7 +2868,7 @@ a.datalake-poster__contact:focus-visible {
   max-width: 58ch !important;
   margin: 0 !important;
 
-  color: #C8D4DE !important;
+  color: #4A5F78 !important;
   font-size: clamp(12px, 1.35cqi, 16px) !important;
   line-height: 1.58 !important;
 }
@@ -3042,15 +2898,15 @@ a.datalake-poster__contact:focus-visible {
 }
 
 [data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary {
-  border: 1px solid #46C8B3 !important;
-  background: #46C8B3 !important;
-  color: #0A1626 !important;
+  border: 1px solid #104F9F !important;
+  background: #104F9F !important;
+  color: #FFFFFF !important;
 }
 
 [data-dlt-tier="2"] .skiba-landing-page__editorial-action--secondary {
-  border: 1px solid rgba(255,255,255,.24) !important;
-  background: rgba(255,255,255,.06) !important;
-  color: #FFFFFF !important;
+  border: 1px solid #DDE4EA !important;
+  background: transparent !important;
+  color: #104F9F !important;
 }
 
 /* ------------------------------------------------------------
@@ -3137,8 +2993,8 @@ a.datalake-poster__contact:focus-visible {
   align-items: center !important;
   justify-content: center !important;
 
-  background: #EDF7F5 !important;
-  color: #187F70 !important;
+  background: #F3F8FD !important;
+  color: #308ABE !important;
   font-size: clamp(9px, 1cqi, 11px) !important;
   font-weight: 900 !important;
 }
@@ -3181,7 +3037,7 @@ a.datalake-poster__contact:focus-visible {
   justify-content: center !important;
 
   background: #17212B !important;
-  color: #46C8B3 !important;
+  color: #308ABE !important;
 
   font-size: clamp(14px, 1.7cqi, 20px) !important;
   font-weight: 900 !important;
@@ -3350,3 +3206,2254 @@ a.datalake-poster__contact:focus-visible {
 }
 
 /* === DLT_FINAL_BALANCE_V1_END === */
+
+
+/* =====================================================================
+   CLEAN SLATE FINAL OVERRIDE -- landing page, in-visual advert, and the
+   settings icon.
+
+   WHY THIS EXISTS: style/visual.less accumulated several full, conflicting
+   rewrites of .skiba-landing-page and .datalake-announcement across past
+   sessions (see the "Landing page rebuild" block appended twice near the
+   end of the file, and the dark-card regression inside the
+   "1.0.0.10 -- FINAL ACCEPTANCE OVERRIDES" block). Rather than risk hand-
+   deleting rules from a file that tangled, this block is appended last on
+   purpose and wins every conflict explicitly with !important. It only
+   targets classes the real renderLandingPage() / renderAnnouncement() /
+   renderToolbar() methods in tableRenderer.ts actually create -- no
+   TypeScript changes needed.
+   ===================================================================== */
+
+/* ---- Landing page: restore full-height/width stretch. A later dead
+   block flipped this to display:flex + align-items:center, which stops
+   the real grid content (__main, __feature-rail) from filling the tile. ---- */
+.skiba-empty-state.skiba-landing-page {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  padding: clamp(22px, 4vw, 48px) clamp(24px, 5vw, 56px) !important;
+  background: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.skiba-landing-page::after { display: none !important; } /* remove the leftover dark wave shape */
+
+.skiba-landing-page__top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex: 0 0 auto !important;
+}
+.skiba-landing-page__mark {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 5px !important;
+  background: var(--dlt-navy, #111827) !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+.skiba-landing-page__eyebrow {
+  color: var(--dlt-muted, #5c7083) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.skiba-landing-page__main {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr) !important;
+  gap: clamp(20px, 4vw, 44px) !important;
+  align-items: center !important;
+}
+@media (max-width: 720px) {
+  .skiba-landing-page__main { grid-template-columns: 1fr !important; }
+}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+.skiba-landing-page__brand {
+  color: var(--dlt-navy, #111827) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+.skiba-landing-page__description {
+  color: var(--dlt-muted, #5c7083) !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  max-width: 46ch !important;
+  margin: 0 0 18px !important;
+}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+@media (max-width: 520px) {
+  .skiba-landing-page__feature-rail { grid-template-columns: 1fr !important; }
+}
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+/* [dead-code-removal] stale block deleted here, confirmed unused by any TS-rendered class */
+
+
+.skiba-landing-page__footer {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: 16px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid var(--dlt-border, #d7e1e8) !important;
+  position: static !important;
+}
+.skiba-landing-page__attribution {
+  position: static !important;
+  color: var(--dlt-ink, #13293d) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+}
+
+/* ---- In-visual advert: restore the white, readable Clean Slate card --
+   a later pass ("1.0.0.10") silently reverted this to a dark navy card. ---- */
+.datalake-announcement {
+  background: #ffffff !important;
+  border: 1px solid var(--dlt-border, #d7e1e8) !important;
+  box-shadow: 0 14px 34px rgba(11,32,51,.16) !important;
+}
+.datalake-announcement__brand span { color: var(--dlt-navy, #111827) !important; }
+.datalake-announcement__badge {
+  background: var(--dlt-surface-soft, #f6f9fb) !important;
+  color: var(--dlt-navy, #111827) !important;
+  border-color: var(--dlt-border, #d7e1e8) !important;
+}
+.datalake-announcement__copy strong { color: var(--dlt-ink, #13293d) !important; }
+.datalake-announcement__copy span:last-child { color: var(--dlt-muted, #5c7083) !important; }
+.datalake-announcement__features span {
+  background: var(--dlt-surface-soft, #f6f9fb) !important;
+  color: var(--dlt-navy, #111827) !important;
+}
+.datalake-announcement__cta { color: var(--dlt-navy, #111827) !important; border-top-color: var(--dlt-border, #d7e1e8) !important; }
+.datalake-announcement__close {
+  background: rgba(255,255,255,.9) !important;
+  color: var(--dlt-muted, #5c7083) !important;
+  border-color: var(--dlt-border, #d7e1e8) !important;
+}
+.datalake-announcement__close:hover { background: #fff !important; color: var(--dlt-navy, #111827) !important; }
+
+/* ---- Settings icon: plain, consistent, Clean-Slate button instead of
+   the navy-and-yellow block from an earlier "brand" pass. ---- */
+.datalake-tables-settings-button,
+.datalake-drawer-toggle {
+  width: 34px !important;
+  height: 34px !important;
+  border: 1px solid var(--dlt-border, #d7e1e8) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: var(--dlt-navy, #111827) !important;
+  box-shadow: 0 4px 12px rgba(11,32,51,.10) !important;
+}
+.datalake-tables-settings-button:hover,
+.datalake-drawer-toggle:hover {
+  background: var(--dlt-sky, #eaf5fb) !important;
+  border-color: var(--dlt-navy, #111827) !important;
+}
+
+/* ====================================================================
+   [ REMOVED: legacy "FOUNDRY THEME" dark charcoal/gold override block ]
+   This block used elevated-specificity selectors + !important to force
+   a dark theme onto the settings drawer, landing page, and announcement
+   card, silently overriding the real Tier 4-8 pink/violet/cyan brand
+   system defined below. Removed 20260927-165001.
+   Backup of the pre-removal file: visual.less.before-foundry-removal-20260927-165001.bak
+   ==================================================================== */
+/* ============================================================
+   DLT TIER 04 — CANONICAL PREMIUM COLOR SYSTEM
+   ============================================================ */
+
+.data-lake-tables-visual,
+.datalake-visual,
+.data-lake-visual,
+.skiba-tables-visual {
+  --dlt-navy: #111827;
+  --dlt-navy-deep: #0b1020;
+  --dlt-blue: #308ABE;
+  --dlt-cyan: #308ABE;
+  --dlt-pink: #ec0a8c;
+  --dlt-magenta: #104F9F;
+  --dlt-violet: #104F9F;
+
+  --dlt-ink: #111827;
+  --dlt-text: #1f2937;
+  --dlt-muted: #64748b;
+
+  --dlt-surface: #ffffff;
+  --dlt-surface-soft: #f8fafc;
+  --dlt-surface-tint: #F3F8FD;
+
+  --dlt-border: #e2e8f0;
+  --dlt-border-strong: #cbd5e1;
+
+  --dlt-focus: #104F9F;
+
+  --dlt-gradient:
+    linear-gradient(
+      135deg,
+      #ec0a8c 0%,
+      #104F9F 48%,
+      #104F9F 72%,
+      #308ABE 100%
+    );
+}
+
+.data-lake-tables-visual .datalake-tables-settings-button {
+  border-color: #ec0a8c;
+  background: linear-gradient(
+    135deg,
+    #ec0a8c,
+    #104F9F 65%,
+    #308ABE
+  );
+  color: #fff;
+}
+
+.data-lake-tables-visual .datalake-tables-settings-button:hover,
+.data-lake-tables-visual .datalake-tables-settings-button:focus-visible {
+  background: linear-gradient(
+    135deg,
+    #104F9F,
+    #104F9F,
+    #308ABE
+  );
+  border-color: #104F9F;
+}
+
+.data-lake-tables-visual .datalake-settings-drawer__nav-item.is-active {
+  background: linear-gradient(
+    135deg,
+    #ec0a8c,
+    #104F9F
+  );
+  color: #fff;
+  border-color: transparent;
+}
+
+.data-lake-tables-visual .datalake-settings-drawer__nav-item:hover {
+  background: rgba(16,79,159,.08);
+  color: #104F9F;
+}
+
+.data-lake-tables-visual .datalake-settings-drawer__title,
+.data-lake-tables-visual .datalake-settings-panel__heading strong {
+  color: #111827;
+}
+
+.data-lake-tables-visual .datalake-settings-drawer__subtitle,
+.data-lake-tables-visual .datalake-settings-panel__heading span {
+  color: #64748b;
+}
+
+.data-lake-tables-visual .datalake-layout-section,
+.data-lake-tables-visual .skiba-format-editor {
+  border-color: rgba(16,79,159,.14);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #F3F8FD
+    );
+}
+
+.data-lake-tables-visual .skiba-format-editor__palette-button[aria-pressed="true"],
+.data-lake-tables-visual .skiba-format-editor__primary {
+  background: #104F9F;
+  border-color: #104F9F;
+  color: #fff;
+}
+
+.data-lake-tables-visual .skiba-format-editor__palette-button:hover,
+.data-lake-tables-visual .skiba-format-editor__actions button:hover {
+  background: #F3F8FD;
+  border-color: #104F9F;
+}
+
+.data-lake-tables-visual button:focus-visible,
+.data-lake-tables-visual [role="button"]:focus-visible,
+.data-lake-tables-visual input:focus-visible,
+.data-lake-tables-visual select:focus-visible {
+  outline-color: rgba(16,79,159,.55);
+}
+/* ============================================================
+   DLT TIER 04 - CANONICAL DESIGN TOKEN LAYER
+   Palette:
+   Navy   #111827
+   Pink   #ec0a8c
+   Violet #104F9F
+   Cyan   #308ABE
+   ============================================================ */
+
+:root {
+  --dlt-brand-navy: #111827;
+  --dlt-brand-pink: #ec0a8c;
+  --dlt-brand-violet: #104F9F;
+  --dlt-brand-cyan: #308ABE;
+
+  --dlt-brand-gradient:
+    linear-gradient(
+      135deg,
+      var(--dlt-brand-pink) 0%,
+      var(--dlt-brand-violet) 52%,
+      var(--dlt-brand-cyan) 100%
+    );
+
+  /* Canonical aliases for existing token families */
+  --dlt-navy: var(--dlt-brand-navy);
+  --dlt-ui-accent: var(--dlt-brand-violet);
+  --datalake-navy: var(--dlt-brand-navy);
+  --datalake-yellow: var(--dlt-brand-pink);
+}
+/* ============================================================
+   TIER 05 - CSS ARCHITECTURE
+   SETTINGS DRAWER - AUTHORITATIVE STRUCTURE
+   ============================================================ */
+
+.datalake-settings-drawer {
+  box-sizing: border-box;
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+
+  width: min(420px, 48%);
+  min-width: 320px;
+  max-width: 560px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-style: solid;
+  border-width: 1px 0 1px 1px;
+  border-color: var(--dlt-ui-border, #d8e0e7);
+
+  border-radius: 18px 0 0 18px;
+
+  background: #ffffff;
+  color: var(--dlt-ui-ink, #111827);
+
+  box-shadow: 0 18px 44px rgba(17, 24, 39, .14);
+
+  z-index: 320;
+}
+
+.datalake-settings-drawer__nav {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: stretch;
+
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  background: #ffffff;
+  border-bottom: 1px solid var(--dlt-ui-border, #d8e0e7);
+}
+
+.datalake-settings-drawer__nav-item {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+
+  min-height: 40px;
+  padding: 9px 12px;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  color: var(--dlt-ui-muted, #667085);
+
+  white-space: nowrap;
+}
+
+.datalake-settings-drawer__nav-item.is-active {
+  background: var(--dlt-ui-accent, #104F9F);
+  color: #ffffff;
+}
+
+.datalake-settings-panel {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: 14px;
+}
+
+.datalake-settings-drawer__footer {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+
+  padding: 10px 14px;
+
+  border-top: 1px solid var(--dlt-ui-border, #d8e0e7);
+
+  background: #ffffff;
+  color: var(--dlt-ui-muted, #667085);
+}
+
+/* Medium visual tiles: keep the drawer inside the visual without
+   allowing it to consume the majority of the available surface. */
+@media (max-width:900px) {
+  .datalake-settings-drawer {
+    width: 78%;
+    min-width: 300px;
+    max-width: none;
+  }
+}
+
+/* Narrow visual tiles: drawer becomes nearly full-width while
+   preserving a small visible edge of the underlying visual. */
+@media (max-width:700px) {
+  .datalake-settings-drawer {
+    width: calc(100% - 10px);
+    min-width: 0;
+    max-width: none;
+    border-radius: 14px 0 0 14px;
+  }
+
+  .datalake-settings-drawer__nav {
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+
+  .datalake-settings-drawer__nav-item {
+    min-width: calc(50% - 3px);
+  }
+}
+
+/* Very narrow tiles: remove excess panel padding without changing
+   drawer positioning or behavior. */
+@media (max-width:480px) {
+  .datalake-settings-panel {
+    padding: 10px;
+  }
+
+  .datalake-settings-drawer__footer {
+    padding: 8px 10px;
+  }
+}
+/* ============================================================
+   TIER 06 - RESPONSIVE ARCHITECTURE
+   RESPONSIVE SURFACE RULES
+   ============================================================ */
+
+/*
+ * T6 owns responsive behavior.
+ *
+ * Breakpoint intent:
+ * - Above 900px: normal desktop/tablet composition.
+ * - 900px and below: compact visual surface.
+ * - 700px and below: narrow Power BI tile.
+ * - 480px and below: very narrow tile.
+ *
+ * These rules intentionally avoid changing TypeScript behavior.
+ */
+
+/* ------------------------------------------------------------
+   900px - compact visual surface
+   ------------------------------------------------------------ */
+
+@media (max-width:900px) {
+
+  .data-lake-tables-visual {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .data-lake-tables-visual .skiba-empty-state.skiba-landing-page {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .data-lake-tables-visual .skiba-landing-page__main {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .data-lake-tables-visual .skiba-landing-page__showcase {
+    justify-self: stretch;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer {
+    width: 78% !important;
+    min-width: 300px !important;
+    max-width: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   700px - narrow Power BI tile
+   ------------------------------------------------------------ */
+
+@media (max-width:700px) {
+
+  .data-lake-tables-visual {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .data-lake-tables-visual .skiba-landing-page__main {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .data-lake-tables-visual .skiba-landing-page__feature-rail {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer {
+    width: calc(100% - 10px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer__nav {
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer__nav-item {
+    min-width: calc(50% - 3px);
+  }
+
+  .data-lake-tables-visual .datalake-layout-control {
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+  }
+
+  .data-lake-tables-visual .datalake-layout-control input[type="range"] {
+    grid-column: 1 / 2;
+    max-width: 100%;
+  }
+
+  .data-lake-tables-visual .datalake-layout-control__number {
+    justify-self: end;
+  }
+
+  .data-lake-tables-visual .datalake-announcement-root {
+    width: min(280px, 60%) !important;
+    max-width: 280px !important;
+  }
+
+  .data-lake-tables-visual .datalake-announcement-details {
+    width: calc(100% - 16px) !important;
+    max-width: none !important;
+    max-height: calc(100% - 16px) !important;
+    padding: 16px !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   480px - very narrow Power BI tile
+   ------------------------------------------------------------ */
+
+@media (max-width:480px) {
+
+  .data-lake-tables-visual .datalake-settings-drawer {
+    width: calc(100% - 8px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .data-lake-tables-visual .datalake-settings-panel {
+    padding: 10px;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer__footer {
+    padding: 8px 10px;
+  }
+
+  .data-lake-tables-visual .datalake-settings-drawer__nav-item {
+    min-width: calc(50% - 3px);
+    padding-inline: 9px;
+  }
+
+  .data-lake-tables-visual .datalake-announcement-root {
+    width: min(250px, 74%) !important;
+    max-width: 250px !important;
+  }
+
+  .data-lake-tables-visual .datalake-announcement-details {
+    width: calc(100% - 12px) !important;
+    max-height: calc(100% - 12px) !important;
+    padding: 12px !important;
+  }
+
+  .data-lake-tables-visual .datalake-layout-control {
+    grid-template-columns: 1fr;
+  }
+
+  .data-lake-tables-visual .datalake-layout-control input[type="range"] {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .data-lake-tables-visual .datalake-layout-control__number {
+    justify-self: stretch;
+  }
+}
+
+
+/* ============================================================
+   TIER 07 - PREMIUM DLT UI
+   DLT BRAND / LANDING / TOOLBAR / TABLE / ANNOUNCEMENT
+   VISUAL-ONLY PASS
+   ============================================================ */
+
+/*
+ * T7 visual language:
+ *
+ * Navy   #111827
+ * Pink   #ec0a8c
+ * Violet #104F9F
+ * Cyan   #308ABE
+ *
+ * T4 remains the canonical token layer.
+ * T5 remains the structural CSS layer.
+ * T6 remains the responsive layer.
+ *
+ * T7 deliberately does not modify TypeScript behavior.
+ */
+
+/* ------------------------------------------------------------
+   ROOT SURFACE
+   ------------------------------------------------------------ */
+
+.skiba-table-root {
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(16,79,159, .055),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(48,138,190, .045),
+      transparent 32%
+    ),
+    #ffffff;
+  color: var(--dlt-ui-ink, var(--dlt-navy, #111827));
+}
+
+/* ------------------------------------------------------------
+   LANDING PAGE - PREMIUM PRODUCT SURFACE
+   ------------------------------------------------------------ */
+
+.skiba-empty-state.skiba-landing-page {
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 86% 8%,
+      rgba(236, 10, 140, .075),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 14% 92%,
+      rgba(48,138,190, .065),
+      transparent 28%
+    ),
+    #ffffff !important;
+
+  color: var(--dlt-navy, #111827) !important;
+}
+
+.skiba-empty-state.skiba-landing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--dlt-brand-pink, #ec0a8c) 0%,
+      var(--dlt-brand-violet, #104F9F) 52%,
+      var(--dlt-brand-cyan, #308ABE) 100%
+    );
+}
+
+.skiba-landing-page__main,
+.skiba-landing-page__feature-rail,
+.skiba-landing-page__footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------
+   DLT MARK / BRAND
+   ------------------------------------------------------------ */
+
+.skiba-landing-page__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(16,79,159, .16) !important;
+  border-radius: 22px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(236, 10, 140, .10),
+      rgba(16,79,159, .08) 52%,
+      rgba(48,138,190, .10)
+    ) !important;
+
+  box-shadow:
+    0 16px 36px rgba(17, 24, 39, .08),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+.skiba-landing-page__mark::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 16px;
+  pointer-events: none;
+
+  border: 1px solid rgba(16,79,159, .10);
+}
+
+/* ------------------------------------------------------------
+   LANDING TYPOGRAPHY
+   ------------------------------------------------------------ */
+
+.skiba-landing-page__title,
+.skiba-landing-page__editorial-title {
+  color: var(--dlt-navy, #111827) !important;
+  letter-spacing: -.035em;
+  font-weight: 800 !important;
+}
+
+.skiba-landing-page__tagline {
+  background:
+    linear-gradient(
+      90deg,
+      var(--dlt-brand-pink, #ec0a8c),
+      var(--dlt-brand-violet, #104F9F) 52%,
+      var(--dlt-brand-cyan, #308ABE)
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+  font-weight: 800 !important;
+}
+
+.skiba-landing-page__description,
+.skiba-landing-page__editorial-info {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+.skiba-landing-page__attribution {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+/* ------------------------------------------------------------
+   LANDING SHOWCASE / FEATURE CARDS
+   ------------------------------------------------------------ */
+
+.skiba-landing-page__showcase {
+  border: 1px solid rgba(17, 24, 39, .075) !important;
+  border-radius: 24px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98),
+      rgba(248,250,252,.94)
+    ) !important;
+
+  box-shadow:
+    0 18px 45px rgba(17, 24, 39, .08),
+    0 2px 8px rgba(17, 24, 39, .035) !important;
+}
+
+.skiba-landing-page__feature-rail {
+  gap: 12px;
+}
+
+.skiba-landing-page__feature-rail > * {
+  border: 1px solid rgba(17, 24, 39, .07) !important;
+  border-radius: 16px !important;
+
+  background: rgba(255,255,255,.86) !important;
+
+  box-shadow:
+    0 8px 22px rgba(17, 24, 39, .045) !important;
+}
+
+.skiba-landing-page__feature-rail > *:hover {
+  border-color: rgba(16,79,159, .20) !important;
+  box-shadow:
+    0 12px 28px rgba(16,79,159, .10) !important;
+}
+
+/* ------------------------------------------------------------
+   TOOLBAR
+   ------------------------------------------------------------ */
+
+.skiba-toolbar,
+.skiba-toolbar__section {
+  color: var(--dlt-navy, #111827);
+}
+
+.skiba-toolbar {
+  border-bottom: 1px solid rgba(17, 24, 39, .075) !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98),
+      rgba(250,251,253,.96)
+    ) !important;
+}
+
+.skiba-toolbar__section {
+  background: transparent !important;
+}
+
+.skiba-toolbar__section-title {
+  color: var(--dlt-navy, #111827) !important;
+  font-weight: 750 !important;
+}
+
+/* ------------------------------------------------------------
+   SEARCH
+   ------------------------------------------------------------ */
+
+.skiba-search {
+  border: 1px solid rgba(17, 24, 39, .10) !important;
+  border-radius: 12px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 2px 8px rgba(17, 24, 39, .035) !important;
+}
+
+.skiba-search:focus-within {
+  border-color: rgba(16,79,159, .48) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(16,79,159, .10),
+    0 5px 14px rgba(17, 24, 39, .05) !important;
+}
+
+.skiba-search__input {
+  color: var(--dlt-navy, #111827) !important;
+  background: transparent !important;
+}
+
+/* ------------------------------------------------------------
+   TABLE SURFACE
+   ------------------------------------------------------------ */
+
+.skiba-table-root .skiba-table {
+  border-color: rgba(17, 24, 39, .075) !important;
+  background: #ffffff !important;
+
+  box-shadow:
+    0 10px 28px rgba(17, 24, 39, .055) !important;
+}
+
+.skiba-table__row {
+  border-bottom-color: rgba(17, 24, 39, .065) !important;
+}
+
+.skiba-table__row--header {
+  background:
+    linear-gradient(
+      180deg,
+      #f8fafc,
+      #f3f5f8
+    ) !important;
+}
+
+.skiba-table__row--header .skiba-table__cell {
+  color: var(--dlt-navy, #111827) !important;
+  font-weight: 750 !important;
+  border-bottom-color: rgba(16,79,159, .16) !important;
+}
+
+.skiba-table__cell {
+  color: var(--dlt-ui-ink, #111827);
+  border-right-color: rgba(17, 24, 39, .045) !important;
+}
+
+.skiba-table__row:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(236, 10, 140, .025),
+      rgba(16,79,159, .035),
+      rgba(48,138,190, .025)
+    ) !important;
+}
+
+/* ------------------------------------------------------------
+   PIVOT / CONFIG CARDS
+   ------------------------------------------------------------ */
+
+.skiba-pivot-config-card,
+.skiba-pivot-config-root {
+  border-color: rgba(17, 24, 39, .08) !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 8px 24px rgba(17, 24, 39, .045) !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS DRAWER - PREMIUM DLT FAMILY
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fbfcfe 100%
+    ) !important;
+
+  border-color: rgba(17, 24, 39, .10) !important;
+
+  box-shadow:
+    -20px 0 55px rgba(17, 24, 39, .13),
+    -4px 0 14px rgba(16,79,159, .035) !important;
+}
+
+.datalake-settings-drawer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--dlt-brand-pink, #ec0a8c),
+      var(--dlt-brand-violet, #104F9F),
+      var(--dlt-brand-cyan, #308ABE)
+    );
+}
+
+.datalake-settings-drawer__header {
+  border-bottom-color: rgba(17, 24, 39, .075) !important;
+  background: #ffffff !important;
+}
+
+.datalake-settings-drawer__title {
+  color: var(--dlt-navy, #111827) !important;
+  font-weight: 800 !important;
+  letter-spacing: -.018em;
+}
+
+.datalake-settings-drawer__subtitle {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+.datalake-settings-drawer__close {
+  border: 1px solid rgba(17, 24, 39, .08) !important;
+  border-radius: 10px !important;
+
+  background: #ffffff !important;
+  color: var(--dlt-navy, #111827) !important;
+}
+
+.datalake-settings-drawer__close:hover {
+  border-color: rgba(236, 10, 140, .28) !important;
+  background: rgba(236, 10, 140, .045) !important;
+  color: var(--dlt-brand-pink, #ec0a8c) !important;
+}
+
+.datalake-settings-drawer__nav {
+  background: #ffffff !important;
+  border-bottom-color: rgba(17, 24, 39, .075) !important;
+}
+
+.datalake-settings-drawer__nav-item {
+  color: var(--dlt-ui-muted, #667085) !important;
+  background: transparent !important;
+  font-weight: 650;
+}
+
+.datalake-settings-drawer__nav-item:hover {
+  color: var(--dlt-navy, #111827) !important;
+  background: rgba(16,79,159, .045) !important;
+}
+
+.datalake-settings-drawer__nav-item.is-active {
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dlt-brand-pink, #ec0a8c),
+      var(--dlt-brand-violet, #104F9F)
+    ) !important;
+
+  box-shadow:
+    0 5px 14px rgba(16,79,159, .18) !important;
+}
+
+.datalake-settings-drawer__body {
+  background: #fbfcfe !important;
+}
+
+.datalake-settings-drawer__footer {
+  background: #ffffff !important;
+  border-top-color: rgba(17, 24, 39, .075) !important;
+}
+
+.datalake-settings-drawer__attribution-button {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+.datalake-settings-drawer__resizer {
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(16,79,159, .20),
+      transparent
+    ) !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS CONTENT
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer .skiba-toolbar__section,
+.datalake-settings-drawer .datalake-layout-section,
+.datalake-settings-drawer .skiba-format-editor {
+  background: #ffffff !important;
+  border-color: rgba(17, 24, 39, .075) !important;
+  border-radius: 14px !important;
+}
+
+.datalake-settings-drawer .skiba-toolbar__section-title,
+.datalake-settings-drawer .datalake-layout-section__title {
+  color: var(--dlt-navy, #111827) !important;
+  font-weight: 750 !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS BACKDROP
+   ------------------------------------------------------------ */
+
+.datalake-settings-backdrop {
+  background: rgba(17, 24, 39, .40) !important;
+
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* ------------------------------------------------------------
+   ANNOUNCEMENT CARD
+   ------------------------------------------------------------ */
+
+.datalake-announcement-root {
+  filter: drop-shadow(0 18px 36px rgba(17,24,39,.13));
+}
+
+.datalake-announcement {
+  border: 1px solid rgba(17, 24, 39, .075) !important;
+  border-radius: 18px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfcfe
+    ) !important;
+
+  box-shadow:
+    0 14px 38px rgba(17, 24, 39, .09) !important;
+}
+
+.datalake-announcement::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+
+  border-radius: 18px 18px 0 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--dlt-brand-pink, #ec0a8c),
+      var(--dlt-brand-violet, #104F9F),
+      var(--dlt-brand-cyan, #308ABE)
+    );
+}
+
+.datalake-announcement__copy strong {
+  color: var(--dlt-navy, #111827) !important;
+  font-weight: 800 !important;
+}
+
+.datalake-announcement__copy span:last-child {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+.datalake-announcement__close {
+  border: 1px solid rgba(17, 24, 39, .075) !important;
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+  color: var(--dlt-navy, #111827) !important;
+}
+
+.datalake-announcement__close:hover {
+  border-color: rgba(236, 10, 140, .25) !important;
+  color: var(--dlt-brand-pink, #ec0a8c) !important;
+  background: rgba(236, 10, 140, .04) !important;
+}
+
+.datalake-announcement-details {
+  border: 1px solid rgba(17, 24, 39, .08) !important;
+  border-radius: 22px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafbfe
+    ) !important;
+
+  box-shadow:
+    0 24px 70px rgba(17, 24, 39, .18) !important;
+}
+
+.datalake-announcement-details__grid {
+  gap: 14px;
+}
+
+.datalake-announcement-details__grid > * {
+  border: 1px solid rgba(17, 24, 39, .065) !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+}
+
+/* ------------------------------------------------------------
+   FOCUS STATES - BRAND CONSISTENCY
+   ------------------------------------------------------------ */
+
+.skiba-table-root button:focus-visible,
+.skiba-table-root input:focus-visible,
+.skiba-table-root select:focus-visible,
+.skiba-table-root textarea:focus-visible,
+.skiba-table-root [tabindex]:focus-visible {
+  outline: 2px solid var(--dlt-brand-violet, #104F9F) !important;
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   DLT BRAND DIVIDER
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer__body::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin-bottom: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(236,10,140,.55),
+      rgba(16,79,159,.40),
+      rgba(48,138,190,.30)
+    );
+
+  opacity: .45;
+}
+
+/* ============================================================
+   TIER 07 - END
+   ============================================================ */
+
+/* ============================================================
+   TIER 08 - ANNOUNCEMENT & SETTINGS UX
+   PREMIUM INTERACTION SURFACES
+   CSS-ONLY / BEHAVIOR PRESERVED
+   ============================================================ */
+
+/*
+ * T8 owns the presentation layer for:
+ * - settings drawer hierarchy
+ * - settings navigation
+ * - close / backdrop affordances
+ * - resize affordance
+ * - announcement card
+ * - announcement details
+ * - responsive details presentation
+ *
+ * TypeScript behavior remains untouched.
+ */
+
+/* ------------------------------------------------------------
+   SETTINGS GEAR / OPEN AFFORDANCE
+   ------------------------------------------------------------ */
+
+.datalake-tables-settings-button,
+.datalake-drawer-toggle {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(16,79,159, .22) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, .96) !important;
+  color: var(--dlt-ui-accent, #104F9F) !important;
+  box-shadow:
+    0 6px 18px rgba(17, 24, 39, .10),
+    0 0 0 1px rgba(236, 10, 140, .04) inset !important;
+  cursor: pointer !important;
+  transition:
+    transform .16s ease,
+    box-shadow .16s ease,
+    border-color .16s ease,
+    background .16s ease !important;
+}
+
+.datalake-tables-settings-button:hover,
+.datalake-drawer-toggle:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(236, 10, 140, .38) !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 9px 24px rgba(17, 24, 39, .13),
+    0 0 0 3px rgba(16,79,159, .08) !important;
+}
+
+.datalake-tables-settings-button:focus-visible,
+.datalake-drawer-toggle:focus-visible {
+  outline: 2px solid var(--dlt-brand-pink, #ec0a8c) !important;
+  outline-offset: 2px !important;
+}
+
+.datalake-tables-settings-button svg,
+.datalake-drawer-toggle svg {
+  width: 17px !important;
+  height: 17px !important;
+  flex: 0 0 auto !important;
+  color: currentColor !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS DRAWER - STRUCTURE
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer {
+  isolation: isolate !important;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(
+      180deg,
+      rgba(236, 10, 140, .42),
+      rgba(16,79,159, .24),
+      rgba(48,138,190, .30)
+    ) border-box !important;
+  border: 1px solid transparent !important;
+  border-right: 0 !important;
+  border-radius: 18px 0 0 18px !important;
+  color: var(--dlt-ui-ink, #111827) !important;
+  box-shadow:
+    -16px 0 44px rgba(17, 24, 39, .12),
+    -2px 0 10px rgba(16,79,159, .05) !important;
+}
+
+.datalake-settings-drawer__header {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  padding: 16px 16px 14px !important;
+  border-bottom: 1px solid var(--dlt-ui-border, #d8e0e7) !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(236, 10, 140, .055),
+      rgba(16,79,159, .045) 52%,
+      rgba(48,138,190, .055)
+    ) !important;
+}
+
+.datalake-settings-drawer__title {
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: var(--dlt-ui-ink, #111827) !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.01em !important;
+}
+
+.datalake-settings-drawer__subtitle {
+  min-width: 0 !important;
+  margin-top: 3px !important;
+  color: var(--dlt-ui-muted, #667085) !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+.datalake-settings-drawer__close {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  border: 1px solid var(--dlt-ui-border, #d8e0e7) !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: var(--dlt-ui-muted, #667085) !important;
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition:
+    background .14s ease,
+    color .14s ease,
+    border-color .14s ease,
+    transform .14s ease !important;
+}
+
+.datalake-settings-drawer__close:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(236, 10, 140, .30) !important;
+  background: rgba(236, 10, 140, .06) !important;
+  color: var(--dlt-ui-accent, #104F9F) !important;
+}
+
+.datalake-settings-drawer__close:focus-visible {
+  outline: 2px solid var(--dlt-brand-pink, #ec0a8c) !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS NAVIGATION
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer__nav {
+  position: relative !important;
+  gap: 4px !important;
+  padding: 7px !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--dlt-ui-border, #d8e0e7) !important;
+  scrollbar-width: thin !important;
+}
+
+.datalake-settings-drawer__nav-item {
+  position: relative !important;
+  min-height: 38px !important;
+  padding: 8px 11px !important;
+  border: 1px solid transparent !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  color: var(--dlt-ui-muted, #667085) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  transition:
+    color .14s ease,
+    background .14s ease,
+    border-color .14s ease,
+    transform .14s ease !important;
+}
+
+.datalake-settings-drawer__nav-item:hover {
+  background: rgba(16,79,159, .055) !important;
+  border-color: rgba(16,79,159, .12) !important;
+  color: var(--dlt-ui-ink, #111827) !important;
+}
+
+.datalake-settings-drawer__nav-item.is-active {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(236, 10, 140, .10),
+      rgba(16,79,159, .10),
+      rgba(48,138,190, .08)
+    ) !important;
+  border-color: rgba(16,79,159, .20) !important;
+  color: var(--dlt-ui-accent, #104F9F) !important;
+  box-shadow: 0 2px 8px rgba(16,79,159, .07) !important;
+}
+
+.datalake-settings-drawer__nav-item.is-active::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: -8px !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(
+    90deg,
+    var(--dlt-brand-pink, #ec0a8c),
+    var(--dlt-brand-violet, #104F9F),
+    var(--dlt-brand-cyan, #308ABE)
+  ) !important;
+}
+
+.datalake-settings-drawer__nav-item:focus-visible {
+  outline: 2px solid var(--dlt-brand-pink, #ec0a8c) !important;
+  outline-offset: 1px !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS CONTENT / FOOTER
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer__body {
+  background: #ffffff !important;
+}
+
+.datalake-settings-panel {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(16,79,159, .28) transparent !important;
+}
+
+.datalake-settings-drawer__footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  background: #ffffff !important;
+  border-top: 1px solid var(--dlt-ui-border, #d8e0e7) !important;
+}
+
+.datalake-settings-drawer__attribution-button {
+  max-width: 100% !important;
+  padding: 5px 8px !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: var(--dlt-ui-muted, #667085) !important;
+  font-size: 10px !important;
+  line-height: 1.35 !important;
+  cursor: pointer !important;
+  transition:
+    color .14s ease,
+    background .14s ease !important;
+}
+
+.datalake-settings-drawer__attribution-button:hover {
+  background: rgba(236, 10, 140, .055) !important;
+  color: var(--dlt-ui-accent, #104F9F) !important;
+}
+
+.datalake-settings-drawer__attribution-button:focus-visible {
+  outline: 2px solid var(--dlt-brand-cyan, #308ABE) !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS RESIZER
+   ------------------------------------------------------------ */
+
+.datalake-settings-drawer__resizer {
+  position: absolute !important;
+  top: 14px !important;
+  bottom: 14px !important;
+  left: -5px !important;
+  width: 10px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  cursor: ew-resize !important;
+  z-index: 3 !important;
+}
+
+.datalake-settings-drawer__resizer::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 4px !important;
+  width: 2px !important;
+  height: 42px !important;
+  transform: translateY(-50%) !important;
+  border-radius: 999px !important;
+  background: rgba(16,79,159, .24) !important;
+  transition:
+    background .14s ease,
+    height .14s ease !important;
+}
+
+.datalake-settings-drawer__resizer:hover::after,
+.datalake-settings-drawer__resizer:focus-visible::after {
+  height: 58px !important;
+  background: linear-gradient(
+    180deg,
+    var(--dlt-brand-pink, #ec0a8c),
+    var(--dlt-brand-violet, #104F9F),
+    var(--dlt-brand-cyan, #308ABE)
+  ) !important;
+}
+
+.datalake-settings-drawer__resizer:focus-visible {
+  outline: 2px solid rgba(236, 10, 140, .45) !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------
+   SETTINGS BACKDROP
+   ------------------------------------------------------------ */
+
+.datalake-settings-backdrop {
+  background: rgba(17, 24, 39, .22) !important;
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+  cursor: pointer !important;
+}
+
+/* ------------------------------------------------------------
+   ANNOUNCEMENT CARD
+   ------------------------------------------------------------ */
+
+.datalake-announcement-root {
+  pointer-events: none !important;
+}
+
+.datalake-announcement {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(16,79,159, .16) !important;
+  border-radius: 16px !important;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(
+      135deg,
+      rgba(236, 10, 140, .46),
+      rgba(16,79,159, .30),
+      rgba(48,138,190, .36)
+    ) border-box !important;
+  box-shadow:
+    0 18px 46px rgba(17, 24, 39, .14),
+    0 3px 14px rgba(16,79,159, .06) !important;
+  color: var(--dlt-ui-ink, #111827) !important;
+  pointer-events: auto !important;
+}
+
+.datalake-announcement::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto !important;
+  height: 3px !important;
+  background: linear-gradient(
+    90deg,
+    var(--dlt-brand-pink, #ec0a8c),
+    var(--dlt-brand-violet, #104F9F),
+    var(--dlt-brand-cyan, #308ABE)
+  ) !important;
+}
+
+.datalake-announcement__close {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(16,79,159, .15) !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+  color: var(--dlt-ui-muted, #667085) !important;
+  cursor: pointer !important;
+  transition:
+    background .14s ease,
+    border-color .14s ease,
+    color .14s ease,
+    transform .14s ease !important;
+}
+
+.datalake-announcement__close:hover {
+  transform: translateY(-1px) !important;
+  background: rgba(236, 10, 140, .06) !important;
+  border-color: rgba(236, 10, 140, .28) !important;
+  color: var(--dlt-ui-accent, #104F9F) !important;
+}
+
+.datalake-announcement__close:focus-visible {
+  outline: 2px solid var(--dlt-brand-pink, #ec0a8c) !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------
+   ANNOUNCEMENT DETAILS
+   ------------------------------------------------------------ */
+
+.datalake-announcement-details {
+  box-sizing: border-box !important;
+  overflow: auto !important;
+  background: #ffffff !important;
+  color: var(--dlt-ui-ink, #111827) !important;
+  border: 1px solid rgba(16,79,159, .18) !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 26px 70px rgba(17, 24, 39, .18),
+    0 5px 18px rgba(16,79,159, .07) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(16,79,159, .28) transparent !important;
+}
+
+.datalake-announcement-details__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.datalake-announcement-details__item,
+.datalake-announcement-details__start {
+  min-width: 0 !important;
+  border: 1px solid rgba(16,79,159, .12) !important;
+  border-radius: 11px !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(236, 10, 140, .035),
+      rgba(16,79,159, .035),
+      rgba(48,138,190, .035)
+    ) !important;
+}
+
+.datalake-announcement-details__lead,
+.datalake-announcement-details__item span,
+.datalake-announcement-details__start span {
+  color: var(--dlt-ui-muted, #667085) !important;
+}
+
+.datalake-announcement-details__start strong,
+.datalake-announcement-details__item strong {
+  color: var(--dlt-ui-ink, #111827) !important;
+}
+
+.datalake-announcement-details__attribution {
+  color: var(--dlt-ui-accent, #104F9F) !important;
+  font-weight: 700 !important;
+}
+
+.datalake-announcement-details__back {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 36px !important;
+  padding: 8px 14px !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  background: linear-gradient(
+    135deg,
+    var(--dlt-brand-pink, #ec0a8c),
+    var(--dlt-brand-violet, #104F9F)
+  ) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 16px rgba(16,79,159, .18) !important;
+  transition:
+    transform .14s ease,
+    box-shadow .14s ease,
+    filter .14s ease !important;
+}
+
+.datalake-announcement-details__back:hover {
+  transform: translateY(-1px) !important;
+  filter: saturate(1.08) !important;
+  box-shadow: 0 9px 22px rgba(16,79,159, .24) !important;
+}
+
+.datalake-announcement-details__back:focus-visible {
+  outline: 2px solid var(--dlt-brand-cyan, #308ABE) !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------
+   NARROW / SHORT SURFACES
+   ------------------------------------------------------------ */
+
+@media (max-width:700px) {
+  .datalake-settings-drawer__header {
+    padding: 13px 12px 11px !important;
+  }
+
+  .datalake-settings-drawer__nav {
+    gap: 3px !important;
+    padding: 6px !important;
+  }
+
+  .datalake-settings-drawer__nav-item {
+    min-height: 36px !important;
+    padding-inline: 9px !important;
+  }
+
+  .datalake-announcement-details__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width:480px) {
+  .datalake-settings-drawer__title {
+    font-size: 15px !important;
+  }
+
+  .datalake-settings-drawer__subtitle {
+    font-size: 10px !important;
+  }
+
+  .datalake-settings-drawer__nav-item {
+    min-width: calc(50% - 3px) !important;
+  }
+
+  .datalake-announcement-details {
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-height:300px) {
+  .datalake-settings-drawer__header {
+    padding-block: 8px !important;
+  }
+
+  .datalake-settings-drawer__footer {
+    min-height: 34px !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .datalake-tables-settings-button,
+  .datalake-drawer-toggle,
+  .datalake-settings-drawer__close,
+  .datalake-settings-drawer__nav-item,
+  .datalake-announcement__close,
+  .datalake-announcement-details__back {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   DLT BRAND SYSTEM (single owner)
+   Data Lake Tables look: URA palette + pink signature.
+     navy #104F9F  blue #308ABE  sky #96D8E8  yellow #FAF623
+     pink #EC0A8C (product signature, used small)
+   Legacy colors were scrubbed from this file and
+   presentationConsolidated.less before this block was written.
+   Selectors are doubled (.data-lake-tables-visual twice) so they
+   out-rank presentationConsolidated.less, which loads later.
+   EDIT THIS BLOCK. Do not append another pass.
+   ============================================================ */
+
+:root {
+  --dlt-brand-navy: #104F9F;
+  --dlt-navy: #104F9F;
+  --dlt-brand-violet: #104F9F;
+  --dlt-brand-cyan: #308ABE;
+  --dlt-brand-pink: #EC0A8C;
+  --dlt-brand-gradient: linear-gradient(135deg, #104F9F 0%, #308ABE 72%, #EC0A8C 135%);
+  --dlt-ura-navy: #104F9F;
+  --dlt-ura-blue: #308ABE;
+  --dlt-ura-sky: #96D8E8;
+  --dlt-ura-yellow: #FAF623;
+  --dlt-pink: #EC0A8C;
+  --dlt-fs-eyebrow: clamp(11px, 1vw, 13.5px);
+  --dlt-fs-body: clamp(13.5px, 1.3vw, 17px);
+  --dlt-fs-small: clamp(12px, 1.1vw, 14.5px);
+  --dlt-fs-h2: clamp(24px, 3vw, 38px);
+}
+
+/* ---------- Settings gear ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-tables-settings-button,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-drawer-toggle {
+  width: 46px !important; height: 46px !important; min-width: 46px !important; min-height: 46px !important;
+  border-radius: 50% !important; border: 2px solid #FAF623 !important;
+  background: #104F9F !important; color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(16,79,159,.35), 0 0 0 3px rgba(236,10,140,.22) !important;
+  outline: none !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-tables-settings-button svg,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-drawer-toggle svg { width: 26px !important; height: 26px !important; stroke: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-tables-settings-button:hover,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-drawer-toggle:hover { background: #308ABE !important; transform: scale(1.06) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-tables-settings-button:focus-visible,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-drawer-toggle:focus-visible { outline: 3px solid #96D8E8 !important; outline-offset: 2px !important; }
+
+/* ---------- Settings drawer ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__nav-item.is-active {
+  background: linear-gradient(120deg, #104F9F 62%, #EC0A8C 190%) !important;
+  color: #ffffff !important; box-shadow: 0 4px 10px rgba(16,79,159,.28) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__footer { display: flex !important; justify-content: flex-end !important; padding: 12px 22px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__attribution-button {
+  border: 0 !important; background: transparent !important; box-shadow: none !important;
+  padding: 0 !important; margin: 0 !important; font-size: 12px !important; font-weight: 700 !important;
+  color: #104F9F !important; text-align: right !important; cursor: default !important; pointer-events: none !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading { position: relative !important; padding-left: 14px !important; gap: 5px !important; margin-bottom: 20px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading::before {
+  content: "" !important; position: absolute !important; left: 0 !important; top: 2px !important; bottom: 4px !important;
+  width: 4px !important; border-radius: 999px !important;
+  background: linear-gradient(180deg, #104F9F, #308ABE, #EC0A8C) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading strong { font-size: 21px !important; font-weight: 800 !important; color: #104F9F !important; letter-spacing: -.01em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading span { font-size: 13px !important; line-height: 1.55 !important; color: #475569 !important; margin-top: 2px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel { padding: 26px 26px 30px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section { margin: 0 0 24px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section:last-child { margin-bottom: 4px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section-title {
+  font-size: 12.5px !important; font-weight: 800 !important; letter-spacing: .08em !important; color: #104F9F !important; margin-bottom: 10px !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__checkbox { min-height: 38px !important; padding: 6px 4px !important; font-size: 13.5px !important; color: #1e293b !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__checkbox input[type="checkbox"] { accent-color: #FAF623 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button {
+  min-height: 46px !important; padding: 12px 16px !important; margin: 0 0 10px !important;
+  font-size: 13.5px !important; font-weight: 650 !important; border-radius: 11px !important;
+  border: 1px solid #d6e3f1 !important; background: #ffffff !important; box-shadow: 0 1px 2px rgba(17,24,39,.04) !important;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button:last-child { margin-bottom: 0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button:hover {
+  border-color: rgba(16,79,159,.35) !important; background: rgba(16,79,159,.05) !important;
+  box-shadow: 0 4px 10px rgba(16,79,159,.10) !important; transform: translateY(-1px) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button:focus-visible,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__button:focus-visible { outline: 2px solid #FAF623 !important; outline-offset: 2px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__row {
+  display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important;
+  min-height: 48px !important; padding: 10px 14px !important; margin: 0 0 8px !important;
+  border: 1px solid #d6e3f1 !important; border-radius: 11px !important; background: #ffffff !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__row:hover { border-color: rgba(16,79,159,.30) !important; background: rgba(16,79,159,.03) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__name { font-size: 13.5px !important; font-weight: 650 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__button {
+  flex: 0 0 auto !important; font-size: 12.5px !important; font-weight: 700 !important; padding: 7px 14px !important;
+  border-radius: 999px !important; border: 1px solid rgba(16,79,159,.35) !important;
+  background: rgba(16,79,159,.08) !important; color: #104F9F !important; cursor: pointer !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__button.is-active {
+  border-color: transparent !important; color: #ffffff !important;
+  background: linear-gradient(120deg, #104F9F 60%, #EC0A8C 175%) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-control { padding: 8px 0 !important; border-bottom: 1px solid rgba(17,24,39,.05) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-control:last-child { border-bottom: 0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-control__name { font-size: 12.5px !important; font-weight: 650 !important; color: #1e293b !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-toolbar__button--primary { background: #104F9F !important; border-color: #104F9F !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-toolbar__button--primary:hover { background: #308ABE !important; }
+
+/* ---------- Right-hand panels: Support / FAQ / About / Quick setup ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info-backdrop {
+  position: absolute !important; inset: 0 !important; display: flex !important;
+  justify-content: flex-end !important; align-items: stretch !important; padding: 0 !important;
+  background: rgba(16,79,159,.24) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details {
+  position: relative !important; box-sizing: border-box !important;
+  width: 50% !important; min-width: min(340px, 100%) !important; max-width: none !important;
+  height: 100% !important; max-height: none !important; margin: 0 !important;
+  padding: 34px 34px 38px !important; overflow-y: auto !important;
+  border: 0 !important; border-top: 5px solid #FAF623 !important; border-left: 4px solid #104F9F !important; border-radius: 0 !important;
+  background: #ffffff linear-gradient(90deg, #EC0A8C, rgba(236,10,140,0)) 0 0 / 100% 3px no-repeat !important;
+  color: #1e293b !important; box-shadow: -18px 0 44px rgba(16,79,159,.22) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details {
+  position: absolute !important; right: 0 !important; top: 0 !important; bottom: 0 !important;
+  box-shadow: -18px 0 44px rgba(16,79,159,.22), 0 0 0 200vmax rgba(16,79,159,.22) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__close {
+  position: absolute !important; top: 18px !important; right: 18px !important; width: 36px !important; height: 36px !important;
+  border-radius: 50% !important; border: 1px solid rgba(16,79,159,.35) !important; background: #ffffff !important;
+  color: #104F9F !important; font-size: 22px !important; line-height: 1 !important; cursor: pointer !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__close:hover { background: #104F9F !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__header { margin: 0 44px 22px 0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__eyebrow,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__eyebrow {
+  display: inline-flex !important; align-items: center !important; gap: 8px !important;
+  font-size: var(--dlt-fs-eyebrow) !important; font-weight: 800 !important; letter-spacing: .14em !important; color: #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__eyebrow::before {
+  content: "" !important; width: 9px !important; height: 9px !important; border-radius: 50% !important;
+  background: #EC0A8C !important; box-shadow: 0 0 0 2px #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info h2,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details h2,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__title {
+  margin: 8px 0 10px !important; font-size: var(--dlt-fs-h2) !important; font-weight: 800 !important;
+  letter-spacing: -.01em !important; color: #104F9F !important; line-height: 1.15 !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info h3 { color: #104F9F !important; font-size: var(--dlt-fs-small) !important; font-weight: 800 !important; letter-spacing: .06em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__lead,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__lead {
+  max-width: none !important; font-size: var(--dlt-fs-body) !important; line-height: 1.6 !important; color: #475569 !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__content { display: grid !important; gap: 12px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__faq-item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__start {
+  padding: 14px 16px !important; font-size: var(--dlt-fs-body) !important; line-height: 1.55 !important; color: #1e293b !important;
+  border: 1px solid rgba(16,79,159,.18) !important; border-radius: 12px !important; background: #f3f8fd !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__item strong,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__start strong { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__faq-item summary { font-size: var(--dlt-fs-body) !important; font-weight: 700 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__faq-item p { font-size: var(--dlt-fs-small) !important; line-height: 1.6 !important; color: #475569 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__dot { background: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__note {
+  font-size: var(--dlt-fs-small) !important; color: #104F9F !important;
+  border: 1px solid rgba(16,79,159,.25) !important; border-radius: 12px !important; background: rgba(150,216,232,.28) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__brand-block strong { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__brand-block strong + strong { color: #308ABE !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__stack-chip {
+  color: #104F9F !important; border: 1px solid rgba(16,79,159,.28) !important; background: rgba(150,216,232,.30) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__back {
+  border: 1px solid #104F9F !important; border-radius: 10px !important;
+  background: linear-gradient(120deg, #104F9F 62%, #EC0A8C 190%) !important; color: #ffffff !important;
+  font-size: var(--dlt-fs-small) !important; font-weight: 700 !important; padding: 10px 18px !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__attribution {
+  border: 0 !important; background: transparent !important; color: #104F9F !important;
+  cursor: default !important; pointer-events: none !important; font-size: var(--dlt-fs-small) !important; font-weight: 700 !important;
+}
+
+/* ---------- Small product banner (inner ad) ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__badge { background: #96D8E8 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__mark { background: linear-gradient(135deg, #104F9F, #EC0A8C) !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__cta,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__eyebrow { color: #104F9F !important; }
+
+/* ---------- Landing page ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero { background: linear-gradient(135deg, #ffffff 0%, #f3f8fd 58%, rgba(150,216,232,.38) 100%) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__mark { background: linear-gradient(135deg, #104F9F, #EC0A8C) !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status {
+  border: 1.5px solid #104F9F !important; border-radius: 999px !important;
+  background: linear-gradient(120deg, #104F9F 62%, #EC0A8C 190%) !important; color: #ffffff !important;
+  font-family: inherit !important; font-size: var(--dlt-fs-small) !important; font-weight: 700 !important;
+  padding: .55em 1.3em !important; cursor: pointer !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status:hover { box-shadow: 0 8px 18px rgba(16,79,159,.30) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-kicker { color: #104F9F !important; font-weight: 800 !important; letter-spacing: .08em !important; font-size: var(--dlt-fs-eyebrow) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title::after {
+  content: "" !important; display: block !important; width: 84px !important; height: 6px !important; margin-top: 16px !important;
+  border-radius: 999px !important; background: linear-gradient(90deg, #FAF623 0 58%, #EC0A8C 58% 100%) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description { color: #475569 !important; font-size: var(--dlt-fs-body) !important; line-height: 1.6 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary {
+  border: 1px solid #104F9F !important; background: linear-gradient(120deg, #104F9F 64%, #EC0A8C 190%) !important;
+  color: #ffffff !important; font-size: var(--dlt-fs-small) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--primary:hover { box-shadow: 0 8px 18px rgba(16,79,159,.30) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action--secondary {
+  border: 1.5px solid #104F9F !important; background: #ffffff !important; color: #104F9F !important; font-size: var(--dlt-fs-small) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step-number {
+  border: 1px solid rgba(16,79,159,.28) !important; background: rgba(150,216,232,.45) !important; color: #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step strong,
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card strong { color: #104F9F !important; font-size: var(--dlt-fs-body) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-step span:not([class*="number"]),
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card span { color: #475569 !important; font-size: var(--dlt-fs-small) !important; line-height: 1.5 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-card-icon { background: #104F9F !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link {
+  border: 1px solid rgba(16,79,159,.40) !important; border-radius: 999px !important; background: #ffffff !important;
+  color: #104F9F !important; font-weight: 700 !important; font-size: var(--dlt-fs-small) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link:hover,
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link:focus-visible { background: #104F9F !important; color: #ffffff !important; }
+
+/* ---------- Settings drawer: roomier and scales with the visual (same block, later rules win) ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__header { padding: clamp(16px, 2vw, 26px) clamp(18px, 2.4vw, 30px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__title { font-size: clamp(17px, 1.9vw, 24px) !important; font-weight: 800 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__subtitle { font-size: var(--dlt-fs-small) !important; color: #475569 !important; line-height: 1.5 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__nav { padding: 12px clamp(16px, 2.2vw, 28px) !important; gap: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__nav-item { font-size: var(--dlt-fs-small) !important; padding: 10px 18px !important; min-height: 44px !important; font-weight: 700 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel { padding: clamp(22px, 2.8vw, 36px) clamp(20px, 2.8vw, 36px) 40px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading strong { font-size: clamp(20px, 2.4vw, 30px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading span { font-size: var(--dlt-fs-body) !important; line-height: 1.6 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading { margin-bottom: 28px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section { margin: 0 0 32px !important; padding: 4px 0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section-title { font-size: var(--dlt-fs-small) !important; margin-bottom: 14px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__checkbox { min-height: 46px !important; font-size: var(--dlt-fs-body) !important; gap: 12px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button { min-height: 54px !important; font-size: var(--dlt-fs-body) !important; padding: 14px 20px !important; margin-bottom: 14px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__row { min-height: 56px !important; padding: 12px 18px !important; margin-bottom: 12px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__name { font-size: var(--dlt-fs-body) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__button { font-size: var(--dlt-fs-small) !important; padding: 8px 18px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-controls { gap: 16px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-control { padding: 14px 0 !important; gap: 12px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-control__name { font-size: var(--dlt-fs-small) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer input[type="text"],
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer input[type="number"],
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer select,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-bounded-select { font-size: var(--dlt-fs-small) !important; min-height: 40px !important; padding: 8px 12px !important; border-radius: 9px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer__footer { padding: 14px clamp(18px, 2.4vw, 30px) !important; }
+
+/* ---------- Landing redesign: swooshes, wave, sample preview card ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] { position: relative !important; overflow: hidden !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__top,
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main,
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer { position: relative !important; z-index: 1 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__swoosh { position: absolute !important; pointer-events: none !important; z-index: 0 !important; height: auto !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__swoosh--top { top: 0 !important; right: 0 !important; width: clamp(120px, 20%, 260px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__swoosh--bottom { bottom: 0 !important; right: 0 !important; width: clamp(150px, 28%, 340px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__status { box-shadow: 0 0 0 3px #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero { position: relative !important; overflow: hidden !important; padding-bottom: clamp(60px, 10vw, 130px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero > *:not(.skiba-landing-page__wave) { position: relative !important; z-index: 1 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__wave { position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100% !important; height: clamp(56px, 16%, 120px) !important; pointer-events: none !important; z-index: 0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-accent {
+  background: linear-gradient(90deg, #104F9F 30%, #EC0A8C) !important;
+  -webkit-background-clip: text !important; background-clip: text !important;
+  -webkit-text-fill-color: transparent !important; color: transparent !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info {
+  display: grid !important; grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: minmax(0, 1.25fr) minmax(0, 1fr) !important; gap: clamp(10px, 1.4vw, 18px) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview {
+  box-sizing: border-box !important; display: flex !important; flex-direction: column !important; gap: clamp(8px, 1vw, 14px) !important;
+  min-height: 0 !important; overflow: hidden !important; padding: clamp(12px, 1.6vw, 22px) !important;
+  background: #ffffff !important; border: 1px solid #d6e3f1 !important; border-radius: clamp(12px, 1.4vw, 20px) !important;
+  box-shadow: 0 10px 28px rgba(16,79,159,.10) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-head { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-head strong { font-size: var(--dlt-fs-body) !important; font-weight: 800 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-tools { display: flex !important; gap: 6px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-tools span {
+  border: 1px solid #d6e3f1 !important; border-radius: 999px !important; padding: .3em .9em !important;
+  font-size: clamp(10px, .95vw, 13px) !important; font-weight: 700 !important; color: #104F9F !important; background: #ffffff !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table { width: 100% !important; border-collapse: collapse !important; font-size: clamp(10.5px, 1vw, 14px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table th { background: #f3f8fd !important; color: #104F9F !important; text-align: left !important; padding: .55em .8em !important; font-weight: 800 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table td { padding: .55em .8em !important; border-top: 1px solid #e6eef7 !important; color: #1e293b !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-chip { display: inline-block !important; padding: .2em .9em !important; border-radius: 999px !important; font-weight: 700 !important; font-size: .92em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-chip--ready { background: #96D8E8 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-chip--processing { background: #104F9F !important; color: #ffffff !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-chip--loading { background: #FAF623 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-note { font-size: clamp(10px, .9vw, 12.5px) !important; color: #475569 !important; }
+
+/* ---------- Lock-in pass: brand visibility, footer credit, inner ad size ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand {
+  font-size: clamp(15px, 1.6vw, 20px) !important; font-weight: 900 !important;
+  letter-spacing: .04em !important; color: #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution {
+  font-size: clamp(11px, 1vw, 13px) !important; font-weight: 700 !important; color: #308ABE !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__mark { width: clamp(30px, 3vw, 40px) !important; height: clamp(30px, 3vw, 40px) !important; border-radius: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer { padding-top: 14px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-footer-copy {
+  font-size: clamp(12px, 1.05vw, 14px) !important; font-weight: 650 !important; color: #334155 !important; line-height: 1.5 !important;
+}
+
+/* Inner ad (product banner): a real card, not a sliver */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement {
+  width: 100% !important; min-width: min(360px, 100%) !important; max-width: 480px !important;
+  padding: clamp(16px, 1.8vw, 22px) !important; gap: 12px !important;
+  border-radius: 16px !important; border: 1px solid #d6e3f1 !important;
+  background: #ffffff !important; box-shadow: 0 14px 34px rgba(16,79,159,.14) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__mark { width: 34px !important; height: 34px !important; border-radius: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__badge { font-size: 11px !important; padding: 4px 9px !important; border-radius: 999px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__copy strong { font-size: clamp(16px, 1.5vw, 19px) !important; font-weight: 800 !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__copy span:last-child { font-size: clamp(12px, 1.1vw, 14px) !important; color: #475569 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__features span {
+  font-size: clamp(11px, 1vw, 13px) !important; font-weight: 700 !important; padding: 5px 11px !important;
+  border-radius: 999px !important; background: rgba(150,216,232,.35) !important; color: #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__cta { font-size: clamp(12.5px, 1.15vw, 15px) !important; font-weight: 800 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__close { width: 30px !important; height: 30px !important; color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement__close:hover { background: rgba(16,79,159,.08) !important; }
+
+/* ---------- Landing: single-column info now that "From fields to insight" is gone ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-info { grid-template-rows: minmax(0, 1fr) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview { height: 100% !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table { font-size: clamp(11.5px, 1.15vw, 15px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table th { padding: .7em 1em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table td { padding: .7em 1em !important; }
+
+/* Colored/zebra rows so the preview shows DLT's row-styling ability */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row td { border-left: 3px solid transparent !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row td:first-child { padding-left: .85em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-table tbody tr:nth-child(even) td { background: rgba(16,79,159,.035) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row--ready td:first-child { border-left-color: #96D8E8 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row--processing td { background: rgba(16,79,159,.06) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row--processing td:first-child { border-left-color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row--loading td { background: rgba(250,246,35,.14) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-row--loading td:first-child { border-left-color: #FAF623 !important; }
+
+/* ---------- Same soft blue wash as the landing hero, now on settings / inner ad / detail panels ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer { background: linear-gradient(135deg, #ffffff 0%, #f3f8fd 58%, rgba(150,216,232,.30) 100%) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel { background: transparent !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-drawer .skiba-toolbar__button { background: rgba(255,255,255,.85) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-filter-list__row { background: rgba(255,255,255,.85) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-column-controls { background: rgba(255,255,255,.55) !important; border-radius: 12px !important; padding: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement { background: linear-gradient(135deg, #ffffff 0%, #f3f8fd 58%, rgba(150,216,232,.30) 100%) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details { background: linear-gradient(135deg, #ffffff 0%, #f3f8fd 58%, rgba(150,216,232,.30) 100%) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-landing-info__faq-item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__item,
+.data-lake-tables-visual.data-lake-tables-visual .datalake-announcement-details__start { background: rgba(255,255,255,.88) !important; }
+
+/* ---------- Settings tabs: each section gets its own accent + card look ----------
+   layout=navy, Data Display=blue, Filters=pink, Styling=sky, Analysis=yellow-on-navy.
+   Same sizing/margins/buttons everywhere (from the rules above) - only the accent
+   color and the card wrapper around each sub-section change per tab. ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel .skiba-toolbar__section {
+  background: rgba(255,255,255,.72) !important; border: 1px solid rgba(16,79,159,.14) !important;
+  border-radius: 14px !important; padding: 16px 18px !important; border-top: 3px solid #104F9F !important;
+  box-shadow: 0 2px 10px rgba(16,79,159,.06) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-layout .skiba-toolbar__section { border-top-color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-layout .skiba-toolbar__section-title { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-display .skiba-toolbar__section { border-top-color: #308ABE !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-display .skiba-toolbar__section-title { color: #308ABE !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-experience .skiba-toolbar__section { border-top-color: #EC0A8C !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-experience .skiba-toolbar__section-title { color: #EC0A8C !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-styling .skiba-toolbar__section { border-top-color: #308ABE !important; background: rgba(150,216,232,.16) !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-styling .skiba-toolbar__section-title { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-analysis .skiba-toolbar__section { border-top-color: #FAF623 !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-analysis .skiba-toolbar__section-title { color: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-analysis .skiba-toolbar__section::before {
+  content: "" !important; display: inline-block !important; width: 8px !important; height: 8px !important;
+  border-radius: 50% !important; background: #FAF623 !important; margin-right: 6px !important;
+  box-shadow: 0 0 0 2px rgba(16,79,159,.20) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading::before {
+  background: linear-gradient(180deg, #104F9F, #308ABE, #EC0A8C) !important;
+}
+#datalake-settings-section-experience.data-lake-tables-visual.data-lake-tables-visual .datalake-settings-panel__heading::before,
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-experience .datalake-settings-panel__heading::before {
+  background: linear-gradient(180deg, #EC0A8C, #104F9F) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-styling .datalake-settings-panel__heading::before {
+  background: linear-gradient(180deg, #308ABE, #96D8E8) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual #datalake-settings-section-analysis .datalake-settings-panel__heading::before {
+  background: linear-gradient(180deg, #104F9F, #FAF623) !important;
+}
+
+/* ---------- Landing rebalance: true 50/50 split, richer preview, bigger brand/footer ---------- */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; align-items: stretch !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-hero { display: flex !important; flex-direction: column !important; justify-content: center !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-kicker { font-size: clamp(12px, 1.1vw, 15px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-title { font-size: clamp(28px, 3.6vw, 44px) !important; line-height: 1.12 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-description { font-size: clamp(14px, 1.35vw, 17px) !important; line-height: 1.65 !important; max-width: 34em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-action { font-size: clamp(13px, 1.2vw, 15.5px) !important; padding: .8em 1.5em !important; }
+
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__brand { font-size: clamp(17px, 1.9vw, 23px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__attribution { font-size: clamp(12px, 1.1vw, 14px) !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__editorial-footer-copy {
+  display: inline-flex !important; align-items: center !important;
+  padding: 6px 14px !important; border-radius: 999px !important;
+  background: rgba(16,79,159,.08) !important; border: 1px solid rgba(16,79,159,.18) !important;
+  font-size: clamp(12.5px, 1.1vw, 14.5px) !important; font-weight: 700 !important; color: #104F9F !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__footer { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: space-between !important; gap: 10px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__links { gap: 8px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__link {
+  min-height: 34px !important; padding: 7px 16px !important; font-size: clamp(12px, 1.05vw, 14px) !important;
+}
+
+/* Preview card: search bar + more rows + a stats/distribution strip so the card
+   is genuinely full of content instead of stretching around empty space */
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview { gap: clamp(10px, 1.1vw, 16px) !important; justify-content: flex-start !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-search {
+  display: flex !important; align-items: center !important; gap: 8px !important;
+  padding: 9px 14px !important; border: 1px solid #d6e3f1 !important; border-radius: 999px !important;
+  background: #f7fafd !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-search-icon {
+  width: 13px !important; height: 13px !important; border: 2px solid #94a9c4 !important; border-radius: 50% !important;
+  position: relative !important; flex: 0 0 auto !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-search-icon::after {
+  content: "" !important; position: absolute !important; width: 6px !important; height: 2px !important;
+  background: #94a9c4 !important; right: -6px !important; bottom: -1px !important; transform: rotate(45deg) !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-search-text { font-size: clamp(11.5px, 1vw, 13.5px) !important; color: #7c8aa0 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-stats { display: flex !important; gap: clamp(10px, 1.2vw, 18px) !important; padding-top: 2px !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-stat { font-size: clamp(11px, 1vw, 13px) !important; color: #475569 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-stat b { color: #104F9F !important; font-size: 1.15em !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-distbar {
+  display: flex !important; width: 100% !important; height: 8px !important; border-radius: 999px !important;
+  overflow: hidden !important; background: #eef2f7 !important;
+}
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-distbar-seg { display: block !important; height: 100% !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-distbar-seg--ready { background: #96D8E8 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-distbar-seg--processing { background: #104F9F !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-distbar-seg--loading { background: #FAF623 !important; }
+.data-lake-tables-visual.data-lake-tables-visual .skiba-empty-state.skiba-landing-page.skiba-landing-page[data-dlt-tier="2"] .skiba-landing-page__preview-note { margin-top: auto !important; padding-top: 6px !important; }

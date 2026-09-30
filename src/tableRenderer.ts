@@ -2269,21 +2269,16 @@ export class TableRenderer {
         const body = document.createElement("div");
         body.className = "datalake-settings-drawer__body";
         const nav = document.createElement("nav"); nav.className="datalake-settings-drawer__nav"; nav.setAttribute("aria-label",this.loc("Toolbar_SettingsNavigation","Settings sections"));
-        [["layout","Layout"],["display","Data Display"],["experience","User Experience"],["styling","Styling"],["analysis","Analysis"]].forEach(([id,label],i)=>{ const b=document.createElement("button"); b.type="button"; b.className="datalake-settings-drawer__nav-item"; b.textContent=label; b.setAttribute("aria-controls",`datalake-settings-section-${id}`); if(id===this._activeSettingsTab){b.classList.add("is-active");b.setAttribute("aria-current","page");} b.addEventListener("click",()=>{this._activeSettingsTab=id;nav.querySelectorAll(".datalake-settings-drawer__nav-item").forEach(e=>{e.classList.remove("is-active");e.removeAttribute("aria-current");});b.classList.add("is-active");b.setAttribute("aria-current","page");body.querySelectorAll("[data-settings-section]").forEach((el)=>{ (el as HTMLElement).style.display = (el as HTMLElement).dataset.settingsSection===id ? "block" : "none"; });}); nav.appendChild(b);});
+        [["layout","Layout"],["display","Data Display"],["experience","Filters"],["styling","Styling"],["analysis","Analysis"]].forEach(([id,label],i)=>{ const b=document.createElement("button"); b.type="button"; b.className="datalake-settings-drawer__nav-item"; b.textContent=label; b.setAttribute("aria-controls",`datalake-settings-section-${id}`); if(id===this._activeSettingsTab){b.classList.add("is-active");b.setAttribute("aria-current","page");} b.addEventListener("click",()=>{this._activeSettingsTab=id;nav.querySelectorAll(".datalake-settings-drawer__nav-item").forEach(e=>{e.classList.remove("is-active");e.removeAttribute("aria-current");});b.classList.add("is-active");b.setAttribute("aria-current","page");body.querySelectorAll("[data-settings-section]").forEach((el)=>{ (el as HTMLElement).style.display = (el as HTMLElement).dataset.settingsSection===id ? "block" : "none"; });}); nav.appendChild(b);});
         drawer.appendChild(nav); drawer.appendChild(body);
 
         const footer = document.createElement("div");
         footer.className = "datalake-settings-drawer__footer";
-        const footerText = document.createElement("button");
-        footerText.type = "button";
+        const footerText = document.createElement("span");
         footerText.className = "datalake-settings-drawer__attribution-button";
         footerText.textContent = this.loc("Landing_Attribution", "Built by Simon KP and Bryt Ma Tech UG");
         footerText.style.fontWeight = "700";
-        footerText.addEventListener("click", (evt) => {
-            evt.preventDefault();
-            evt.stopPropagation();
-            this.renderPosterModal();
-        });
+        /* attribution is static text: no popup */
         footer.appendChild(footerText);
         drawer.appendChild(footer);
 
@@ -2430,7 +2425,35 @@ export class TableRenderer {
         displayContent.appendChild(columnsSection);
         this.renderColumnControlsSection(displayContent);
 
-        const experienceContent = makePanel("experience", "User Experience", "Search, filtering, grouping and interaction controls for report users.");
+        const experienceContent = makePanel("experience", "Filters", "Filter table values live, per column. Click a column to set or change its filter.");
+
+        const filterListSection = document.createElement("div");
+        filterListSection.className = "skiba-toolbar__section datalake-filter-list";
+        const filterListTitle = document.createElement("div");
+        filterListTitle.className = "skiba-toolbar__section-title";
+        filterListTitle.textContent = this.loc("Toolbar_ColumnFilters", "Column filters");
+        filterListSection.appendChild(filterListTitle);
+        this.columns.forEach((col) => {
+            const row = document.createElement("div");
+            row.className = "datalake-filter-list__row";
+            const label = document.createElement("span");
+            label.className = "datalake-filter-list__name";
+            label.textContent = col.displayName;
+            row.appendChild(label);
+            const active = this._columnFilters.has(col.name);
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "datalake-filter-list__button" + (active ? " is-active" : "");
+            btn.textContent = active ? this.loc("Toolbar_FilterActive", "Filtering") : this.loc("Toolbar_FilterSet", "Set filter");
+            btn.addEventListener("click", (evt) => {
+                evt.stopPropagation();
+                this.openFilterPopover(col, btn);
+            });
+            row.appendChild(btn);
+            filterListSection.appendChild(row);
+        });
+        experienceContent.appendChild(filterListSection);
+
         if (this.effectiveGroupColumns().length > 0) {
             experienceContent.appendChild(this.makeMenuButton(this.loc("Toolbar_ExpandAllGroups", "Expand all groups"), () => { this.expandAllGroups(); closeDrawer(); }));
             experienceContent.appendChild(this.makeMenuButton(this.loc("Toolbar_CollapseAllGroups", "Collapse all groups"), () => { this.collapseAllGroups(); closeDrawer(); }));
@@ -2493,6 +2516,24 @@ export class TableRenderer {
     }
 
     private openAnnouncementDetails(): void {
+        // Product details open in the same right-hand panel as FAQ / Support / About,
+        // so every information surface looks and behaves the same.
+        this.renderLandingInfoModal(
+            "Data Lake Tables",
+            "ABOUT THE PRODUCT",
+            "A focused Power BI table workspace for exploring, analysing, presenting and exporting report data.",
+            [
+                "Explore: search, filter, sort, hide and reorder columns, with grouping and drill-down interactions.",
+                "Analyse: switch to pivot mode, create calculations, combine columns and apply conditional formatting.",
+                "Present: use exact font and row-height controls with viewport-driven sizing that follows the Power BI tile.",
+                "Format: apply conditional formatting, data bars and saved color themes to your table.",
+                "Getting started: add fields to Rows and Values, then use the settings button in the visual to tune the table to your report.",
+                "Built by Simon KP and Bryt Ma Tech UG"
+            ]
+        );
+    }
+
+    private openAnnouncementDetailsLegacy(): void {
         this.clearElement(this.announcementRoot);
         this.announcementRoot.style.display = "";
         // Expand like the settings drawer does -- full-bleed over the visual's own box
@@ -2514,7 +2555,7 @@ export class TableRenderer {
         const titleWrap = document.createElement("div");
         const eyebrow = document.createElement("span");
         eyebrow.className = "datalake-announcement-details__eyebrow";
-        eyebrow.textContent = "SIMON KP AND BRYT MA TECH UG";
+        eyebrow.textContent = "Simon KP · Bryt Ma Tech UG";
         const title = document.createElement("strong");
         title.textContent = "Data Lake Tables";
         titleWrap.append(eyebrow, title);
@@ -2562,11 +2603,10 @@ export class TableRenderer {
         start.append(startTitle, startText);
         dialog.appendChild(start);
 
-        const attribution = document.createElement("button");
-        attribution.type = "button";
+        const attribution = document.createElement("span");
         attribution.className = "datalake-announcement-details__attribution datalake-settings-drawer__attribution-button";
         attribution.textContent = "Built by Simon KP and Bryt Ma Tech UG";
-        attribution.addEventListener("click", (evt) => { evt.stopPropagation(); this.renderPosterModal(); });
+        /* attribution is static text: no popup */
         dialog.appendChild(attribution);
 
         const back = document.createElement("button");
@@ -2615,11 +2655,11 @@ export class TableRenderer {
         mark.className = "datalake-announcement__mark";
         mark.textContent = "DLT";
         const brandText = document.createElement("span");
-        brandText.textContent = "SIMON KP AND BRYT MA TECH UG";
+        brandText.textContent = "Simon KP · Bryt Ma Tech UG";
         brand.append(mark, brandText);
         const badge = document.createElement("span");
         badge.className = "datalake-announcement__badge";
-        badge.textContent = "POWER BI VISUAL";
+        badge.textContent = "Power BI visual";
         head.append(brand, badge);
 
         const copy = document.createElement("div");
@@ -4859,6 +4899,31 @@ export class TableRenderer {
         recordExportAudit(createExportAuditEvent(kind, "not-authenticated", rowCount));
     }
 
+    private exportBlockedMessage(status: powerbi.PrivilegeStatus): [string, string] {
+        switch (status) {
+            case powerbi.PrivilegeStatus.DisabledByAdmin:
+                return [
+                    "Downloads disabled by your organization",
+                    "Your Power BI administrator has disabled file downloads for visuals in this tenant. Contact your admin if you need this enabled."
+                ];
+            case powerbi.PrivilegeStatus.NotSupported:
+                return [
+                    "Downloads not available here",
+                    "File export isn't available in this Power BI environment (for example, some embedded or non-Desktop/Service contexts). Try opening the report in Power BI Desktop or the Power BI service."
+                ];
+            case powerbi.PrivilegeStatus.NotDeclared:
+                return [
+                    "Export not enabled in this visual",
+                    "This visual build hasn't requested export permission. This is a visual configuration issue, not a Power BI restriction."
+                ];
+            default:
+                return [
+                    "Export unavailable",
+                    "Power BI has not allowed file downloads for this visual in the current environment."
+                ];
+        }
+    }
+
     private async downloadContent(content: string, filename: string, fileType: string, description: string, fallbackBlob?: Blob): Promise<boolean> {
         const service = this.host.downloadService;
         if (service && typeof service.exportVisualsContentExtended === "function") {
@@ -4866,7 +4931,8 @@ export class TableRenderer {
                 const status = await service.exportStatus();
                 if (status !== powerbi.PrivilegeStatus.Allowed) {
                     if (typeof this.host.displayWarningIcon === "function") {
-                        this.host.displayWarningIcon("Export unavailable", "Power BI has not allowed file downloads for this visual in the current environment.");
+                        const [title, detail] = this.exportBlockedMessage(status);
+                        this.host.displayWarningIcon(title, detail);
                     }
                     return false;
                 }
@@ -4995,20 +5061,20 @@ export class TableRenderer {
         if (!settings || !settings.enabled || this.isExportRestricted()) return;
         const title = document.createElement("div");
         title.className = "datalake-settings-subtitle";
-        title.textContent = "Export";
+        title.textContent = "Download";
         section.appendChild(title);
         const help = document.createElement("div");
         help.className = "datalake-settings-help";
-        help.textContent = "Downloads use Power BI's governed file-download API when available. JSON is provided only because the current Power BI API supports it.";
+        help.textContent = "Downloads use Power BI's governed file-download API when available.";
         section.appendChild(help);
         const make = (label: string, enabled: boolean, action: () => void): void => {
             if (!enabled) return;
             section.appendChild(this.makeMenuButton(label, () => { action(); closeDrawer(); }));
         };
-        make("Export CSV", settings.csv, () => void this.exportCSV());
-        make("Export Excel", settings.excel, () => void this.exportExcel());
-        make("Export JSON", settings.json, () => void this.exportJSON());
-        make("Export PDF", settings.pdf, () => void this.exportPDF());
+        make("Download CSV", settings.csv, () => void this.exportCSV());
+        make("Download Excel", settings.excel, () => void this.exportExcel());
+        make("Download JSON", settings.json, () => void this.exportJSON());
+        make("Download PDF", settings.pdf, () => void this.exportPDF());
     }
 
     private downloadBlob(blob: Blob, filename: string): void {
@@ -5071,10 +5137,7 @@ export class TableRenderer {
         attribution.textContent = this.loc("Landing_Attribution", "SIMON KP · BRYT MA TECH UG");
         brandStack.append(brand, attribution);
         brandGroup.append(mark, brandStack);
-        const status = document.createElement("span");
-        status.className = "skiba-landing-page__status";
-        status.textContent = this.loc("Landing_Status", "POWER BI TABLE WORKSPACE");
-        top.append(brandGroup, status);
+        top.append(brandGroup);
 
         const main = document.createElement("main");
         main.className = "skiba-landing-page__main";
@@ -5083,10 +5146,17 @@ export class TableRenderer {
         hero.className = "skiba-landing-page__editorial-hero";
         const kicker = document.createElement("span");
         kicker.className = "skiba-landing-page__editorial-kicker";
-        kicker.textContent = this.loc("Landing_Editorial_Kicker", "POWER BI TABLE WORKSPACE");
+        kicker.textContent = this.loc("Landing_Editorial_Kicker", "Before you add data");
         const title = document.createElement("h1");
         title.className = "skiba-landing-page__editorial-title";
-        title.textContent = this.loc("Landing_Editorial_Title", "Make the table do more.");
+        const landingTitleText = this.loc("Landing_Editorial_Title", "Make the table do more.");
+        const landingTitleWords = landingTitleText.split(" ");
+        const landingTitleLast = landingTitleWords.pop() || "";
+        if (landingTitleWords.length > 0) { title.appendChild(document.createTextNode(landingTitleWords.join(" ") + " ")); }
+        const landingTitleAccent = document.createElement("span");
+        landingTitleAccent.className = "skiba-landing-page__editorial-accent";
+        landingTitleAccent.textContent = landingTitleLast;
+        title.appendChild(landingTitleAccent);
         const description = document.createElement("p");
         description.className = "skiba-landing-page__editorial-description";
         description.textContent = this.loc("Landing_Editorial_Description", "Explore the data already supplied to your visual, then move naturally into deeper analysis and presentation.");
@@ -5124,31 +5194,16 @@ export class TableRenderer {
                 ]
             ))
         );
-        hero.append(kicker, title, description, actions);
+        hero.append(kicker, title, description, actions, this.makeLandingSvg("skiba-landing-page__wave", "0 0 400 90", [
+            ["M0 60C80 40 160 80 400 30V90H0Z", "#104F9F"],
+            ["M0 74C110 56 230 96 400 52V64C250 104 120 68 0 88Z", "#FAF623"],
+            ["M0 90V78C120 66 260 100 400 70V90Z", "#308ABE"],
+            ["M0 84C120 72 260 106 400 78V82C260 110 120 76 0 88Z", "#EC0A8C"]
+        ], "none"));
 
         const info = document.createElement("section");
         info.className = "skiba-landing-page__editorial-info";
-        const workflow = document.createElement("article");
-        workflow.className = "skiba-landing-page__editorial-card skiba-landing-page__editorial-card--workflow";
-        const workflowTitle = document.createElement("h2");
-        workflowTitle.textContent = this.loc("Landing_Workflow_Title", "From fields to insight");
-        workflow.appendChild(workflowTitle);
-        const steps: Array<[string,string,string]> = [
-            ["1","Rows","Descriptive fields define the records you want to inspect."],
-            ["2","Values","Measures add the values you want to compare or analyze."],
-            ["3","Explore","Search, filter, sort, group and pivot the working view."],
-            ["4","Present","Format the table and use saved views or export where available."]
-        ];
-        const stepList = document.createElement("div");
-        stepList.className = "skiba-landing-page__editorial-steps";
-        steps.forEach(([numText,headingText,bodyText]) => {
-            const row = document.createElement("div"); row.className="skiba-landing-page__editorial-step";
-            const num = document.createElement("span"); num.className="skiba-landing-page__editorial-step-number"; num.textContent=numText;
-            const copy=document.createElement("div"); const h=document.createElement("strong"); h.textContent=headingText; const p=document.createElement("span"); p.textContent=bodyText; copy.append(h,p); row.append(num,copy); stepList.appendChild(row);
-        });
-        workflow.appendChild(stepList);
-        const makeInfo=(iconText:string,headingText:string,bodyText:string):HTMLElement=>{const card=document.createElement("article");card.className="skiba-landing-page__editorial-card";const i=document.createElement("span");i.className="skiba-landing-page__editorial-card-icon";i.textContent=iconText;i.setAttribute("aria-hidden","true");const c=document.createElement("div");c.className="skiba-landing-page__editorial-card-copy";const h=document.createElement("strong");h.textContent=headingText;const p=document.createElement("span");p.textContent=bodyText;c.append(h,p);card.append(i,c);return card;};
-        info.append(workflow, makeInfo("↔","Readable by design","Adapt layout and spacing before useful information is forced into an impractical size."), makeInfo("◫","One focused workspace","Explore, analyze and present the rows currently supplied to the visual."));
+        info.append(this.makeLandingPreview());
         main.append(hero, info);
 
         const footer = document.createElement("footer");
@@ -5167,8 +5222,131 @@ export class TableRenderer {
             makeInfoButton("About","About Data Lake Tables","ABOUT THE PRODUCT","Data Lake Tables is a Power BI custom visual focused on analytical table presentation, exploration and report-ready formatting.",["Built by Simon KP and Bryt Ma Tech UG.","Core stack: Power BI Visuals API 5.3.0 and TypeScript.","Interactive/data presentation: D3.js.","Exports: ExcelJS, jsPDF and jsPDF-AutoTable.","Styling: LESS / CSS with a dedicated visual presentation layer.","Verification: Jest, ESLint, TypeScript and Power BI custom-visual tooling.","Special thanks to Mr Simon KP for the product guidance, direction and feedback that helped shape this visual."])
         );
         footer.append(footerCopy, links);
-        wrap.append(top, main, footer);
+        wrap.append(
+            this.makeLandingSvg("skiba-landing-page__swoosh skiba-landing-page__swoosh--top", "0 0 240 90", [
+                ["M60 0H240V70C190 40 120 30 60 0Z", "#FAF623"],
+                ["M110 0H240V46C200 26 150 16 110 0Z", "#104F9F"],
+                ["M85 0H100C130 22 190 34 240 52V58C185 40 120 28 85 0Z", "#EC0A8C"]
+            ]),
+            this.makeLandingSvg("skiba-landing-page__swoosh skiba-landing-page__swoosh--bottom", "0 0 300 70", [
+                ["M0 70C90 60 180 30 300 0V70Z", "#104F9F"],
+                ["M40 70C130 62 220 36 300 14V20C220 44 130 68 60 70Z", "#EC0A8C"],
+                ["M60 70C140 62 220 42 300 22V34C230 56 150 70 100 70Z", "#FAF623"]
+            ]),
+            top, main, footer
+        );
         this.container.appendChild(wrap);
+    }
+
+    private makeLandingSvg(className: string, viewBox: string, paths: Array<[string, string]>, preserve?: string): SVGSVGElement {
+        const ns = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("class", className);
+        svg.setAttribute("viewBox", viewBox);
+        svg.setAttribute("aria-hidden", "true");
+        svg.setAttribute("focusable", "false");
+        if (preserve) { svg.setAttribute("preserveAspectRatio", preserve); }
+        paths.forEach(([d, fill]) => {
+            const p = document.createElementNS(ns, "path");
+            p.setAttribute("d", d);
+            p.setAttribute("fill", fill);
+            svg.appendChild(p);
+        });
+        return svg;
+    }
+
+    private makeLandingPreview(): HTMLElement {
+        const card = document.createElement("article");
+        card.className = "skiba-landing-page__preview";
+        card.setAttribute("aria-hidden", "true");
+        const head = document.createElement("div");
+        head.className = "skiba-landing-page__preview-head";
+        const heading = document.createElement("strong");
+        heading.textContent = "Sample preview";
+        const tools = document.createElement("div");
+        tools.className = "skiba-landing-page__preview-tools";
+        ["Filter", "Group", "Pivot"].forEach((label) => {
+            const t = document.createElement("span");
+            t.textContent = label;
+            tools.appendChild(t);
+        });
+        head.append(heading, tools);
+
+        const search = document.createElement("div");
+        search.className = "skiba-landing-page__preview-search";
+        const searchGlass = document.createElement("span");
+        searchGlass.className = "skiba-landing-page__preview-search-icon";
+        searchGlass.setAttribute("aria-hidden", "true");
+        const searchText = document.createElement("span");
+        searchText.className = "skiba-landing-page__preview-search-text";
+        searchText.textContent = "Search tables, fields, or keywords...";
+        search.append(searchGlass, searchText);
+
+        const table = document.createElement("table");
+        table.className = "skiba-landing-page__preview-table";
+        const thead = document.createElement("thead");
+        const headRow = document.createElement("tr");
+        ["Table", "Source", "Records", "Status"].forEach((label) => {
+            const th = document.createElement("th");
+            th.textContent = label;
+            headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        const tbody = document.createElement("tbody");
+        const rows: Array<[string, string, string, string, string]> = [
+            ["Taxpayer_Registry", "OLTP", "1,248,532", "Ready", "ready"],
+            ["Payments", "Payments DB", "856,210", "Ready", "ready"],
+            ["Assessments", "Warehouse", "512,443", "Ready", "ready"],
+            ["Compliance_Log", "Warehouse", "1,842,205", "Ready", "ready"],
+            ["Exemptions", "OLTP", "76,540", "Ready", "ready"],
+            ["Customs", "Customs DB", "298,771", "Processing", "processing"],
+            ["Refunds", "Payments DB", "143,908", "Processing", "processing"],
+            ["Audit_Reports", "Warehouse", "92,317", "Loading", "loading"]
+        ];
+        rows.forEach(([name, source, records, status, kind]) => {
+            const tr = document.createElement("tr");
+            tr.className = "skiba-landing-page__preview-row skiba-landing-page__preview-row--" + kind;
+            [name, source, records].forEach((value) => {
+                const td = document.createElement("td");
+                td.textContent = value;
+                tr.appendChild(td);
+            });
+            const statusCell = document.createElement("td");
+            const chip = document.createElement("span");
+            chip.className = "skiba-landing-page__preview-chip skiba-landing-page__preview-chip--" + kind;
+            chip.textContent = status;
+            statusCell.appendChild(chip);
+            tr.appendChild(statusCell);
+            tbody.appendChild(tr);
+        });
+        table.append(thead, tbody);
+
+        const stats = document.createElement("div");
+        stats.className = "skiba-landing-page__preview-stats";
+        [["8", "tables"], ["4.1M", "rows"], ["Live", "sync"]].forEach(([value, label]) => {
+            const stat = document.createElement("span");
+            stat.className = "skiba-landing-page__preview-stat";
+            const v = document.createElement("b");
+            v.textContent = value;
+            stat.append(v, document.createTextNode(" " + label));
+            stats.appendChild(stat);
+        });
+        const distBar = document.createElement("div");
+        distBar.className = "skiba-landing-page__preview-distbar";
+        distBar.setAttribute("role", "img");
+        distBar.setAttribute("aria-label", "6 ready, 2 processing, 1 loading");
+        ([[6, "ready"], [2, "processing"], [1, "loading"]] as Array<[number, string]>).forEach(([count, kind]) => {
+            const seg = document.createElement("span");
+            seg.className = "skiba-landing-page__preview-distbar-seg skiba-landing-page__preview-distbar-seg--" + kind;
+            seg.style.flexGrow = String(count);
+            distBar.appendChild(seg);
+        });
+
+        const note = document.createElement("span");
+        note.className = "skiba-landing-page__preview-note";
+        note.textContent = "Sample data. Your fields replace this once added.";
+        card.append(head, search, table, stats, distBar, note);
+        return card;
     }
 
     private renderLandingInfoModal(

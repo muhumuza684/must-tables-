@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "v*"
   pull_request:
     branches:
       - main
@@ -53,3 +55,35 @@ jobs:
           path: webpack.statistics.prod.html
           if-no-files-found: warn
           retention-days: 30
+
+  release:
+    name: Publish GitHub Release
+    needs: build-test-package
+    runs-on: ubuntu-latest
+    # Deliberate: only a pushed version tag (e.g. v1.0.0.49) creates a
+    # release. Every ordinary commit to main still builds and tests above,
+    # but does not spam a new release -- a release is a distinct, tagged,
+    # deliberate action, not a side effect of every push.
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - name: Download PBIVIZ build
+        uses: actions/download-artifact@v4
+        with:
+          name: data-lake-tables-pbiviz
+          path: dist
+
+      - name: Verify PBIVIZ package exists
+        shell: bash
+        run: |
+          ls -lah dist
+          test -n "$(find dist -maxdepth 1 -type f -name '*.pbiviz' -print -quit)"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Data Lake Tables ${{ github.ref_name }}
+          files: dist/*.pbiviz
+          generate_release_notes: true
+          fail_on_unmatched_files: true

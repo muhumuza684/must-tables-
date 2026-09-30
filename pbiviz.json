@@ -1,26 +1,28 @@
 {
-  "visual": {
-    "name": "DataLakeTables",
-    "displayName": "Data Lake Tables",
-    "guid": "dataLakeTables_829db169be4645b3be514812e0d84f30",
-    "visualClassName": "DataLakeTables",
-    "version": "1.0.0.48",
-    "description": "A modern, scalable data-lake table visual for viewing, slicing, formatting, and exporting governed Power BI data.",
-    "supportUrl": "https://github.com/muhumuza684/KIBA-powerbi-visuals/issues",
-    "gitHubUrl": "https://github.com/muhumuza684/KIBA-powerbi-visuals"
-  },
-  "apiVersion": "5.3.0",
-  "author": {
-    "name": "Data Lake Visual Family",
-    "email": "hello@datalakevisuals.example"
-  },
-  "assets": {
-    "icon": "assets/icon.png"
-  },
-  "externalJS": [],
-  "style": "style/visual.less",
-  "capabilities": "capabilities.json",
-  "stringResources": [
-    "stringResources/en-US/resources.resjson"
-  ]
+    "visual":  {
+                   "name":  "DataLakeTables",
+                   "displayName":  "Data Lake Tables",
+                   "guid":  "dataLakeTables_829db169be4645b3be514812e0d84f30",
+                   "visualClassName":  "DataLakeTables",
+                   "version":  "1.0.0.48",
+                   "description":  "A modern, scalable data-lake table visual for viewing, slicing, formatting, and exporting governed Power BI data.",
+                   "supportUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals/issues",
+                   "gitHubUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals"
+               },
+    "apiVersion":  "5.3.0",
+    "author":  {
+                   "name":  "Data Lake Visual Family",
+                   "email":  "muhumuzabright26@gmail.com"
+               },
+    "assets":  {
+                   "icon":  "assets/icon.png"
+               },
+    "externalJS":  [
+
+                   ],
+    "style":  "style/visual.less",
+    "capabilities":  "capabilities.json",
+    "stringResources":  [
+                            "stringResources/en-US/resources.resjson"
+                        ]
 }
