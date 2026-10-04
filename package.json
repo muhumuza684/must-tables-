@@ -1,7 +1,7 @@
 {
     "name": "data-lake-tables",
     "version": "1.0.0",
-    "description": "Data Lake Tables — modern, scalable analytical tables for Power BI.",
+    "description": "MUST Tables — modern, scalable analytical tables for Power BI.",
     "private": true,
     "scripts": {
         "start": "pbiviz start",

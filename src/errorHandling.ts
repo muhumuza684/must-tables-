@@ -1,4 +1,4 @@
-// Data Lake Tables -- standalone error-handling utilities (Tier 5).
+// MUST Tables -- standalone error-handling utilities (Tier 5).
 //
 // This file is intentionally self-contained and not yet imported anywhere. Wiring it into
 // tableRenderer.ts / visual.ts needs exact current call-site text (same reason every other
@@ -40,7 +40,7 @@ export function safeRender<T>(context: string, fn: () => T, fallback: T): T {
  *  to find every catch site later with one search. Never throws itself. */
 export function logDiagnostic(context: string, error: unknown): void {
     try {
-        console.warn(`Data Lake Tables: recovered from an error in ${context}.`, error);
+        console.warn(`MUST Tables: recovered from an error in ${context}.`, error);
     } catch {
         // If even logging fails, do nothing -- never let error handling itself throw.
     }

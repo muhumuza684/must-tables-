@@ -496,7 +496,7 @@ class StyleSettingsCard extends FormattingSettingsCard {
     });
 
     name: string = "style";
-    displayName: string = "Data Lake Tables style";
+    displayName: string = "MUST Tables style";
     displayNameKey: string = "Object_Style";
     slices: FormattingSettingsSlice[] = [this.preset, this.guidance];
 }

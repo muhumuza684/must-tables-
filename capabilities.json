@@ -884,7 +884,7 @@
             }
         },
         "style": {
-            "displayName": "Data Lake Tables style",
+            "displayName": "MUST Tables style",
             "properties": {
                 "preset": {
                     "displayName": "Style preset",

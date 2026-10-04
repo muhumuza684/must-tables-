@@ -76,7 +76,7 @@ describe("post-import visual refinement contracts", () => {
         const text = renderer();
         expect(text).toContain("openAnnouncementDetails");
         expect(text).toContain("aria-haspopup");
-        expect(text).toContain("SIMON KP · BRYT MA TECH UG");
+        expect(text).toContain("DELIGHT BI · Data Guided Decisions");
         expect(text).toContain("Back to table");
         expect(text).toContain("No results found");
         expect(text).toContain('makePanel("layout"');
@@ -98,7 +98,7 @@ describe("post-import visual refinement contracts", () => {
         const text = renderer();
         const styles = less();
         expect(text).toContain("skiba-landing-page__editorial-hero");
-        expect(text).toContain("SIMON KP · BRYT MA TECH UG");
+        expect(text).toContain("DELIGHT BI · Data Guided Decisions");
         expect(styles).toContain(".skiba-landing-page__editorial-hero");
     });
 });

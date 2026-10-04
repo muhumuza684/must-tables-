@@ -1,4 +1,4 @@
-name: Data Lake Tables CI
+name: MUST Tables CI
 
 on:
   push:
@@ -9,13 +9,18 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   build-test-package:
-    name: Test and package Power BI visual
+    name: Test and package the Power BI visual
     runs-on: ubuntu-latest
 
     steps:
@@ -28,62 +33,65 @@ jobs:
           node-version: "20.x"
           cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies (clean, from the lock file)
         run: npm ci
 
-      - name: Run full CI gate
+      - name: Full gate (type-check, tests, lint, package)
         run: npm run ci
 
-      - name: Verify PBIVIZ package exists
+      - name: Verify the .pbiviz exists
         shell: bash
         run: |
           ls -lah dist
           test -n "$(find dist -maxdepth 1 -type f -name '*.pbiviz' -print -quit)"
+          {
+            echo "### MUST Tables build"
+            echo ""
+            for f in dist/*.pbiviz; do echo "- \`$(basename "$f")\` - $(du -h "$f" | cut -f1)"; done
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload PBIVIZ build
+      - name: Upload the clean build
         uses: actions/upload-artifact@v4
         with:
-          name: data-lake-tables-pbiviz
+          name: must-tables-pbiviz
           path: dist/*.pbiviz
           if-no-files-found: error
           retention-days: 30
 
-      - name: Upload build analyzer
+      - name: Upload build analyzer report
         uses: actions/upload-artifact@v4
         with:
-          name: data-lake-tables-build-report
+          name: must-tables-build-report
           path: webpack.statistics.prod.html
           if-no-files-found: warn
           retention-days: 30
 
   release:
-    name: Publish GitHub Release
+    name: Publish a permanent GitHub Release
     needs: build-test-package
     runs-on: ubuntu-latest
-    # Deliberate: only a pushed version tag (e.g. v1.0.0.49) creates a
-    # release. Every ordinary commit to main still builds and tests above,
-    # but does not spam a new release -- a release is a distinct, tagged,
-    # deliberate action, not a side effect of every push.
+    # Only a pushed version tag (for example v1.0.0.50) creates a release.
+    # Ordinary commits still build and test above and keep the build for 30 days.
     if: startsWith(github.ref, 'refs/tags/v')
     permissions:
       contents: write
     steps:
-      - name: Download PBIVIZ build
+      - name: Download the build
         uses: actions/download-artifact@v4
         with:
-          name: data-lake-tables-pbiviz
+          name: must-tables-pbiviz
           path: dist
 
-      - name: Verify PBIVIZ package exists
+      - name: Verify the .pbiviz exists
         shell: bash
         run: |
           ls -lah dist
           test -n "$(find dist -maxdepth 1 -type f -name '*.pbiviz' -print -quit)"
 
-      - name: Create GitHub Release
+      - name: Create the GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Data Lake Tables ${{ github.ref_name }}
+          name: MUST Tables ${{ github.ref_name }}
           files: dist/*.pbiviz
           generate_release_notes: true
           fail_on_unmatched_files: true

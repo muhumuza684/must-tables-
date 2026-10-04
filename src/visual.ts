@@ -314,7 +314,7 @@ export class DataLakeTables implements IVisual {
             rows,
             rendererSettings,
             persistedState,
-            "Data Lake Tables",
+            "MUST Tables",
             isSegmentContinuation
         );
         this.hasRenderedRealData = true;

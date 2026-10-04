@@ -1,6 +1,6 @@
 import { DataLakeEventBus } from "../src/customEvents";
 
-describe("Data Lake Tables custom events", () => {
+describe("MUST Tables custom events", () => {
     it("emits immutable event payloads and supports unsubscribe", () => {
         const bus = new DataLakeEventBus();
         const events: string[] = [];

@@ -1,16 +1,16 @@
 ﻿import fs from "fs";
 import path from "path";
 
-describe("Data Lake Tables standardization", () => {
+describe("MUST Tables standardization", () => {
     const root = path.resolve(__dirname, "..");
     const renderer = fs.readFileSync(path.join(root, "src", "tableRenderer.ts"), "utf8");
     const styles = fs.readFileSync(path.join(root, "style", "visual.less"), "utf8");
     const pbiviz = JSON.parse(fs.readFileSync(path.join(root, "pbiviz.json"), "utf8"));
 
-    test("uses the Data Lake Tables identity", () => {
+    test("uses the MUST Tables identity", () => {
         expect(String(pbiviz.visual.name)).toMatch(/dataLakeTables|data-lake-tables/i);
-        expect(String(pbiviz.visual.displayName)).toMatch(/Data Lake Tables/i);
-        expect(renderer).toContain("Data Lake Tables");
+        expect(String(pbiviz.visual.displayName)).toMatch(/MUST Tables/i);
+        expect(renderer).toContain("MUST Tables");
     });
 
     test("provides the branded settings surface and scroll behavior", () => {

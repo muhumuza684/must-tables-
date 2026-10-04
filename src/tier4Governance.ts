@@ -17,7 +17,7 @@ export function formatLocaleNumber(value: number, locale = "en-UG", currency = "
             // An author-mistyped locale/currency string (e.g. from the formatting pane) throws a
             // synchronous RangeError from Intl.NumberFormat's constructor. Fall back to a safe,
             // locale-agnostic formatter instead of letting this reach the caller and blank the table.
-            console.warn("Data Lake Tables: invalid locale/currency for export formatting; using a safe fallback.", { locale, currency, error });
+            console.warn("MUST Tables: invalid locale/currency for export formatting; using a safe fallback.", { locale, currency, error });
             formatter = new Intl.NumberFormat(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
         }
         localeFormatterCache.set(key, formatter);

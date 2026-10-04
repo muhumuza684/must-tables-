@@ -1,13 +1,13 @@
 {
     "visual":  {
                    "name":  "DataLakeTables",
-                   "displayName":  "Data Lake Tables",
+                   "displayName":  "MUST Tables",
                    "guid":  "dataLakeTables_829db169be4645b3be514812e0d84f30",
                    "visualClassName":  "DataLakeTables",
-                   "version":  "1.0.0.48",
+                   "version":  "1.0.0.50",
                    "description":  "A modern, scalable data-lake table visual for viewing, slicing, formatting, and exporting governed Power BI data.",
-                   "supportUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals/issues",
-                   "gitHubUrl":  "https://github.com/muhumuza684/KIBA-powerbi-visuals"
+                   "supportUrl":  "https://github.com/muhumuza684/must-tables-/issues",
+                   "gitHubUrl":  "https://github.com/muhumuza684/must-tables-"
                },
     "apiVersion":  "5.3.0",
     "author":  {
