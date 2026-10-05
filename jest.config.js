@@ -1,5 +1,5 @@
-/** Jest config for Skiba Tables' automated regression suite (T3 / E2).
- *  Runs against src/*.ts directly via ts-jest Ã¢â‚¬â€ no build step required.
+/** Jest config for MUST Tables' automated regression suite (T3 / E2).
+ *  Runs against src/*.ts directly via ts-jest - no build step required.
  *  jsdom is required because TableRenderer manipulates `document` directly
  *  (it predates any virtual-DOM abstraction).
  */
